@@ -1,6 +1,7 @@
 package lk.easy.rental.entity;
 
 import lk.easy.rental.embeded.Name;
+import lk.easy.rental.enums.AvailabilityType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,16 +16,16 @@ import javax.persistence.Id;
 @Data
 @ToString
 @Entity
-public class Customer {
-
+public class Driver {
     @Id
-    private String cusId;
+    private String driverId;
+    private String licenseNo;
     private String NIC;
     @Embedded
     private Name name;
-    private String drivingLicenseNo;
+    private AvailabilityType driverAvailability;
     private String address;
     private String contactNo;
-    private String email;
+
 
 }
