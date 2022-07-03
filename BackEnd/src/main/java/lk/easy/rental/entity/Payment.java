@@ -14,12 +14,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Data
 @ToString
-@Entity
 public class Payment {
-    @Id
-    @GeneratedValue
-    private String paymentId;
 
+    private String paymentId;
     private LocalDate paymentDate;
 
 }

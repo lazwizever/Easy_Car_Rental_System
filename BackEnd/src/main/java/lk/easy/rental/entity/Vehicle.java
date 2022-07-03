@@ -33,4 +33,7 @@ public class Vehicle {
     private double damageFee;
     private String brand;
     private String color;
+
+
+
 }

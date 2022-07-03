@@ -11,6 +11,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -26,6 +27,5 @@ public class Driver {
     private AvailabilityType driverAvailability;
     private String address;
     private String contactNo;
-
 
 }
