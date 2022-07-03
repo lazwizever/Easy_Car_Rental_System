@@ -25,16 +25,9 @@ public class BookingDetails {
     @ManyToOne
     @JoinColumn(name = "vehicleId",referencedColumnName = "vehicleId",insertable = false,updatable = false)
     private Vehicle vehicle;
-    //check this out. you can find the error
-//and please enable the tomcat log. its missing
-    @ManyToOne
 
-    //error eknm sir dn meter vna..tomcat og eke enable krnn kiynne mkkd sir
+    @ManyToOne
     @JoinColumn(name = "bookingId",referencedColumnName = "bookingId",insertable = false,updatable = false)
     private Booking booking;
 
-
-//methana output eka thiyena thana catalina log ekai thawa
-//    tomcat log ekai thiyenna ona. eka missing.
-//ahh hri sir...thnk u gdkm sir
 }
