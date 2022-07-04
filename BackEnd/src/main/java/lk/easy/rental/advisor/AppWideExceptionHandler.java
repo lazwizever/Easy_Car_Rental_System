@@ -1,7 +1,9 @@
 package lk.easy.rental.advisor;
 
+import lk.easy.rental.Exception.DuplicateEntryException;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -17,5 +19,13 @@ public class AppWideExceptionHandler {
     public ResponseUtil exceptionHandle(Exception e){
         return new ResponseUtil(500,e.getMessage(),null);
     }
+
+    @ExceptionHandler({DuplicateEntryException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ResponseUtil> duplicateEntryExceptionHandle(Exception e){
+        return new ResponseEntity(new ResponseUtil(400,e.getMessage(),null),HttpStatus.BAD_REQUEST);
+    }
+
+
 
 }

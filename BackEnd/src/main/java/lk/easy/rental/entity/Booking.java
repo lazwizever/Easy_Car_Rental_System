@@ -31,4 +31,10 @@ public class Booking {
     @JoinColumn(name = "customerID",referencedColumnName = "cusId",nullable = false)
     private Customer customer;
 
+    @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
+    private List<DriverSchedule> driverList;
+
+    @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
+    private List<BookingDetails> bookingDetailsList;
+
 }

@@ -1,4 +1,4 @@
-package lk.easy.rental.entity;
+package lk.easy.rental.dto;
 
 import lk.easy.rental.embeded.Name;
 import lombok.AllArgsConstructor;
@@ -7,17 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Embedded;
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @ToString
-@Entity
-public class Customer {
+public class CustomerDTO {
 
-    @Id
     private String cusId;
     private String customerNic;
     @Embedded
@@ -26,5 +23,6 @@ public class Customer {
     private String address;
     private String contactNo;
     private String email;
+
 
 }
