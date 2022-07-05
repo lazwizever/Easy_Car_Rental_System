@@ -1,4 +1,4 @@
-package lk.easy.rental.entity;
+package lk.easy.rental.dto;
 
 import lk.easy.rental.embeded.Name;
 import lk.easy.rental.enums.AvailabilityType;
@@ -7,27 +7,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Embedded;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
 
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @ToString
-@Entity
-public class Driver {
-    @Id
+public class DriverDTO {
     private String driverId;
     private String licenseNo;
     private String driverNic;
     @Embedded
     private Name name;
-    @Enumerated(EnumType.STRING)
     private AvailabilityType driverAvailability;
     private String address;
     private String contactNo;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
-
 }

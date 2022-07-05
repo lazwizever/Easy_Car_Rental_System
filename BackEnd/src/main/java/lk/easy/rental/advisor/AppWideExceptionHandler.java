@@ -16,8 +16,8 @@ public class AppWideExceptionHandler {
 
     @ExceptionHandler({Exception.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseUtil exceptionHandle(Exception e){
-        return new ResponseUtil(500,e.getMessage(),null);
+    public ResponseEntity exceptionHandle(Exception e){
+        return new ResponseEntity(new ResponseUtil(500,e.getMessage(),null),HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler({DuplicateEntryException.class})
