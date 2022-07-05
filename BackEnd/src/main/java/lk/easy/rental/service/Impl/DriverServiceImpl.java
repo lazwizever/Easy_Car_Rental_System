@@ -7,6 +7,7 @@ import lk.easy.rental.entity.Customer;
 import lk.easy.rental.entity.Driver;
 import lk.easy.rental.repo.CustomerRepo;
 import lk.easy.rental.repo.DriverRepo;
+import lk.easy.rental.repo.UserRepo;
 import lk.easy.rental.service.DriverService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -24,13 +25,22 @@ public class DriverServiceImpl implements DriverService {
     DriverRepo driverRepo;
 
     @Autowired
+    UserRepo userRepo;
+
+
+    @Autowired
     ModelMapper modelMapper;
 
 
     @Override
     public void saveDriver(DriverDTO driverDTO) {
         if (!driverRepo.existsById(driverDTO.getDriverId())){
-            driverRepo.save(modelMapper.map(driverDTO, Driver.class));
+            if (userRepo.existsByUserName(driverDTO.getUserDTO().getUserName())){
+                driverRepo.save(modelMapper.map(driverDTO, Driver.class));
+            }else {
+                throw new DuplicateEntryException("User already exist");
+            }
+
         }else {
             throw new DuplicateEntryException("Driver already exist");
         }

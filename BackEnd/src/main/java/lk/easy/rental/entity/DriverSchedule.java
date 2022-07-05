@@ -1,7 +1,14 @@
 package lk.easy.rental.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @IdClass(DriverSchedule_PK.class)
 public class DriverSchedule {

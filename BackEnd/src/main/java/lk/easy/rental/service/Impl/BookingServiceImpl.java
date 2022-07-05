@@ -1,0 +1,73 @@
+package lk.easy.rental.service.Impl;
+
+import lk.easy.rental.Exception.DuplicateEntryException;
+import lk.easy.rental.dto.BookingDTO;
+import lk.easy.rental.dto.CustomerDTO;
+import lk.easy.rental.entity.Booking;
+import lk.easy.rental.entity.Customer;
+import lk.easy.rental.repo.BookingRepo;
+import lk.easy.rental.repo.CustomerRepo;
+import lk.easy.rental.service.BookingService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+
+@Service
+@Transactional
+public class BookingServiceImpl implements BookingService {
+
+    @Autowired
+    BookingRepo bookingRepo;
+
+    @Autowired
+    ModelMapper modelMapper;
+
+    @Override
+    public void placeBooking(BookingDTO bookingDTO) {
+        if (!bookingRepo.existsById(bookingDTO.getBookingId())){
+            bookingRepo.save(modelMapper.map(bookingDTO, Booking.class));
+        }else {
+            throw new DuplicateEntryException("Booking already exist");
+        }
+    }
+
+    @Override
+    public BookingDTO searchBooking(String bookingId) {
+        if (bookingRepo.existsById(bookingId)){
+            return modelMapper.map(bookingRepo.findById(bookingId), BookingDTO.class);
+        }else {
+            throw new RuntimeException("No customer for "+bookingId+"..!");
+        }
+    }
+
+    @Override
+    public List<BookingDTO> getAllBookings() {
+        if (!bookingRepo.findAll().isEmpty()){
+            return modelMapper.map(bookingRepo.findAll(), new TypeToken<List<BookingDTO>>(){}.getType());
+        }else {
+            throw new RuntimeException("There is no booking in database.");
+        }
+    }
+
+    @Override
+    public void updateBooking(BookingDTO bookingDTO) {
+        if (bookingRepo.existsById(bookingDTO.getBookingId())){
+            bookingRepo.save(modelMapper.map(bookingDTO,Booking.class));
+        }else {
+            throw new RuntimeException("No Such booking To Update..! Please Check the ID..!");
+        }
+    }
+
+    @Override
+    public void deleteBooking(String id) {
+        if (bookingRepo.existsById(id)){
+            bookingRepo.deleteById(id);
+        }else {
+            throw new RuntimeException("No booking for "+id+"..!");
+        }
+    }
+}

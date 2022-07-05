@@ -11,6 +11,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Enumerated;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -28,4 +30,6 @@ public class VehicleDTO {
     private double damageFee;
     private String brand;
     private String color;
+    private int lastServiceKm;
+    private int mileage;
 }

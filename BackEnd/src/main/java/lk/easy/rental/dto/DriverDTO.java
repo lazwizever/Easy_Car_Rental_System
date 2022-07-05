@@ -1,6 +1,7 @@
 package lk.easy.rental.dto;
 
 import lk.easy.rental.embeded.Name;
+import lk.easy.rental.entity.User;
 import lk.easy.rental.enums.AvailabilityType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,9 +22,9 @@ public class DriverDTO {
     private String driverId;
     private String licenseNo;
     private String driverNic;
-    @Embedded
     private Name name;
     private AvailabilityType driverAvailability;
     private String address;
     private String contactNo;
+    private UserDTO userDTO;
 }

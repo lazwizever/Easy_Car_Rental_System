@@ -7,6 +7,7 @@ import lk.easy.rental.entity.Admin;
 import lk.easy.rental.entity.Customer;
 import lk.easy.rental.repo.AdminRepo;
 import lk.easy.rental.repo.CustomerRepo;
+import lk.easy.rental.repo.UserRepo;
 import lk.easy.rental.service.AdminService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -24,13 +25,21 @@ public class AdminServiceImpl implements AdminService {
     AdminRepo adminRepo;
 
     @Autowired
+    UserRepo userRepo;
+
+    @Autowired
     ModelMapper modelMapper;
 
 
     @Override
     public void saveAdmin(AdminDTO adminDTO) {
         if (!adminRepo.existsById(adminDTO.getAdminId())){
-            adminRepo.save(modelMapper.map(adminDTO, Admin.class));
+            if (!userRepo.existsByUserName(adminDTO.getUser().getUserName())){
+                adminRepo.save(modelMapper.map(adminDTO, Admin.class));
+            }else {
+                throw new DuplicateEntryException("User already exist");
+            }
+
         }else {
             throw new DuplicateEntryException("Admin already exist");
         }

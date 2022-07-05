@@ -23,8 +23,6 @@ public class Booking {
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private LocalDate returnDate;
-    private double rentalFee;
-    private double damageFee;
     private RequestType driverRequestType;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})

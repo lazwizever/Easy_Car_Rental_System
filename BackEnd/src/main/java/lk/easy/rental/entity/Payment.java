@@ -1,22 +1,31 @@
 package lk.easy.rental.entity;
 
+import lk.easy.rental.enums.PaymentType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @ToString
+@Entity
 public class Payment {
-
+    @Id
     private String paymentId;
     private LocalDate paymentDate;
+    private String date;
+    @Enumerated
+    private PaymentType paymentType;
+    private String amount;
+
+    @ManyToOne
+    @JoinColumn(name = "booking_Id",referencedColumnName = "bookingId",insertable = false,updatable = false)
+    private Booking booking;
+
 
 }
