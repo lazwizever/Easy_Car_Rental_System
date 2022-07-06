@@ -5,7 +5,7 @@ import lk.easy.rental.dto.VehicleDTO;
 import java.util.List;
 
 public interface VehicleService {
-    void rentVehicle(VehicleDTO vehicleDTO);
+    void saveVehicle(VehicleDTO vehicleDTO);
 
     VehicleDTO searchVehicle(String vehicleId);
 

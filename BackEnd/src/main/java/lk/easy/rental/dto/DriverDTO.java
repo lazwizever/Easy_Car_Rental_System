@@ -26,5 +26,5 @@ public class DriverDTO {
     private AvailabilityType driverAvailability;
     private String address;
     private String contactNo;
-    private UserDTO userDTO;
+    private UserDTO user;
 }

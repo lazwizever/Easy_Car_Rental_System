@@ -17,6 +17,6 @@ import javax.persistence.Id;
 public class DriverScheduleDTO {
     private String driverId;
     private String bookingId;
-    private DriverDTO driverDTO;
-    private BookingDTO bookingDTO;
+    private DriverDTO driver;
+    private BookingDTO booking;
 }

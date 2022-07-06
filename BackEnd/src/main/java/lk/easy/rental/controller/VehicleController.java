@@ -18,8 +18,8 @@ public class VehicleController {
     VehicleService vehicleService;
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil rentVehicle(@RequestBody VehicleDTO vehicleDTO){
-        vehicleService.rentVehicle(vehicleDTO);
+    public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO){
+        vehicleService.saveVehicle(vehicleDTO);
         return new ResponseUtil(200,"Vehicle successfully added",null);
     }
 

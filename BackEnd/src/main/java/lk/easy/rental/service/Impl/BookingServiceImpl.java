@@ -24,12 +24,45 @@ public class BookingServiceImpl implements BookingService {
     BookingRepo bookingRepo;
 
     @Autowired
+    CustomerRepo customerRepo;
+
+
+    @Autowired
     ModelMapper modelMapper;
 
     @Override
     public void placeBooking(BookingDTO bookingDTO) {
+        //---------------Check booking id-------------------------
         if (!bookingRepo.existsById(bookingDTO.getBookingId())){
-            bookingRepo.save(modelMapper.map(bookingDTO, Booking.class));
+            //---------------Check customer id-------------------------
+            if (customerRepo.existsById(bookingDTO.getCustomer().getCusId())){
+                //---------------Check bookingDetailsList id (if vehicle add or not)-------------------------
+                if (!bookingDTO.getBookingDetailsList().isEmpty()){
+
+                    //----------------if driver is request---------------------
+
+                    if (bookingDTO.getDriverRequestType().equals("YES")){
+                        if (!bookingDTO.getDriverScheduleDTOList().isEmpty()){
+                            bookingRepo.save(modelMapper.map(bookingDTO, Booking.class));
+                        }
+                        //-----------------------------------------------------
+
+
+                        //------------if driver isn't request------------------
+                    }else {
+                        if (bookingDTO.getDriverScheduleDTOList().isEmpty()){
+                            bookingRepo.save(modelMapper.map(bookingDTO, Booking.class));
+                        }
+                    }
+                        //-----------------------------------------------------
+
+                }else {
+                    throw new DuplicateEntryException("No vehicle added for the booking");
+                }
+            }else {
+                throw new DuplicateEntryException("No such a customer..!");
+            }
+
         }else {
             throw new DuplicateEntryException("Booking already exist");
         }
@@ -40,7 +73,7 @@ public class BookingServiceImpl implements BookingService {
         if (bookingRepo.existsById(bookingId)){
             return modelMapper.map(bookingRepo.findById(bookingId), BookingDTO.class);
         }else {
-            throw new RuntimeException("No customer for "+bookingId+"..!");
+            throw new RuntimeException("No booking for "+bookingId+"..!");
         }
     }
 

@@ -35,7 +35,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public void saveDriver(DriverDTO driverDTO) {
         if (!driverRepo.existsById(driverDTO.getDriverId())){
-            if (userRepo.existsByUserName(driverDTO.getUserDTO().getUserName())){
+            if (!userRepo.existsByUserName(driverDTO.getUser().getUserName())){
                 driverRepo.save(modelMapper.map(driverDTO, Driver.class));
             }else {
                 throw new DuplicateEntryException("User already exist");

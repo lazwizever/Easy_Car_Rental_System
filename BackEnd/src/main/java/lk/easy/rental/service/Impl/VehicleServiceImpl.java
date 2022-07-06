@@ -28,7 +28,7 @@ public class VehicleServiceImpl implements VehicleService {
 
 
     @Override
-    public void rentVehicle(VehicleDTO vehicleDTO) {
+    public void saveVehicle(VehicleDTO vehicleDTO) {
         if (!vehicleRepo.existsById(vehicleDTO.getVehicleId())){
             vehicleRepo.save(modelMapper.map(vehicleDTO, Vehicle.class));
         }else {

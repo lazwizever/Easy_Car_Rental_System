@@ -23,7 +23,7 @@ public class BookingDTO {
     private LocalTime pickUpTime;
     private LocalDate returnDate;
     private RequestType driverRequestType;
-    private CustomerDTO customerDTO;
+    private CustomerDTO customer;
     private List<DriverScheduleDTO> driverScheduleDTOList;
     private List<BookingDetailsDTO> bookingDetailsList;
 }

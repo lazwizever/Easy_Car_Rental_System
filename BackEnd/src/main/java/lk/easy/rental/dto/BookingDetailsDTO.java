@@ -20,8 +20,8 @@ public class BookingDetailsDTO {
     @Id
     private String bookingId;
 
-    private VehicleDTO vehicleDTO;
+    private VehicleDTO vehicle;
 
-    private BookingDTO bookingDTO;
+    private BookingDTO booking;
 
 }
