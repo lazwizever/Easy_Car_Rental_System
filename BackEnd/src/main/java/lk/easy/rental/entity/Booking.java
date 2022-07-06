@@ -32,6 +32,7 @@ public class Booking {
     @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
     private List<DriverSchedule> driverList;
 
+
     @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
     private List<BookingDetails> bookingDetailsList;
 
