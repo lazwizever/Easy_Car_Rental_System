@@ -1,14 +1,12 @@
 package lk.easy.rental.entity;
 
+import lk.easy.rental.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,11 +17,12 @@ public class User {
     @Id
     @GeneratedValue
     private int userId;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
     private String userName;
     private String passWord;
 
-    public User(String role, String userName, String passWord) {
+    public User(Role role, String userName, String passWord) {
         this.role = role;
         this.userName = userName;
         this.passWord = passWord;

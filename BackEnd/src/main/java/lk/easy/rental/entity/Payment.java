@@ -18,13 +18,12 @@ public class Payment {
     @Id
     private String paymentId;
     private LocalDate paymentDate;
-    private String date;
     @Enumerated
     private PaymentType paymentType;
     private String amount;
 
     @ManyToOne
-    @JoinColumn(name = "booking_Id",referencedColumnName = "bookingId",insertable = false,updatable = false)
+    @JoinColumn(name = "bookingId",referencedColumnName = "bookingId",insertable = false,updatable = false)
     private Booking booking;
 
 

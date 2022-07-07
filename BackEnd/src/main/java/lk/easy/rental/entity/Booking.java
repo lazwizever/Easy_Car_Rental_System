@@ -1,5 +1,6 @@
 package lk.easy.rental.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lk.easy.rental.enums.RequestType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,7 @@ public class Booking {
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private LocalDate returnDate;
+    @Enumerated(EnumType.STRING)
     private RequestType driverRequestType;
 
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
