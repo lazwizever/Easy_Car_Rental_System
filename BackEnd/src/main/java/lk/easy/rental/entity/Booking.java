@@ -31,11 +31,11 @@ public class Booking {
     @JoinColumn(name = "customerID",referencedColumnName = "cusId",nullable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<DriverSchedule> driverList;
 
 
-    @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<BookingDetails> bookingDetailsList;
 
 }

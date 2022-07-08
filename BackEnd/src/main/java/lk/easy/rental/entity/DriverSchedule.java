@@ -22,7 +22,7 @@ public class DriverSchedule {
     @JoinColumn(name = "driverId",referencedColumnName = "driverId",insertable = false,updatable = false)
     private Driver driver;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bookingId",referencedColumnName = "bookingId",insertable = false,updatable = false)
     private Booking booking;
 
