@@ -33,6 +33,7 @@ public class BookingController {
         return new ResponseUtil(200,"OK",bookingService.getAllBookings());
     }
 
+
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateBooking(@RequestBody BookingDTO bookingDTO){
         bookingService.updateBooking(bookingDTO);
