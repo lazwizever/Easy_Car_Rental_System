@@ -20,8 +20,9 @@ export const styleSheet = {
         height:'100vh',
     },
 
-    carBackground:{
-      //backgroundColor:'white',
+    vehicleList:{
+        backgroundColor:'#313131',
+        width: '100vw',
+        height:'100vh',
     }
-
 }
