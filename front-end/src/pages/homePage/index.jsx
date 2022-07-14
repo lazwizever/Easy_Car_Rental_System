@@ -3,15 +3,39 @@ import Grid from '@mui/material/Grid';
 import {withStyles} from "@mui/styles";
 import {Component} from "react";
 import homeIcon from "../../assets/img/homeIcon.jpg";
-import {Button, css, ImageList, ImageListItem, ImageListItemBar, Tab, Tabs, TextField, Typography} from "@mui/material";
+import {
+    Box,
+    Button,
+    css,
+    ImageList,
+    ImageListItem,
+    ImageListItemBar,
+    Tab,
+    Tabs,
+    TextField,
+    Typography
+} from "@mui/material";
 import * as PropTypes from "prop-types";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import carsImage from '../../assets/img/carsTopic.png'
+import carsImage from '../../assets/img/carsTopic.png';
 import {styleSheet as styles, styleSheet} from "./style";
-import benz from '../../assets/img/mercedesbenz.jpg'
-import bmw from '../../assets/img/bmw.jpg'
-import toyotaAllion from '../../assets/img/ToyotaAllion.jpg'
-import toyotaPremio from '../../assets/img/ToyotaPremio.jpg'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import * as React from 'react';
+import {TimePicker} from "@mui/x-date-pickers";
+import contactUsImg from '../../assets/img/contactusimg1.jpg';
+import logo from '../../assets/img/logo.png';
+import PinDropIcon from '@mui/icons-material/PinDrop';
+import HistoryIcon from '@mui/icons-material/History';
+import CallIcon from '@mui/icons-material/Call';
+import FaxIcon from '@mui/icons-material/Fax';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import EmailIcon from '@mui/icons-material/Email';
+import ShopTwoIcon from '@mui/icons-material/ShopTwo';
 
 
 
@@ -42,7 +66,7 @@ class HomePage extends Component {
 
     render() {
 
-        /*const [value, setValue] = React.useState<Date | null>(null);*/
+        //const [value, setValue] = React.useState<Date | null>(null);
 
         const {classes} = this.props;
         return (
@@ -82,9 +106,65 @@ class HomePage extends Component {
                     </Typography>
 
 
-                    <Grid style={{paddingTop:'13vh',paddingLeft:'70vw'}}>
-                        <Button  style={{backgroundColor:'#FF9900',color:'black',fontWeight:'bold',width:'11vw'}}>Find My Car</Button>
+                    <Grid style={{paddingTop:'9.5vh',paddingLeft:'76vw'}}>
+                        <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'10vh',width:'18vw',
+                            fontSize:'25px',opacity:'95%'}}
+                        >Find My Car</Button>
                     </Grid>
+
+
+                    {/*------------------Date time fields--------------------------*/}
+
+                    <Grid  className={classes.dateTimeContainer}>
+
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                label="Pick-Up-Date"
+                                //value={value}
+                                onChange={(newValue) => {
+                                    //setValue(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <TimePicker
+                                label="Pick-Up-Time"
+                                //value={value}
+                                onChange={(newValue) => {
+                                    //setValue(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+
+
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                label="Drop-Off-Date"
+                                //value={value}
+                                onChange={(newValue) => {
+                                    //setValue(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <TimePicker
+                                label="Drop-Off-Time"
+                                //value={value}
+                                onChange={(newValue) => {
+                                    //setValue(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+
+                    </Grid>
+                    {/*------------------------------------------------------------*/}
+
 
                 </Grid>
 
@@ -152,7 +232,6 @@ class HomePage extends Component {
 
                         </svg>
 
-
                         <img src={carsImage} style={{position:'absolute',top:'138vh',right:'30px'}}/>
 
                     </Grid>
@@ -212,6 +291,82 @@ class HomePage extends Component {
 
 
                     </Grid>
+
+
+                </Grid>
+
+                {/*----------------------------------------------------------------*/}
+
+
+
+                {/*-----------------------------Contact Us--------------------------------*/}
+
+                <Grid className={classes.contactUs} style={{
+                    backgroundImage: `url(${contactUsImg})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover'
+                }}>
+
+
+                    <Grid>
+                        <Typography style={{color:'white',fontSize:'35px',paddingTop:'6vh',paddingLeft:'42vw'}}>
+                            Touch With us
+                        </Typography>
+                    </Grid>
+
+
+
+                    {/*-----------------------Logo--------------------------*/}
+                            <Grid style={{paddingLeft:'45.3vw'}}>
+                                <img src={logo} style={{position:'absolute',height:'7vh',width:'7vw',paddingTop:'1vh'}}/>
+
+                                <h3 style={{margin:'auto',color:'white',paddingLeft:'1.5vw',paddingTop:'4vh'}}>Easy Car</h3>
+                                <h1 style={{color:'white',fontSize:'11px',margin:'auto',paddingLeft:'2.2vw'}}>rental pvt</h1>
+                            </Grid>
+
+
+
+
+                    <Grid style={{display:'flex',justifyContent:'space-evenly',paddingTop:'8vh',paddingLeft:'8vw',width:'90vw'}}>
+                        <h2 style={{color:'white',fontSize:'20px'}}>Address</h2>
+                        <h2 style={{color:'white',fontSize:'20px'}}>Hours</h2>
+                        <h2 style={{color:'white',fontSize:'20px'}}>Phone</h2>
+                        <h2 style={{color:'white',fontSize:'20px'}}>Whatsapp</h2>
+                        <h2 style={{color:'white',fontSize:'20px'}}>Fax</h2>
+                    </Grid>
+
+
+                    <Grid style={{display:'flex',justifyContent:'space-evenly',paddingLeft:'8vw',width:'92vw'}}>
+                        <PinDropIcon  style={{color:'white',fontSize:'55px'}}/>
+                        <HistoryIcon style={{color:'white',fontSize:'55px'}}/>
+                        <CallIcon style={{color:'white',fontSize:'55px'}}/>
+                        <WhatsAppIcon style={{color:'white',fontSize:'55px'}}/>
+                        <FaxIcon style={{color:'white',fontSize:'55px'}}/>
+                    </Grid>
+
+
+                    <Grid style={{display:'flex',justifyContent:'space-evenly',paddingLeft:'9vw',width:'87vw'}}>
+                        <h4 style={{color:'white',fontFamily:'Quicksand'}}>No. 200, Galle Road,<br/>Panadura.</h4>
+                        <h4 style={{color:'white'}}>7.00 am - 7.00 pm</h4>
+                        <h4 style={{color:'white'}}>+91 221 222<br/></h4>
+                        <h4 style={{color:'white'}}>+76 755 41 12</h4>
+                        <h4 style={{color:'white'}}>+855 24 74</h4>
+                    </Grid>
+
+
+                    <Grid style={{display:'flex',justifyContent:'space-evenly',paddingLeft:'36vw',width:'62vw',paddingTop:'4vh'}}>
+                        <FacebookIcon style={{color:'white',fontSize:'35px'}}/>
+                        <YouTubeIcon style={{color:'white',fontSize:'35px'}}/>
+                        <TwitterIcon style={{color:'white',fontSize:'35px'}}/>
+                        <EmailIcon style={{color:'white',fontSize:'35px'}}/>
+                        <ShopTwoIcon style={{color:'white',fontSize:'35px'}}/>
+                    </Grid>
+
+
+                    <h4 style={{color:'white',fontSize:'12px',paddingTop:'6vh',paddingLeft:'38vw'}}>
+                        Copyright © 2021 Easy Car rental pvt Inc. All rights reserved.
+                    </h4>
+
 
                 </Grid>
 
