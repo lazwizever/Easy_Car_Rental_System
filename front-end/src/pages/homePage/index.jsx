@@ -41,7 +41,7 @@ import ShopTwoIcon from '@mui/icons-material/ShopTwo';
 
 const itemData = [
     {
-        img: 'https://c.ndtvimg.com/2020-09/12qb402s_2021-mercedesbenz-sclass-_625x300_02_September_20.jpg',
+        img: 'https://di-uploads-pod7.dealerinspire.com/mercedesbenztorontoregionalgroup/uploads/2019/04/CLAcoupeSmallPlate.jpg',
         title: 'Mercedes-Benz',
     },
     {
@@ -56,6 +56,15 @@ const itemData = [
         img: 'https://blog.japanesecartrade.com/wp-content/uploads/2020/01/Toyota-Premio.jpg',
         title: 'Toyota-Premio',
     },
+    {
+        img: 'https://media.ed.edmunds-media.com/toyota/prius/2019/oem/2019_toyota_prius_4dr-hatchback_xle-awd-e_fq_oem_2_1600.jpg',
+        title: 'Toyota Prius',
+    },
+    {
+        img: 'https://img.philkotse.com/2021/12/03/WFFKkBCT/celerio-retro-1-332c_wm.jpg',
+        title: 'Suzuki Celerio',
+    },
+
 ];
 
 
@@ -93,6 +102,17 @@ class HomePage extends Component {
                         <AccountCircleIcon style={{fontSize:'25px',paddingTop:'10px',color:'white',fontFamily:'Quicksand'}}/>
 
                     </Grid>
+
+
+                    <Grid style={{position:'absolute',paddingLeft:'5vw',paddingTop:'1vh'}}>
+                        <img src={logo} style={{position:'absolute',height:'7vh',width:'7vw'}}/>
+
+                        <h3 style={{margin:'auto',color:'white',paddingLeft:'1.5vw',paddingTop:'4vh'}}>Easy Car</h3>
+                        <h1 style={{color:'white',fontSize:'11px',margin:'auto',paddingLeft:'2.2vw'}}>rental pvt</h1>
+                    </Grid>
+
+
+
 
 
 
@@ -263,9 +283,9 @@ class HomePage extends Component {
 
                     <Grid>
 
-                    <Grid style={{paddingLeft:'23vw',paddingTop:'6vh'}}>
+                    <Grid style={{paddingLeft:'17vw',paddingTop:'6vh'}}>
 
-                        <ImageList sx={{ width: 800, height: 450 }}>
+                        <ImageList sx={{ width: 1000, height: 450, color: 'rgba(255, 255, 255, 0.54)'}} cols={3} >
                             {itemData.map((item) => (
                                 <ImageListItem key={item.img}>
                                     <img
@@ -278,6 +298,7 @@ class HomePage extends Component {
                                         title={item.title}
                                         position="below"
                                     />
+
                                 </ImageListItem>
                             ))}
                         </ImageList>
@@ -324,7 +345,7 @@ class HomePage extends Component {
                                 <h1 style={{color:'white',fontSize:'11px',margin:'auto',paddingLeft:'2.2vw'}}>rental pvt</h1>
                             </Grid>
 
-
+                    {/*-----------------------------------------------------*/}
 
 
                     <Grid style={{display:'flex',justifyContent:'space-evenly',paddingTop:'8vh',paddingLeft:'8vw',width:'90vw'}}>
