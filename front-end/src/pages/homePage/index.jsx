@@ -1,7 +1,7 @@
 //import {styleSheet} from "./style";
 import Grid from '@mui/material/Grid';
 import {withStyles} from "@mui/styles";
-import {Component} from "react";
+import {Component, useState} from "react";
 import homeIcon from "../../assets/img/homeIcon.jpg";
 import {
     Box,
@@ -36,6 +36,18 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import EmailIcon from '@mui/icons-material/Email';
 import ShopTwoIcon from '@mui/icons-material/ShopTwo';
+import signIn from '../../component/signIn';
+
+/*
+import {
+    useFonts,
+    Quicksand_300Light,
+    Quicksand_400Regular,
+    Quicksand_500Medium,
+    Quicksand_600SemiBold,
+    Quicksand_700Bold,
+} from '@expo-google-fonts/quicksand';
+*/
 
 
 
@@ -71,11 +83,14 @@ const itemData = [
 class HomePage extends Component {
     constructor(props) {
         super(props);
+
+
     }
 
     render() {
-
+        /*const [openPopup,setOpenPopup] =useState(false);*/
         //const [value, setValue] = React.useState<Date | null>(null);
+
 
         const {classes} = this.props;
         return (
@@ -96,6 +111,7 @@ class HomePage extends Component {
                             <Tab label="Reservation" style={{color: 'white'}}/>
                             <Tab label="About Us" style={{color: 'white'}}/>
                             <Tab label="Contact Us" style={{color: 'white'}}/>
+                            <Tab label="Sign In" style={{color: 'white'}}/>
                             <Tab label="Sign Up" style={{color: 'white'}}/>
                         </Tabs>
 
@@ -129,8 +145,12 @@ class HomePage extends Component {
                     <Grid style={{paddingTop:'9.5vh',paddingLeft:'76vw'}}>
                         <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'10vh',width:'18vw',
                             fontSize:'25px',opacity:'95%'}}
+
+                    /*onClick={() =>setOpenPopup(true)}*/
+
                         >Find My Car</Button>
                     </Grid>
+
 
 
                     {/*------------------Date time fields--------------------------*/}
@@ -184,6 +204,12 @@ class HomePage extends Component {
 
                     </Grid>
                     {/*------------------------------------------------------------*/}
+
+               {/* <Popup>
+                    openPopup = {openPopup}
+                    setOpenPopup = {setOpenPopup}
+                </Popup>*/}
+
 
 
                 </Grid>
@@ -285,7 +311,7 @@ class HomePage extends Component {
 
                     <Grid style={{paddingLeft:'17vw',paddingTop:'6vh'}}>
 
-                        <ImageList sx={{ width: 1000, height: 450, color: 'rgba(255, 255, 255, 0.54)'}} cols={3} >
+                        <ImageList sx={{ width: 1000, height: 450, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} >
                             {itemData.map((item) => (
                                 <ImageListItem key={item.img}>
                                     <img
