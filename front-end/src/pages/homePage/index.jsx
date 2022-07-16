@@ -4,6 +4,7 @@ import {withStyles} from "@mui/styles";
 import {Component, useState} from "react";
 import homeIcon from "../../assets/img/homeIcon.jpg";
 import {
+    Autocomplete,
     Box,
     Button,
     css,
@@ -37,6 +38,8 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import EmailIcon from '@mui/icons-material/Email';
 import ShopTwoIcon from '@mui/icons-material/ShopTwo';
 import signIn from '../../component/signIn';
+import {Link} from "@mui/icons-material";
+import Reservation from "../reservation";
 
 /*
 import {
@@ -80,11 +83,15 @@ const itemData = [
 ];
 
 
+const vehicleType = [
+    { label: 'General'},
+    { label: 'Premium'},
+    { label: 'Luxury'},
+]
+
 class HomePage extends Component {
     constructor(props) {
         super(props);
-
-
     }
 
     render() {
@@ -108,7 +115,7 @@ class HomePage extends Component {
                     <Grid className={classes.navTabs}>
                         <Tabs centered>
                             <Tab label="Home" style={{color: 'white'}}/>
-                            <Tab label="Reservation" style={{color: 'white'}}/>
+                            <Tab label="Reservation" href="Reservation" style={{color: 'white'}}/>
                             <Tab label="About Us" style={{color: 'white'}}/>
                             <Tab label="Contact Us" style={{color: 'white'}}/>
                             <Tab label="Sign In" style={{color: 'white'}}/>
@@ -128,10 +135,6 @@ class HomePage extends Component {
                     </Grid>
 
 
-
-
-
-
                 <Typography style={{color:'white',fontSize:'55px',paddingTop:'33vh',paddingLeft:'30vw'}}>
                     Search for a vehicle rental
                 </Typography>
@@ -142,8 +145,8 @@ class HomePage extends Component {
                     </Typography>
 
 
-                    <Grid style={{paddingTop:'9.5vh',paddingLeft:'76vw'}}>
-                        <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'10vh',width:'18vw',
+                    <Grid style={{paddingTop:'9.5vh',paddingLeft:'81vw'}}>
+                        <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'10vh',width:'13vw',
                             fontSize:'25px',opacity:'95%'}}
 
                     /*onClick={() =>setOpenPopup(true)}*/
@@ -201,6 +204,16 @@ class HomePage extends Component {
                                 renderInput={(params) => <TextField {...params} />}
                             />
                         </LocalizationProvider>
+
+
+                        <Autocomplete
+                            disablePortal
+                            id="combo-box-demo"
+                            options={vehicleType}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                        />
+
 
                     </Grid>
                     {/*------------------------------------------------------------*/}
@@ -309,20 +322,23 @@ class HomePage extends Component {
 
                     <Grid>
 
-                    <Grid style={{paddingLeft:'17vw',paddingTop:'6vh'}}>
+                    <Grid style={{paddingLeft:'17vw',paddingTop:'6vh'}} >
 
                         <ImageList sx={{ width: 1000, height: 450, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} >
                             {itemData.map((item) => (
-                                <ImageListItem key={item.img}>
-                                    <img
-                                        src={`${item.img}?w=248&fit=crop&auto=format`}
-                                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                        alt={item.title}
-                                        loading="lazy"
-                                    />
+
+                                <ImageListItem key={item.img} >
+                                        <img
+                                            src={`${item.img}?w=248&fit=crop&auto=format`}
+                                            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                            alt={item.title}
+                                            loading="lazy"
+
+                                        />
                                     <ImageListItemBar
                                         title={item.title}
                                         position="below"
+
                                     />
 
                                 </ImageListItem>
@@ -333,7 +349,8 @@ class HomePage extends Component {
 
 
                         <Grid style={{paddingTop:'2vh',paddingLeft:'44vw'}}>
-                            <Button  style={{backgroundColor:'#FF9900',color:'black',width:'11vw'}}>View All Vehicles</Button>
+                                <Button  style={{backgroundColor:'#FF9900',color:'black',width:'11vw'}} href="Reservation">View All Vehicles</Button>
+
                         </Grid>
 
 

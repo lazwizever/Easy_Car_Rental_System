@@ -16,14 +16,14 @@ export const styleSheet = {
 
     dateTimeContainer:{
         backgroundColor:'white',
-        width:'70vw',
+        width:'76vw',
         height:'10vh',
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
         position:'absolute',
         top:'65vh',
-        left:'5vw',
+        left:'4vw',
         opacity:'80%',
     },
 

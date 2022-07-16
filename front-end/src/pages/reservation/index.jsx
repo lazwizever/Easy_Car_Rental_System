@@ -1,9 +1,15 @@
 import {Component} from "react";
 import Grid from "@mui/material/Grid";
-import {Button, ImageList, ImageListItem, ImageListItemBar} from "@mui/material";
+import {Autocomplete, Button, ImageList, ImageListItem, ImageListItemBar, Tab, Tabs, TextField} from "@mui/material";
 import * as React from "react";
 import {styleSheet} from "../reservation/style";
 import {withStyles} from "@mui/styles";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import logo from "../../assets/img/logo.png";
+import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
+import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
+import {DatePicker} from "@mui/x-date-pickers/DatePicker";
+import {TimePicker} from "@mui/x-date-pickers";
 
 
 
@@ -18,7 +24,7 @@ const itemData = [
     },
     {
         img: 'https://senda.us/autocraft/avisnew/images/veh_images/1595305281_image47793.jpg',
-        title: 'Toyota Allion',
+        title: 'Toyota Allion NZT',
     },
     {
         img: 'https://blog.japanesecartrade.com/wp-content/uploads/2020/01/Toyota-Premio.jpg',
@@ -33,18 +39,31 @@ const itemData = [
         title: 'Suzuki Celerio',
     },
 
+    {
+        img: 'https://www.mobikeycarmarket.co.ke/fotos/12/produtos/imagens/13761/img_3084_3763475086095b6ec709c6.jpg',
+        title: 'Toyota Corolla Axio',
+    },
+
+
+    {
+        img: 'https://www.deshicar.com/images/users/2986/2012-Axio.jpg',
+        title: 'Toyota Axio NKR 165',
+    },
+
+
+    {
+        img: 'https://toyota-cms-media.s3.amazonaws.com/wp-content/uploads/2015/10/2016_Prius_c_005_759FED2E688D101C7A41EB5084DCD7654D3E387B-1500x900.jpg',
+        title: 'Toyota Prius',
+    },
+
+
 ];
 
-
-//const [open, setOpen] = React.set(false);
-
-const handleClickOpen = () => {
-    //setOpen(true);
-};
-
-const handleClose = () => {
-    //setOpen(false);
-};
+const vehicleType = [
+    { label: 'General'},
+    { label: 'Premium'},
+    { label: 'Luxury'},
+]
 
 
 class Reservation extends Component{
@@ -55,10 +74,96 @@ class Reservation extends Component{
 
             <Grid className={classes.reservationContainer}>
 
-                <Grid>
-                    {/* <Grid style={{paddingLeft:'4vw',paddingTop:'6vh'}}>
+                {/*-------------------------Logo--------------------------------*/}
+                <Grid style={{position:'absolute',paddingLeft:'5vw',paddingTop:'1vh'}}>
+                    <img src={logo} style={{position:'absolute',height:'7vh',width:'7vw'}}/>
 
-                    <ImageList sx={{ width: 700, height: 600, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={2} >
+                    <h3 style={{margin:'auto',color:'#B5B5B5',paddingLeft:'1.5vw',paddingTop:'3.5vh',fontWeight:'unset'}}>Easy Car</h3>
+                    <h1 style={{color:'#B5B5B5',fontSize:'11px',margin:'auto',paddingLeft:'2.2vw',fontWeight:'unset'}}>rental pvt</h1>
+                </Grid>
+
+
+                {/*------------------------Nav Tabs-----------------------------*/}
+                <Grid className={classes.navTabs}>
+                    <Tabs centered>
+                        <Tab label="Home" href="/" style={{color: '#B5B5B5'}}/>
+                        <Tab label="Reservation" href="Reservation" style={{color: '#B5B5B5'}}/>
+                        <Tab label="About Us" style={{color: '#B5B5B5'}}/>
+                        <Tab label="Contact Us" style={{color: '#B5B5B5'}}/>
+                        <Tab label="Sign In" style={{color: '#B5B5B5'}}/>
+                        <Tab label="Sign Up" style={{color: '#B5B5B5'}}/>
+                    </Tabs>
+
+                    <AccountCircleIcon style={{fontSize:'25px',paddingTop:'10px',color:'#B5B5B5',fontFamily:'Quicksand'}}/>
+
+                </Grid>
+
+
+                {/*-----------------------Search Bar--------------------------*/}
+                <Grid  className={classes.dateTimeContainer}>
+
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DatePicker
+                            label="Pick-Up-Date"
+                            //value={value}
+                            onChange={(newValue) => {
+                                //setValue(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
+
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <TimePicker
+                            label="Pick-Up-Time"
+                            //value={value}
+                            onChange={(newValue) => {
+                                //setValue(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
+
+
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DatePicker
+                            label="Drop-Off-Date"
+                            //value={value}
+                            onChange={(newValue) => {
+                                //setValue(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
+
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <TimePicker
+                            label="Drop-Off-Time"
+                            //value={value}
+                            onChange={(newValue) => {
+                                //setValue(newValue);
+                            }}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </LocalizationProvider>
+
+
+                    <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={vehicleType}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                    />
+
+
+                </Grid>
+
+
+                {/*-----------------------Vehicle List-------------------------*/}
+                <Grid style={{paddingLeft:'17vw',paddingTop:'12vh',position:"absolute"}}>
+
+                    <ImageList sx={{ width: 1000, height: 500, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} gap ={12} >
                         {itemData.map((item) => (
                             <ImageListItem key={item.img}>
                                 <img
@@ -70,21 +175,27 @@ class Reservation extends Component{
                                 <ImageListItemBar
                                     title={item.title}
                                     position="below"
-
                                 />
-
-                                <div style={{display:'flex',justifyContent:'center'}}>
-                                    <Button  style={{backgroundColor:'#FF9900',color:'black',width:'10vw',height:'4vh',fontSize:'12px'}}
-                                    >View Details</Button>
-                                </div>
-
 
                             </ImageListItem>
                         ))}
                     </ImageList>
 
-                </Grid>*/}
                 </Grid>
+
+
+                <Grid style={{paddingTop:'0vh',paddingLeft:'60vw'}}>
+
+                    <svg height="91vh" width="40vw">
+                        <polygon
+                            points="1000,0 1000,800 350,800 0,700 670,0"
+                            fill='#111111'
+                            style={{stroke:'#111111',strokeWidth:60,strokeLinejoin:'round'}}
+                        />
+                    </svg>
+
+                </Grid>
+
 
 
             </Grid>
@@ -92,9 +203,5 @@ class Reservation extends Component{
         )
     }
 }
-
-
-
-
 
 export default withStyles(styleSheet)(Reservation)
