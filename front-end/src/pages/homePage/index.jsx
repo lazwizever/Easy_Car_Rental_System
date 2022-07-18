@@ -39,7 +39,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import ShopTwoIcon from '@mui/icons-material/ShopTwo';
 import signIn from '../../component/signIn';
 import {Link} from "@mui/icons-material";
-import Reservation from "../reservation";
+import Reservation from "../reservationPage";
 
 /*
 import {

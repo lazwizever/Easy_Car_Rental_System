@@ -2,7 +2,7 @@ import {Component} from "react";
 import Grid from "@mui/material/Grid";
 import {Autocomplete, Button, ImageList, ImageListItem, ImageListItemBar, Tab, Tabs, TextField} from "@mui/material";
 import * as React from "react";
-import {styleSheet} from "../reservation/style";
+import {styleSheet} from ".//style";
 import {withStyles} from "@mui/styles";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import logo from "../../assets/img/logo.png";
@@ -75,7 +75,7 @@ class Reservation extends Component{
             <Grid className={classes.reservationContainer}>
 
                 {/*-------------------------Logo--------------------------------*/}
-                <Grid style={{position:'absolute',paddingLeft:'5vw',paddingTop:'1vh'}}>
+                <Grid style={{position:'absolute',paddingLeft:'4vw',paddingTop:'1vh'}}>
                     <img src={logo} style={{position:'absolute',height:'7vh',width:'7vw'}}/>
 
                     <h3 style={{margin:'auto',color:'#B5B5B5',paddingLeft:'1.5vw',paddingTop:'3.5vh',fontWeight:'unset'}}>Easy Car</h3>
@@ -100,70 +100,81 @@ class Reservation extends Component{
 
 
                 {/*-----------------------Search Bar--------------------------*/}
-                <Grid  className={classes.dateTimeContainer}>
 
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DatePicker
-                            label="Pick-Up-Date"
-                            //value={value}
-                            onChange={(newValue) => {
-                                //setValue(newValue);
-                            }}
-                            renderInput={(params) => <TextField {...params} />}
+                <Grid style={{display:'flex',width:'100vw',justifyContent:'center',paddingTop:'10vh'}}>
+                    <Grid  className={classes.dateTimeContainer}>
+
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                label="Pick-Up-Date"
+                                //value={value}
+                                onChange={(newValue) => {
+                                    //setValue(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <TimePicker
+                                label="Pick-Up-Time"
+                                //value={value}
+                                onChange={(newValue) => {
+                                    //setValue(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+
+
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                label="Drop-Off-Date"
+                                //value={value}
+                                onChange={(newValue) => {
+                                    //setValue(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <TimePicker
+                                label="Drop-Off-Time"
+                                //value={value}
+                                onChange={(newValue) => {
+                                    //setValue(newValue);
+                                }}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </LocalizationProvider>
+
+
+                        <Autocomplete
+                            style={{width:'12vw'}}
+                            disablePortal
+                            id="combo-box-demo"
+                            options={vehicleType}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
                         />
-                    </LocalizationProvider>
-
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <TimePicker
-                            label="Pick-Up-Time"
-                            //value={value}
-                            onChange={(newValue) => {
-                                //setValue(newValue);
-                            }}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </LocalizationProvider>
 
 
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <DatePicker
-                            label="Drop-Off-Date"
-                            //value={value}
-                            onChange={(newValue) => {
-                                //setValue(newValue);
-                            }}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </LocalizationProvider>
+                    </Grid>
 
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <TimePicker
-                            label="Drop-Off-Time"
-                            //value={value}
-                            onChange={(newValue) => {
-                                //setValue(newValue);
-                            }}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </LocalizationProvider>
-
-
-                    <Autocomplete
-                        disablePortal
-                        id="combo-box-demo"
-                        options={vehicleType}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
-                    />
-
-
+                    <Grid paddingLeft='1vw'>
+                        <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'9vh',width:'8vw',
+                            fontSize:'15px',opacity:'95%'}}
+                        >Find My Car</Button>
+                    </Grid>
                 </Grid>
 
 
-                {/*-----------------------Vehicle List-------------------------*/}
-                <Grid style={{paddingLeft:'17vw',paddingTop:'12vh',position:"absolute"}}>
 
-                    <ImageList sx={{ width: 1000, height: 500, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} gap ={12} >
+                {/*-----------------------Vehicle List-------------------------*/}
+                <Grid style={{display:'flex',justifyContent:'center',paddingTop:'16vh'}}>
+
+                    <ImageList sx={{ width: 900, height: 500, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} gap ={12} >
                         {itemData.map((item) => (
                             <ImageListItem key={item.img}>
                                 <img
@@ -178,25 +189,22 @@ class Reservation extends Component{
                                 />
 
                             </ImageListItem>
-                        ))}
-                    </ImageList>
+                        ))}</ImageList>
 
                 </Grid>
 
 
-                <Grid style={{paddingTop:'0vh',paddingLeft:'60vw'}}>
+               {/* <Grid style={{paddingTop:'0vh',paddingLeft:'60vw'}}>
 
                     <svg height="91vh" width="40vw">
                         <polygon
-                            points="1000,0 1000,800 350,800 0,700 670,0"
+                            points="1000,0 1000,800 350,800 0,850 670,0"
                             fill='#111111'
                             style={{stroke:'#111111',strokeWidth:60,strokeLinejoin:'round'}}
                         />
                     </svg>
 
-                </Grid>
-
-
+                </Grid>*/}
 
             </Grid>
 

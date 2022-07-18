@@ -3,7 +3,8 @@ export const styleSheet = {
     reservationContainer: {
         backgroundColor:'#040404',
         width: '100vw',
-        height: '100vh',
+        height: '120vh',
+        overflowX:'hidden'
     },
 
     navTabs: {
@@ -17,17 +18,13 @@ export const styleSheet = {
     },
 
     dateTimeContainer:{
-        backgroundColor:'white',
-        width:'76vw',
-        height:'10vh',
+        backgroundColor:'#B5B5B5',
+        width:'82vw',
+        height:'9vh',
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
-        position:'absolute',
-        top:'65vh',
-        left:'4vw',
         opacity:'80%',
     },
-
 
 }
