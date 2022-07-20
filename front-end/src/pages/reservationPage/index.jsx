@@ -66,7 +66,7 @@ const vehicleType = [
 ]
 
 
-class Reservation extends Component{
+class ReservationPage extends Component{
 
     render() {
         const {classes} = this.props;
@@ -101,7 +101,7 @@ class Reservation extends Component{
 
                 {/*-----------------------Search Bar--------------------------*/}
 
-                <Grid style={{display:'flex',width:'100vw',justifyContent:'center',paddingTop:'10vh'}}>
+                <Grid style={{display:'flex',width:'100vw',justifyContent:'center',paddingTop:'6vh'}}>
                     <Grid  className={classes.dateTimeContainer}>
 
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -172,7 +172,7 @@ class Reservation extends Component{
 
 
                 {/*-----------------------Vehicle List-------------------------*/}
-                <Grid style={{display:'flex',justifyContent:'center',paddingTop:'16vh'}}>
+                <Grid style={{display:'flex',justifyContent:'center',paddingTop:'12vh'}}>
 
                     <ImageList sx={{ width: 900, height: 500, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} gap ={12} >
                         {itemData.map((item) => (
@@ -193,23 +193,10 @@ class Reservation extends Component{
 
                 </Grid>
 
-
-               {/* <Grid style={{paddingTop:'0vh',paddingLeft:'60vw'}}>
-
-                    <svg height="91vh" width="40vw">
-                        <polygon
-                            points="1000,0 1000,800 350,800 0,850 670,0"
-                            fill='#111111'
-                            style={{stroke:'#111111',strokeWidth:60,strokeLinejoin:'round'}}
-                        />
-                    </svg>
-
-                </Grid>*/}
-
             </Grid>
 
         )
     }
 }
 
-export default withStyles(styleSheet)(Reservation)
+export default withStyles(styleSheet)(ReservationPage)

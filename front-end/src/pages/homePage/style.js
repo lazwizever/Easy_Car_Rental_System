@@ -10,6 +10,7 @@ export const styleSheet = {
         height: '8vh',
         display:'flex',
         justifyContent:'right',
+        paddingTop:'2vh',
         paddingRight:'2vw'
     },
 
@@ -17,13 +18,13 @@ export const styleSheet = {
     dateTimeContainer:{
         backgroundColor:'white',
         width:'76vw',
-        height:'10vh',
+        height:'9vh',
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
         position:'absolute',
         top:'65vh',
-        left:'4vw',
+        left:'5vw',
         opacity:'80%',
     },
 

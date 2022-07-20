@@ -115,11 +115,11 @@ class HomePage extends Component {
                     <Grid className={classes.navTabs}>
                         <Tabs centered>
                             <Tab label="Home" style={{color: 'white'}}/>
-                            <Tab label="Reservation" href="Reservation" style={{color: 'white'}}/>
+                            <Tab label="Reservation" href="ReservationPage" style={{color: 'white'}}/>
                             <Tab label="About Us" style={{color: 'white'}}/>
                             <Tab label="Contact Us" style={{color: 'white'}}/>
                             <Tab label="Sign In" style={{color: 'white'}}/>
-                            <Tab label="Sign Up" style={{color: 'white'}}/>
+                            <Tab label="Sign Up"  style={{color: 'white'}}/>
                         </Tabs>
 
                         <AccountCircleIcon style={{fontSize:'25px',paddingTop:'10px',color:'white',fontFamily:'Quicksand'}}/>
@@ -145,9 +145,9 @@ class HomePage extends Component {
                     </Typography>
 
 
-                    <Grid style={{paddingTop:'9.5vh',paddingLeft:'81vw'}}>
-                        <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'10vh',width:'13vw',
-                            fontSize:'25px',opacity:'95%'}}
+                    <Grid style={{paddingTop:'9.5vh',paddingLeft:'83vw'}}>
+                        <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'9vh',width:'8vw',
+                            fontSize:'15px',opacity:'95%'}}
 
                     /*onClick={() =>setOpenPopup(true)}*/
 
@@ -210,7 +210,7 @@ class HomePage extends Component {
                             disablePortal
                             id="combo-box-demo"
                             options={vehicleType}
-                            sx={{ width: 300 }}
+                            sx={{ width: 250 }}
                             renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
                         />
 
@@ -384,8 +384,8 @@ class HomePage extends Component {
                             <Grid style={{paddingLeft:'45.3vw'}}>
                                 <img src={logo} style={{position:'absolute',height:'7vh',width:'7vw',paddingTop:'1vh'}}/>
 
-                                <h3 style={{margin:'auto',color:'white',paddingLeft:'1.5vw',paddingTop:'4vh'}}>Easy Car</h3>
-                                <h1 style={{color:'white',fontSize:'11px',margin:'auto',paddingLeft:'2.2vw'}}>rental pvt</h1>
+                                <h3 style={{margin:'auto',color:'white',paddingLeft:'1.5vw',paddingTop:'4vh',fontWeight:'unset'}}>Easy Car</h3>
+                                <h1 style={{color:'white',fontSize:'11px',margin:'auto',paddingLeft:'2.2vw',fontWeight:'unset'}}>rental pvt</h1>
                             </Grid>
 
                     {/*-----------------------------------------------------*/}
@@ -427,7 +427,7 @@ class HomePage extends Component {
                     </Grid>
 
 
-                    <h4 style={{color:'white',fontSize:'12px',paddingTop:'6vh',paddingLeft:'38vw'}}>
+                    <h4 style={{color:'white',fontSize:'12px',paddingTop:'6vh',paddingLeft:'38vw',fontWeight:'unset'}}>
                         Copyright © 2021 Easy Car rental pvt Inc. All rights reserved.
                     </h4>
 

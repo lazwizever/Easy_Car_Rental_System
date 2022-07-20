@@ -7,6 +7,7 @@ import benzImage from "../../assets/vehiclePhotos/Mercedes-Benz.jpg"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import * as React from "react";
 import logo from "../../assets/img/logo.png";
+import {Link} from "@mui/icons-material";
 
 
 
@@ -103,9 +104,11 @@ class VehiclePage extends Component{
 
 
                <Grid paddingLeft='88vw' paddingTop='2vh'>
-                   <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'6vh',width:'8vw',
-                       fontSize:'15px',opacity:'95%'}}
-                   >Book Now</Button>
+                       <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'6vh',width:'8vw',
+                           fontSize:'15px',opacity:'95%'}}
+                       href="BookingPage"
+
+                       >Book Now</Button>
                </Grid>
 
 
