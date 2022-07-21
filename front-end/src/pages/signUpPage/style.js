@@ -1,55 +1,32 @@
 export const styleSheet = {
     container:{
-        backgroundColor:'white',
         width:'100vw',
         height:'100vh',
-        overflow:'hidden'
+        overflow:'hidden',
     },
 
-    /*loginForm:{
-        display:'flex',
-        flexDirection:'column',
-        height: '40%',
-        width: '50%',
-        alignItems:'center',
-        justifyContent:'space-around',
-        paddingTop:'35vh',
-        paddingLeft:'13vw'
-    },
-*/
 
+    loginContainer:{
+        width: '22vw',
+        height:'50vh',
+        marginTop:'12vh',
+        marginLeft:'41.5vw',
+        backgroundColor:'#FCFCFC',
 
-    login_cover:{
-        marginTop:'15vh',
-        marginLeft:'5vw',
-        display: 'flex',
-        flexWrap:'wrap',
-        flexDirection:'column',
-        height:'70%',
-        width:'30%',
-        //alignItems:'center',
-        justifyContent:'center',
-        border:'black solid'
     },
 
 
     loginForm:{
-        marginTop:'20vh',
-        display:'flex',
-        flexDirection:'row',
-        height: '50%',
-        width: '70%',
-        //alignItems:'center',
-        justifyContent:'space-between',
-        backgroundColor: 'green'
-
+        width:'22vw',
+        height:'20vh',
+        marginTop:'16vh',
+        direction:'column',
+        alignItems:'center',
+        paddingLeft:'2.5vw',
     },
 
     btn_container:{
         height: '20%',
-
     }
-
-
 
 }

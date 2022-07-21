@@ -172,7 +172,7 @@ class ReservationPage extends Component{
 
 
                 {/*-----------------------Vehicle List-------------------------*/}
-                <Grid style={{display:'flex',justifyContent:'center',paddingTop:'12vh'}}>
+                <Grid style={{display:'flex',justifyContent:'center',paddingTop:'4vh'}}>
 
                     <ImageList sx={{ width: 900, height: 500, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} gap ={12} >
                         {itemData.map((item) => (

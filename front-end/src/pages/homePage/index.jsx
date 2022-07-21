@@ -20,11 +20,10 @@ import * as PropTypes from "prop-types";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import carsImage from '../../assets/img/carsTopic.png';
 import {styleSheet as styles, styleSheet} from "./style";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+/*import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';*/
+//import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import * as React from 'react';
-import {TimePicker} from "@mui/x-date-pickers";
 import contactUsImg from '../../assets/img/contactusimg1.jpg';
 import logo from '../../assets/img/logo.png';
 import PinDropIcon from '@mui/icons-material/PinDrop';
@@ -37,9 +36,13 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import EmailIcon from '@mui/icons-material/Email';
 import ShopTwoIcon from '@mui/icons-material/ShopTwo';
-import signIn from '../../component/signIn';
+import signIn from '../../component/DatePicker';
 import {Link} from "@mui/icons-material";
 import Reservation from "../reservationPage";
+import DatePicker from "../../component/DatePicker";
+import TimePicker from "../../component/TimePicker";
+
+
 
 /*
 import {
@@ -118,8 +121,8 @@ class HomePage extends Component {
                             <Tab label="Reservation" href="ReservationPage" style={{color: 'white'}}/>
                             <Tab label="About Us" style={{color: 'white'}}/>
                             <Tab label="Contact Us" style={{color: 'white'}}/>
-                            <Tab label="Sign In" style={{color: 'white'}}/>
-                            <Tab label="Sign Up"  style={{color: 'white'}}/>
+                            <Tab label="Sign In" href='signInPage' style={{color: 'white'}}/>
+                            <Tab label="Sign Up" href='sighUpPage' style={{color: 'white'}}/>
                         </Tabs>
 
                         <AccountCircleIcon style={{fontSize:'25px',paddingTop:'10px',color:'white',fontFamily:'Quicksand'}}/>
@@ -159,52 +162,21 @@ class HomePage extends Component {
                     {/*------------------Date time fields--------------------------*/}
 
                     <Grid  className={classes.dateTimeContainer}>
+                        <Grid>
+                            <DatePicker/>
+                        </Grid>
 
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                                label="Pick-Up-Date"
-                                //value={value}
-                                onChange={(newValue) => {
-                                    //setValue(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
+                        <Grid>
+                            <TimePicker/>
+                        </Grid>
 
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <TimePicker
-                                label="Pick-Up-Time"
-                                //value={value}
-                                onChange={(newValue) => {
-                                    //setValue(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
+                        <Grid>
+                            <DatePicker/>
+                        </Grid>
 
-
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                                label="Drop-Off-Date"
-                                //value={value}
-                                onChange={(newValue) => {
-                                    //setValue(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
-
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <TimePicker
-                                label="Drop-Off-Time"
-                                //value={value}
-                                onChange={(newValue) => {
-                                    //setValue(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
-
+                        <Grid>
+                            <TimePicker/>
+                        </Grid>
 
                         <Autocomplete
                             disablePortal

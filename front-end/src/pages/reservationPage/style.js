@@ -18,7 +18,7 @@ export const styleSheet = {
     },
 
     dateTimeContainer:{
-        backgroundColor:'#B5B5B5',
+        backgroundColor:'white',
         width:'82vw',
         height:'9vh',
         display:'flex',
