@@ -7,6 +7,8 @@ import VehiclePage from "../pages/vehicleDetailPage";
 import BookingPage from "../pages/bookingPage";
 import SignUpPage from "../pages/signUpPage";
 import SignInPage from "../pages/signInPage";
+import AdminPage from "../pages/adminPage";
+import CustomerPage from "../pages/customerPage";
 
 
 function App() {
@@ -19,12 +21,11 @@ function App() {
         <Route path='BookingPage' element={<BookingPage/>}/>
         <Route path='sighUpPage' element={<SignUpPage/>}/>
         <Route path='signInPage' element={<SignInPage/>}/>
+        <Route path='adminPage' element={<AdminPage/>}/>
+        <Route path='customerPage' element={<CustomerPage/>}/>
 
       </Routes>
 
-
-
-    //<SignUpPage/>
   );
 }
 
