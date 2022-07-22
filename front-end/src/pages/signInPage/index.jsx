@@ -64,7 +64,7 @@ class SignInPage extends Component{
 
 
                        <Grid item lg={6} md={6} sm={6} xm={6}>
-                           <TextField id="outlined-basic"  label="Address"  variant="outlined" style={{width:'158%'}} />
+                           <TextField id="outlined-basic"  label="Address"  variant="outlined" style={{width:'160%'}} />
                        </Grid>
 
 
