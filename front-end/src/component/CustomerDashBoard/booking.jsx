@@ -1,15 +1,13 @@
 import {Component} from "react";
 import Grid from "@mui/material/Grid";
-import {Autocomplete, Button, ImageList, ImageListItem, ImageListItemBar, Tab, Tabs, TextField} from "@mui/material";
-import * as React from "react";
-import {styleSheet} from ".//style";
+import {styleSheet} from "./bookingStyles";
 import {withStyles} from "@mui/styles";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import logo from "../../assets/img/logo.png";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 import {DatePicker} from "@mui/x-date-pickers/DatePicker";
+import {Autocomplete, Button, ImageList, ImageListItem, ImageListItemBar, TextField} from "@mui/material";
 import {TimePicker} from "@mui/x-date-pickers";
+import * as React from "react";
 
 
 
@@ -57,6 +55,7 @@ const itemData = [
     },
 ];
 
+
 const vehicleType = [
     { label: 'General'},
     { label: 'Premium'},
@@ -64,42 +63,17 @@ const vehicleType = [
 ]
 
 
-class ReservationPage extends Component{
+class Booking extends Component{
 
     render() {
+
         const {classes} = this.props;
+
         return(
-
-            <Grid className={classes.reservationContainer}>
-
-                {/*-------------------------Logo--------------------------------*/}
-                <Grid style={{position:'absolute',paddingLeft:'4vw',paddingTop:'1vh'}}>
-                    <img src={logo} style={{position:'absolute',height:'7vh',width:'7vw'}}/>
-
-                    <h3 style={{margin:'auto',color:'#B5B5B5',paddingLeft:'1.5vw',paddingTop:'3.5vh',fontWeight:'unset'}}>Easy Car</h3>
-                    <h1 style={{color:'#B5B5B5',fontSize:'11px',margin:'auto',paddingLeft:'2.2vw',fontWeight:'unset'}}>rental pvt</h1>
-                </Grid>
+            <Grid className={classes.bookingContainer}>
 
 
-                {/*------------------------Nav Tabs-----------------------------*/}
-                <Grid className={classes.navTabs}>
-                    <Tabs centered>
-                        <Tab label="Home" href="/" style={{color: '#B5B5B5'}}/>
-                        <Tab label="Reservation" href="Reservation" style={{color: '#B5B5B5'}}/>
-                        <Tab label="About Us" style={{color: '#B5B5B5'}}/>
-                        <Tab label="Contact Us" style={{color: '#B5B5B5'}}/>
-                        <Tab label="Sign In" style={{color: '#B5B5B5'}}/>
-                        <Tab label="Sign Up" style={{color: '#B5B5B5'}}/>
-                    </Tabs>
-
-                    <AccountCircleIcon style={{fontSize:'25px',paddingTop:'10px',color:'#B5B5B5',fontFamily:'Quicksand'}}/>
-
-                </Grid>
-
-
-                {/*-----------------------Search Bar--------------------------*/}
-
-                <Grid style={{display:'flex',width:'100vw',justifyContent:'center',paddingTop:'6vh'}}>
+                <Grid style={{display:'flex',width:'81vw',justifyContent:'center',paddingTop:'4vh'}}>
                     <Grid  className={classes.dateTimeContainer}>
 
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -161,18 +135,15 @@ class ReservationPage extends Component{
                     </Grid>
 
                     <Grid paddingLeft='1vw'>
-                        <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'9vh',width:'8vw',
+                        <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'8vh',width:'8vw',
                             fontSize:'15px',opacity:'95%'}}
                         >Find My Car</Button>
                     </Grid>
                 </Grid>
 
-
-
-                {/*-----------------------Vehicle List-------------------------*/}
                 <Grid style={{display:'flex',justifyContent:'center',paddingTop:'4vh'}}>
 
-                    <ImageList sx={{ width: 900, height: 500, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} gap ={12} >
+                    <ImageList sx={{ width: 900, height: 470, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} gap ={12} >
                         {itemData.map((item) => (
                             <ImageListItem key={item.img}>
                                 <img
@@ -191,10 +162,12 @@ class ReservationPage extends Component{
 
                 </Grid>
 
-            </Grid>
 
+
+            </Grid>
         )
     }
+
 }
 
-export default withStyles(styleSheet)(ReservationPage)
+export default withStyles(styleSheet) (Booking)

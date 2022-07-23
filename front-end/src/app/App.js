@@ -8,10 +8,10 @@ import BookingPage from "../pages/bookingPage";
 import SignUpPage from "../pages/signUpPage";
 import SignInPage from "../pages/signInPage";
 //import AdminPage from "../pages/adminPage";
-
-import AdminProfile from "../pages/adminProfile/Adminprofile";
 import CustomerDashBoard from "../pages/customer";
-import AdminDashBoard from "../pages/adminDashbord/adminDashboardIndex";
+import AdminDashBoard from "../component/AdminDashBoard";
+import DriverDashBoard from "../component/DriverDashBoard";
+
 
 
 function App() {
