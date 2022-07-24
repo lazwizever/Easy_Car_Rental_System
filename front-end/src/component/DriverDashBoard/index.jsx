@@ -42,6 +42,7 @@ function ResponsiveDrawer(props) {
 
     const listItemData = [
         {label: "Profile", link: "/driverProfile", icon: <AccountBoxIcon color={'primary'} /> },
+        {label: "Profile", link: "/driverProfile", icon: <AccountBoxIcon color={'primary'} /> },
         /*{label: "Booking", link: "/booking", icon: <BookIcon color={'success'} />},
         {label: "Manage Booking", link: "/manageBooking", icon: <CollectionsBookmarkIcon color={'warning'}/> },
         {label: "Log out", link: "/logout", icon: <LogoutIcon style={{color:'#000000'}}/>},*/

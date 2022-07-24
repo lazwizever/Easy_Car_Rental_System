@@ -4,30 +4,28 @@ import { DataGrid } from '@mui/x-data-grid';
 
 
 const columns = [
-    { field: 'Customer Id', headerName: 'Booking ID', width: 150 },
-    { field: 'Customer Name', headerName: 'Status', width: 150 },
-    { field: 'NIC', headerName: 'Status', width: 150 },
-    { field: 'Driving License No', headerName: 'Status', width: 150 },
-    { field: 'Customer Address', headerName: 'Booking Date', width: 200 },
-    { field: 'Contact No', headerName: 'Booking Time', width: 200 },
-    {field: 'vehicleregNumber', headerName: 'Vehicle RegNumber', width: 200},
-    {field: 'fullName', headerName: 'Full Name', width: 200,
+    { field: 'id', headerName: 'Customer ID', width: 100 },
+    { field: 'bookingId', headerName: 'Booking ID', width: 100 },
+    { field: 'status', headerName: 'Status', width: 100 },
+    { field: 'customerName', headerName: 'Customer Name', width: 180 },
+    { field: 'NIC', headerName: 'NIC', width: 150 },
+    { field: 'drivingLicenseNo', headerName: 'DrivingLicenseNo', width: 150 },
+    { field: 'customerAddress', headerName: 'Customer Address', width: 250 },
+    { field: 'contactNo', headerName: 'Contact No', width: 150 ,
 
     },
 
 ];
 
 const rows = [
-    { id: 'B001', status: 'Approved', bookingDate: '2022-7-22', bookingTime: '14.20pm',vehicleregNumber:'V1254799584',fullName:'Lasan Kariyawasam' },
-    { id: 'B002', status: 'Approved', bookingDate: '2022-7-22', bookingTime: '14.20pm',vehicleregNumber:'V1254799584',fullName:'Lasan Kariyawasam' },
-    { id: 'B003', status: 'Approved', bookingDate: '2022-7-22', bookingTime: '14.20pm',vehicleregNumber:'V1254799584',fullName:'Lasan Kariyawasam' },
-    { id: 'B004', status: 'Approved', bookingDate: '2022-7-22', bookingTime: '14.20pm',vehicleregNumber:'V1254799584',fullName:'Lasan Kariyawasam' },
-    { id: 'B005', status: 'Approved', bookingDate: '2022-7-22', bookingTime: '14.20pm',vehicleregNumber:'V1254799584',fullName:'Lasan Kariyawasam' },
-    { id: 'B006', status: 'Approved', bookingDate: '2022-7-22', bookingTime: '14.20pm',vehicleregNumber:'V1254799584',fullName:'Lasan Kariyawasam' },
-    { id: 'B007', status: 'Approved', bookingDate: '2022-7-22', bookingTime: '14.20pm',vehicleregNumber:'V1254799584',fullName:'Lasan Kariyawasam' },
-    { id: 'B008', status: 'Approved', bookingDate: '2022-7-22', bookingTime: '14.20pm',vehicleregNumber:'V1254799584',fullName:'Lasan Kariyawasam' },
+   { id: 'C001', bookingId: 'B001', status:"Approved",customerName: 'Lasan Kariyawasam', NIC: '2000702639',drivingLicenseNo:'D1254799584',customerAddress:'Galle',contactNo:'06789584' },
+   { id: 'C001', bookingId: 'B001',  status:"Approved",customerName: 'Lasan Kariyawasam', NIC: '2000702639',drivingLicenseNo:'D1254799584',customerAddress:'Galle',contactNo:'06789584' },
+   { id: 'C001', bookingId: 'B001', status:"Approved",customerName: 'Lasan Kariyawasam', NIC: '2000702639',drivingLicenseNo:'D1254799584',customerAddress:'Galle',contactNo:'06789584' },
+   { id: 'C001', bookingId: 'B001', status:"Approved", customerName: 'Lasan Kariyawasam', NIC: '2000702639',drivingLicenseNo:'D1254799584',customerAddress:'Galle',contactNo:'06789584' },
+   { id: 'C001', bookingId: 'B001', status:"Approved", customerName: 'Lasan Kariyawasam', NIC: '2000702639',drivingLicenseNo:'D1254799584',customerAddress:'Galle',contactNo:'06789584' },
 
 ];
+
 
 
 class ManageCustomer extends Component{
@@ -35,7 +33,7 @@ class ManageCustomer extends Component{
         return(
 
             <Grid>
-                <div style={{ height: 500, width: '100%' ,marginTop:'10vh'}}>
+                <div style={{ height: 500, width: '100%' ,marginTop:'10vh',backgroundColor:'#eeeff1'}}>
                     <DataGrid
                         rows={rows}
                         columns={columns}

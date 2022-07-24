@@ -15,14 +15,12 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import BookIcon from '@mui/icons-material/Book';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from "@mui/icons-material/Home";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {NavLink, Route, Routes} from "react-router-dom";
 import ManageBooking from "./manageBooking";
 import ManageVehicle from "./manageVehicle";
@@ -30,6 +28,14 @@ import ManageCustomer from "./manageCustomer";
 import ManageDriver from "./manageDriver";
 import IncomeReports from "./incomeReports";
 import AdminProfile from "./profile";
+import AdminDashBoard from "./adminDashboardIndex";
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ManIcon from '@mui/icons-material/Man';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
+import NoCrashIcon from '@mui/icons-material/NoCrash';
+
 
 const drawerWidth = 240;
 
@@ -45,14 +51,17 @@ function ResponsiveDrawer(props) {
     };
 
     const listItemData = [
-        {label: "Profile", link: "/profile", icon: <AccountBoxIcon color={'primary'} /> },
-        {label: "Manage Customer", link: "/manageCustomer", icon: <BookIcon color={'success'} />},
-        {label: "Manage Booking", link: "/manageBooking", icon: <CollectionsBookmarkIcon color={'warning'}/> },
-        {label: "Income Reports", link: "/incomeReports", icon: <CollectionsBookmarkIcon color={'warning'}/> },
-        {label: "Manage Driver", link: "/manageDriver", icon: <CollectionsBookmarkIcon color={'warning'}/> },
-        {label: "Manage Vehicle", link: "/manageVehicle", icon: <CollectionsBookmarkIcon color={'warning'}/> },
+        {label: "Dashboard", link: "/adminDashBoard", icon: <DashboardIcon style={{color:'#000000'}}/> },
+        {label: "Profile", link: "/profile", icon: <AccountCircleIcon style={{color:'#000000'}} /> },
+        {label: "Manage Customer", link: "/manageCustomer", icon: <ManIcon style={{color:'#000000'}} />},
+        {label: "Manage Booking", link: "/manageBooking", icon: <BookIcon style={{color:'#000000'}}/> },
+        {label: "Income Reports", link: "/incomeReports", icon: <AssessmentIcon style={{color:'#000000'}}/> },
+        {label: "View Driver Schedule", link: "/manageDriver", icon: <DirectionsBikeIcon style={{color:'#000000'}}/> },
+        {label: "Manage Vehicle", link: "/manageVehicle", icon: <NoCrashIcon style={{color:'#000000'}}/> },
         {label: "Log out", link: "/logout", icon: <LogoutIcon style={{color:'#000000'}}/>},
     ]
+
+
 
     const drawer = (
         <div>
@@ -102,8 +111,8 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography width={'100%'} variant="h5" noWrap component="div" textAlign={'center'}>
-                        Admin DashBoard
+                    <Typography width={'100%'} variant="h5" noWrap component="div" textAlign={'center'} color='#f9ca24'>
+                        Easy Car Rentals
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -147,6 +156,7 @@ function ResponsiveDrawer(props) {
                 <Toolbar />
                 <Box >
                     <Routes>
+                        <Route exact path="/adminDashBoard" element={<AdminDashBoard/>}/>
                         <Route exact path="/profile" element={<AdminProfile/>}/>
                         <Route  path="/manageCustomer" element={<ManageCustomer/>}/>
                         <Route  path="/manageBooking" element={<ManageBooking/>}/>

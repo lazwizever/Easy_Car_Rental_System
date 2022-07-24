@@ -24,12 +24,11 @@ function App() {
         <Route path='BookingPage' element={<BookingPage/>}/>
         <Route path='sighUpPage' element={<SignUpPage/>}/>
         <Route path='signInPage' element={<SignInPage/>}/>
-        <Route path='adminPage' element={<AdminPage/>}/>
         {/!*<Route path='customerPage' element={<CustomerPage/>}/>*!/}
 
       </Routes>*/
 
-      <AdminDashBoard/>
+      <DriverDashBoard/>
 
   );
 }
