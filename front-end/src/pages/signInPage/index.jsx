@@ -13,19 +13,13 @@ import GDSESnackBar from "../../component/SnackBar";
 
 
 
-const role = [
-    { label: 'Registered_Customer' },
-    { label: 'Driver'},
-]
-
-
 class SignInPage extends Component{
     constructor(props) {
         super(props);
 
         this.state = {
             formData: {
-                id: 'C0015',
+                id: '',
                 nic: '',
                 name: {
                     firstName: '',
@@ -149,11 +143,27 @@ class SignInPage extends Component{
                        <h2 style={{color:"black",fontSize:'40px',fontWeight:'unset',paddingLeft:'6vw'}}>Create Account</h2>
                    </Grid>
 
+
                    <ValidatorForm ref="form" className="pt-2" onSubmit={this.submitUser}>
 
                    <Grid container  className={classes.txtFieldContainer}>
 
-                       <Grid item lg={6} md={6} sm={6} xm={6}>
+                       <Grid style={{height:'2vh',marginTop:"-3vh"}}>
+                           <TextField id="outlined-basic" label="User Id"  variant="outlined"
+
+                                      value={this.state.formData.id}
+                                      onChange={(e) => {
+                                          let formData = this.state.formData
+                                          formData.id = e.target.value
+                                          this.setState({formData})
+                                      }}
+                                      validators={['required']}
+
+                           />
+                       </Grid>
+
+
+                       <Grid item lg={6} md={6} sm={6} xm={6} style={{marginLeft:"7.5vw"}}>
                            <TextField id="outlined-basic" label="First Name"  variant="outlined"
 
                                       value={this.state.formData.name.firstName}
@@ -189,7 +199,7 @@ class SignInPage extends Component{
                                onChange={(e, value, r) => {
 
                                    let formData = this.state.formData
-                                   formData.role = value.type
+                                   formData.user.role = value.type
                                    this.setState({ formData })
 
                                }}
@@ -205,24 +215,9 @@ class SignInPage extends Component{
 
 
 
-
-
-
                        </Grid>
 
 
-                       {/*<Grid item lg={6} md={6} sm={6} xm={6}>
-                           <TextField id="outlined-basic"  label="Role"  variant="outlined"
-                                      value={this.state.formData.user.role}
-                                      onChange={(e) => {
-                                          let formData = this.state.formData
-                                          formData.user.role = e.target.value
-                                          this.setState({formData})
-                                      }}
-                                      validators={['required']}
-
-                           />
-                       </Grid>*/}
 
                        <Grid item lg={6} md={6} sm={6} xm={6}>
                            <TextField id="outlined-basic"  label="NIC"  variant="outlined"
@@ -267,7 +262,6 @@ class SignInPage extends Component{
                            />
                        </Grid>
 
-
                        <Grid item lg={6} md={6} sm={6} xm={6}>
                            <TextField id="outlined-basic"  label="UserName"  variant="outlined"
 
@@ -282,8 +276,6 @@ class SignInPage extends Component{
                            />
                        </Grid>
 
-
-
                        <Grid item lg={6} md={6} sm={6} xm={6}>
                            <TextField id="outlined-basic"  label="Password"  variant="outlined"
 
@@ -297,8 +289,6 @@ class SignInPage extends Component{
 
                            />
                        </Grid>
-
-
 
                        <Grid item lg={12} md={6} sm={6} xm={6}>
                            <TextField id="outlined-basic"  label="Address"  variant="outlined" style={{width:'83%'}}

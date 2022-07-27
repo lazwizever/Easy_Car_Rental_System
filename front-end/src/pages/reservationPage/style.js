@@ -24,7 +24,6 @@ export const styleSheet = {
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',
-        opacity:'80%',
     },
 
 }

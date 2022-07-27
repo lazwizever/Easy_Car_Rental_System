@@ -81,4 +81,9 @@ public class AdminServiceImpl implements AdminService {
             throw new RuntimeException("No admin for "+id+"..!");
         }
     }
+
+    @Override
+    public Object loadDashboard() {
+        return null;
+    }
 }

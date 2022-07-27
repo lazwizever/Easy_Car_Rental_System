@@ -16,4 +16,5 @@ public interface AdminService {
 
     void deleteAdmin(String id);
 
+    Object loadDashboard();
 }

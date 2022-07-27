@@ -5,6 +5,7 @@ import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.dto.DriverDTO;
 import lk.easy.rental.entity.Customer;
 import lk.easy.rental.entity.Driver;
+import lk.easy.rental.enums.AvailabilityType;
 import lk.easy.rental.repo.CustomerRepo;
 import lk.easy.rental.repo.DriverRepo;
 import lk.easy.rental.repo.UserRepo;
@@ -80,5 +81,11 @@ public class DriverServiceImpl implements DriverService {
         }else {
             throw new RuntimeException("No driver for "+id+"..!");
         }
+    }
+
+    @Override
+    public DriverDTO getAvailableDriver() {
+        Driver availableDriver = driverRepo.findFirstByDriverAvailability(AvailabilityType.AVAILABLE);
+        return modelMapper.map(availableDriver,DriverDTO.class);
     }
 }

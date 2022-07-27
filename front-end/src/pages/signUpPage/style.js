@@ -12,6 +12,7 @@ export const styleSheet = {
         marginTop:'12vh',
         marginLeft:'41.5vw',
         backgroundColor:'#FCFCFC',
+        opacity:'88%'
 
     },
 

@@ -40,5 +40,6 @@ public class Vehicle {
     private String color;
     private int lastServiceKm;
     private int mileage;
+    private int pricePerExtraKm;
 
 }

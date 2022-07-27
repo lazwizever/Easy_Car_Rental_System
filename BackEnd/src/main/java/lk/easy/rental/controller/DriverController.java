@@ -23,6 +23,13 @@ public class DriverController {
         return new ResponseUtil(201,"Driver successfully added",null);
     }
 
+    @GetMapping("getAvailableDriver")
+    public ResponseUtil getAvailableDriver(){
+        driverService.getAvailableDriver();
+        return new ResponseUtil(201,"OK",null);
+    }
+
+
     @GetMapping(path = "/{driverId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchDriver(@PathVariable String driverId){
         return new ResponseUtil(201,"OK",driverService.searchDriver(driverId));

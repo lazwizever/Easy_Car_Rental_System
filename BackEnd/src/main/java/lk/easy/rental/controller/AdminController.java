@@ -47,4 +47,10 @@ public class AdminController {
         return new ResponseUtil(201,"OK",null);
     }
 
+   /* @GetMapping( "/{dashBoard}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil loadAdminDashboard(){
+        return new ResponseUtil(201,"OK",adminService.loadDashboard());
+    }*/
+
+
 }
