@@ -20,25 +20,25 @@ public class VehicleController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO){
         vehicleService.saveVehicle(vehicleDTO);
-        return new ResponseUtil(200,"Vehicle successfully added",null);
+        return new ResponseUtil(201,"Vehicle successfully added",null);
     }
 
     @GetMapping(path = "/{vehicleId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchVehicle(@PathVariable String vehicleId){
-        return new ResponseUtil(200,"OK",vehicleService.searchVehicle(vehicleId));
+        return new ResponseUtil(201,"OK",vehicleService.searchVehicle(vehicleId));
     }
 
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllVehicles(){
-        return new ResponseUtil(200,"OK",vehicleService.getAllVehicles());
+        return new ResponseUtil(201,"OK",vehicleService.getAllVehicles());
     }
 
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateVehicle(@RequestBody VehicleDTO vehicleDTO){
         vehicleService.updateVehicle(vehicleDTO);
-        return new ResponseUtil(200,"Vehicle Successfully Updated",null);
+        return new ResponseUtil(201,"Vehicle Successfully Updated",null);
     }
 
 

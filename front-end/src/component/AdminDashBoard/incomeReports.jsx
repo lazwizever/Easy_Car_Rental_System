@@ -8,24 +8,30 @@ import {DataGrid} from "@mui/x-data-grid";
 
 
 class IncomeReports extends Component{
+
     render() {
 
-        /*const columns = [
+        const data = [
+            {name:'General',Packages:'20'},
+            {name:'Premium',Packages:'10'},
+            {name:'Luxury',Packages:'15'},
+
+        ];
+
+       /* const columns = [
             { field: 'vehicleType', headerName: 'vehicle Type', width: 100 },
             { field: 'income', headerName: 'Income (Rs)', width: 100 ,
             },
-
         ];
 
         const rows = [
             { vehicleType: 'General', bookingId: '250000' },
             { vehicleType: 'Premium', bookingId: '150000' },
             { vehicleType: 'Luxury', bookingId: '550000' },
-
         ];*/
 
 
-        const columns = [
+       /* const columns = [
             { field: 'id', headerName: 'Vehicle Type', width: 200 },
             { field: 'amount', headerName: 'Amount (Rs)', width: 200 ,
 
@@ -38,15 +44,11 @@ class IncomeReports extends Component{
             { id: 'Premium', amount: '350000'},
             { id: 'Luxury', amount: '550000'},
 
-        ];
-
-
-
-
+        ];*/
 
         return(
 
-           /* <Grid>
+            <Grid>
                 <BarChart
                     width={500}
                     height={300}
@@ -69,11 +71,11 @@ class IncomeReports extends Component{
                     <Tooltip />
                     <Legend />
                     <CartesianGrid strokeDasharray="3 3" />
-                    <Bar dataKey="Packges" fill="#8884d8" background={{ fill: "#eee" }} />
+                    <Bar dataKey="Packges" fill="#8884d8" background={{ fill: "#eeeff1" }} />
                 </BarChart>
-            </Grid>*/
+            </Grid>
 
-            <Grid>
+           /* <Grid>
 
                 <Grid >
                     <DatePicker/>
@@ -93,13 +95,7 @@ class IncomeReports extends Component{
                 </Grid>
 
 
-            </Grid>
-
-
-            
-
-
-
+            </Grid>*/
 
         )
     }

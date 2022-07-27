@@ -19,7 +19,7 @@ public class DriverSchedule {
 
 
     @ManyToOne
-    @JoinColumn(name = "driverId",referencedColumnName = "driverId",insertable = false,updatable = false)
+    @JoinColumn(name = "driverId",referencedColumnName = "id",insertable = false,updatable = false)
     private Driver driver;
 
     @ManyToOne(fetch = FetchType.LAZY)

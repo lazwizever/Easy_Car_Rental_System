@@ -121,8 +121,8 @@ class HomePage extends Component {
                             <Tab label="Reservation" href="ReservationPage" style={{color: 'white'}}/>
                             <Tab label="About Us" style={{color: 'white'}}/>
                             <Tab label="Contact Us" style={{color: 'white'}}/>
-                            <Tab label="Sign In" href='signInPage' style={{color: 'white'}}/>
-                            <Tab label="Sign Up" href='sighUpPage' style={{color: 'white'}}/>
+                            <Tab label="Sign In" href='sighUpPage' style={{color: 'white'}}/>
+                            <Tab label="Sign Up" href='signInPage' style={{color: 'white'}}/>
                         </Tabs>
 
                         <AccountCircleIcon style={{fontSize:'25px',paddingTop:'10px',color:'white',fontFamily:'Quicksand'}}/>

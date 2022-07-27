@@ -191,6 +191,48 @@ class ReservationPage extends Component{
 
                 </Grid>
 
+
+
+                <Grid style={{display:"flex",justifyContent:'center',alignItems:"center",width:"12vw",backgroundColor:"white"}}>
+                    <Autocomplete
+                        style={{width:'12vw'}}
+                        disablePortal
+                        id="combo-box-demo"
+                        options={vehicleType}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                    />
+
+                    <Autocomplete
+                        style={{width:'12vw'}}
+                        disablePortal
+                        id="combo-box-demo"
+                        options={vehicleType}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                    />
+                    <Autocomplete
+                        style={{width:'12vw'}}
+                        disablePortal
+                        id="combo-box-demo"
+                        options={vehicleType}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                    />
+
+                    <Autocomplete
+                        style={{width:'12vw'}}
+                        disablePortal
+                        id="combo-box-demo"
+                        options={vehicleType}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                    />
+
+                </Grid>
+
+
+
             </Grid>
 
         )

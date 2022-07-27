@@ -35,11 +35,11 @@ import ManIcon from '@mui/icons-material/Man';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import NoCrashIcon from '@mui/icons-material/NoCrash';
+import Grid from "@mui/material/Grid";
+import logo from "../../assets/img/logo.png";
 
 
 const drawerWidth = 240;
-
-
 
 function ResponsiveDrawer(props) {
     const {classes} = props;
@@ -60,8 +60,6 @@ function ResponsiveDrawer(props) {
         {label: "Manage Vehicle", link: "/manageVehicle", icon: <NoCrashIcon style={{color:'#000000'}}/> },
         {label: "Log out", link: "/logout", icon: <LogoutIcon style={{color:'#000000'}}/>},
     ]
-
-
 
     const drawer = (
         <div>
@@ -91,6 +89,7 @@ function ResponsiveDrawer(props) {
 
     const container = window !== undefined ? () => window().document.body : undefined;
     return (
+
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar
@@ -99,7 +98,7 @@ function ResponsiveDrawer(props) {
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
                 }}
-                style={{backgroundColor:'black'}}
+                style={{backgroundColor:'#333333',height:"10vh"}}
             >
                 <Toolbar>
                     <IconButton
@@ -111,9 +110,17 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography width={'100%'} variant="h5" noWrap component="div" textAlign={'center'} color='#f9ca24'>
-                        Easy Car Rentals
+                    <Typography width={'100%'} variant="h5" noWrap component="div" marginTop='1vh' textAlign={'center'} marginLeft='8vw' color='#ffffff'>
+                       Make Your Dream Bigger
                     </Typography>
+
+                    <Grid style={{position:'absolute',paddingLeft:'24vw',paddingTop:'0vh'}}>
+                        <img src={logo} style={{position:'absolute',height:'7vh',width:'7vw'}}/>
+
+                        <h3 style={{margin:'auto',color:'white',fontFamily:'unset',paddingLeft:'1.5vw',paddingTop:'4vh'}}>Easy Car</h3>
+                        <h1 style={{color:'white',fontSize:'11px',fontFamily:'unset',margin:'auto',paddingLeft:'2.2vw'}}>rental pvt</h1>
+                    </Grid>
+
                 </Toolbar>
             </AppBar>
             <Box
@@ -168,6 +175,7 @@ function ResponsiveDrawer(props) {
 
             </Box>
         </Box>
+
     );
 }
 

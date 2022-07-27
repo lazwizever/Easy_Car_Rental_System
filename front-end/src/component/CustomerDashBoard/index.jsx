@@ -16,17 +16,20 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import BookIcon from '@mui/icons-material/Book';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from "@mui/icons-material/Home";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {NavLink, Route, Routes} from "react-router-dom";
 import Profile from "./profile";
 import Booking from "./booking";
 import ManageBooking from "./manageBooking";
+import Grid from "@mui/material/Grid";
+import logo from "../../assets/img/logo.png";
+
+
 
 const drawerWidth = 240;
 
@@ -40,7 +43,7 @@ function ResponsiveDrawer(props) {
     };
 
     const listItemData = [
-        {label: "Profile", link: "/profile", icon: <AccountBoxIcon color={'primary'} /> },
+        {label: "Profile", link: "/profile", icon: <AccountCircleIcon color={'primary'} /> },
         {label: "Booking", link: "/booking", icon: <BookIcon color={'success'} />},
         {label: "Manage Booking", link: "/manageBooking", icon: <CollectionsBookmarkIcon color={'warning'}/> },
         {label: "Log out", link: "/logout", icon: <LogoutIcon style={{color:'#000000'}}/>},
@@ -82,7 +85,7 @@ function ResponsiveDrawer(props) {
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
                 }}
-                style={{backgroundColor:'#576574'}}
+                style={{backgroundColor:'#576574',height:"10vh"}}
             >
                 <Toolbar>
                     <IconButton
@@ -94,9 +97,16 @@ function ResponsiveDrawer(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography width={'100%'} variant="h5" noWrap component="div" textAlign={'center'}>
-                        Customer Profile
+                    <Typography width={'100%'} variant="h5" noWrap component="div" marginTop='1vh' textAlign={'center'} marginLeft='6vw' color='#ffffff'>
+                        Make Your Dream Bigger
                     </Typography>
+
+                    <Grid style={{position:'absolute',paddingLeft:'24vw',paddingTop:'0vh'}}>
+                        <img src={logo} style={{position:'absolute',height:'7vh',width:'7vw'}}/>
+
+                        <h3 style={{margin:'auto',color:'white',fontFamily:'unset',paddingLeft:'1.5vw',paddingTop:'4vh'}}>Easy Car</h3>
+                        <h1 style={{color:'white',fontSize:'11px',fontFamily:'unset',margin:'auto',paddingLeft:'2.2vw'}}>rental pvt</h1>
+                    </Grid>
                 </Toolbar>
             </AppBar>
             <Box

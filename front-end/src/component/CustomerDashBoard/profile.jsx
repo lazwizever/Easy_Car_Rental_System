@@ -65,7 +65,7 @@ class Profile extends Component {
                             <div style={{width:'20vw',height:'20vh',border:'1px solid black',display:'flex',justifyContent:'center',alignItems:'center'}}>
                                 <UploadButton/>
                                 <Typography>
-                                    NIC Image
+                                    Driving License Image
                                 </Typography>
                             </div>
                         </Grid>

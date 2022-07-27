@@ -34,7 +34,7 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void saveDriver(DriverDTO driverDTO) {
-        if (!driverRepo.existsById(driverDTO.getDriverId())){
+        if (!driverRepo.existsById(driverDTO.getId())){
             if (!userRepo.existsByUserName(driverDTO.getUser().getUserName())){
                 driverRepo.save(modelMapper.map(driverDTO, Driver.class));
             }else {
@@ -66,7 +66,7 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void updateDriver(DriverDTO driverDTO) {
-        if (driverRepo.existsById(driverDTO.getDriverId())){
+        if (driverRepo.existsById(driverDTO.getId())){
             driverRepo.save(modelMapper.map(driverDTO, Driver.class));
         }else {
             throw new RuntimeException("No Such Driver To Update..! Please Check the ID..!");

@@ -20,30 +20,30 @@ public class BookingController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil placeBooking(@RequestBody BookingDTO bookingDTO){
         bookingService.placeBooking(bookingDTO);
-        return new ResponseUtil(200,"Booking successfully placed",null);
+        return new ResponseUtil(201,"Booking successfully placed",null);
     }
 
     @GetMapping(path = "/{bookingId}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchBooking(@PathVariable String bookingId){
-        return new ResponseUtil(200,"OK",bookingService.searchBooking(bookingId));
+        return new ResponseUtil(201,"OK",bookingService.searchBooking(bookingId));
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllBookings(){
-        return new ResponseUtil(200,"OK",bookingService.getAllBookings());
+        return new ResponseUtil(201,"OK",bookingService.getAllBookings());
     }
 
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateBooking(@RequestBody BookingDTO bookingDTO){
         bookingService.updateBooking(bookingDTO);
-        return new ResponseUtil(200,"booking Successfully Updated",null);
+        return new ResponseUtil(201,"booking Successfully Updated",null);
     }
 
     @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteBooking(@RequestParam String id){
         bookingService.deleteBooking(id);
-        return new ResponseUtil(200,"OK",null);
+        return new ResponseUtil(201,"OK",null);
     }
 
 

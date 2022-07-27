@@ -19,9 +19,9 @@ import javax.persistence.Id;
 @Data
 @ToString
 public class DriverDTO {
-    private String driverId;
+    private String id;
     private String licenseNo;
-    private String driverNic;
+    private String nic;
     private Name name;
     private AvailabilityType driverAvailability;
     private String address;

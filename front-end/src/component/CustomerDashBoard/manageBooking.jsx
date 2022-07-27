@@ -35,7 +35,7 @@ class ManageBooking extends Component{
     render() {
         return(
             <Grid>
-                <div style={{ height: 500, width: '100%' ,marginTop:'10vh'}}>
+                <div style={{ height: 500, width: '100%' ,marginTop:'10vh',backgroundColor:'#eeeff1'}}>
                     <DataGrid
                         rows={rows}
                         columns={columns}

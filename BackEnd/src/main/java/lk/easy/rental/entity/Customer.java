@@ -16,11 +16,11 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
-    private String cusId;
-    private String customerNic;
+    private String id;
+    private String nic;
     @Embedded
     private Name name;
-    private String drivingLicenseNo;
+    private String licenseNo;
     private String address;
     private String contactNo;
     private String email;
@@ -28,4 +28,14 @@ public class Customer {
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
+
+    public Customer(String id, String nic, Name name, String licenseNo, String address, String contactNo, User user) {
+        this.id = id;
+        this.nic = nic;
+        this.name = name;
+        this.licenseNo = licenseNo;
+        this.address = address;
+        this.contactNo = contactNo;
+        this.user = user;
+    }
 }

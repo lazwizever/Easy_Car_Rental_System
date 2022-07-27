@@ -16,10 +16,10 @@ import javax.persistence.Id;
 @ToString
 public class CustomerDTO {
 
-    private String cusId;
-    private String customerNic;
+    private String id;
+    private String nic;
     private Name name;
-    private String drivingLicenseNo;
+    private String licenseNo;
     private String address;
     private String contactNo;
     private String email;

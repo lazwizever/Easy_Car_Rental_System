@@ -14,7 +14,7 @@ export const styleSheet = {
     },
 
     signUpForm:{
-        paddingTop:'10vh',
+        paddingTop:'0vh',
         display:'flex',
         flexDirection:'column !important',
         width: '50vw',
@@ -23,8 +23,10 @@ export const styleSheet = {
     },
 
     txtFieldContainer:{
+        display:'flex',
+        alignItems:"center",
         width: '50vw',
-        height:'40vh',
+        height:'70vh',
         paddingLeft:'6vw',
     }
 
