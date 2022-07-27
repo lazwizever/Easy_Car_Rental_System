@@ -22,4 +22,9 @@ public class UserDTO {
         this.userName = userName;
         this.passWord = passWord;
     }
+
+    public UserDTO(int userId, String passWord) {
+        this.userId = userId;
+        this.passWord = passWord;
+    }
 }

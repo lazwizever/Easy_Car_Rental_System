@@ -6,6 +6,7 @@ import lk.easy.rental.enums.FuelType;
 import lk.easy.rental.enums.TransmissionType;
 import lk.easy.rental.enums.VehicleType;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface BrowseService {
@@ -21,4 +22,6 @@ public interface BrowseService {
     List<VehicleDTO> getAllByPriceRate(PriceRate priceRate);
 
     List<VehicleDTO> getAllByVehicleBrand(String brand);
+
+    List<VehicleDTO> loadAvailableVehicles(LocalDate pickUp, LocalDate dropOff);
 }

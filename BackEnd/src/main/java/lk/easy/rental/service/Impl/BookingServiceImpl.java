@@ -45,7 +45,6 @@ public class BookingServiceImpl implements BookingService {
                 //---------------Check bookingDetailsList id (if vehicle add or not)-------------------------
                 if (!bookingDTO.getBookingDetailsList().isEmpty()){
 
-                        isVehicleAvailable(bookingDTO);
                     //----------------if driver is request---------------------
 
                     if (bookingDTO.getDriverRequestType().equals("YES")){
@@ -111,45 +110,4 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
-    public boolean isVehicleAvailable(BookingDTO dto) {
-        LocalDate pickUpDate1 = dto.getPickUpDate().minusDays(1);
-        LocalDate pickUpDate2 = dto.getPickUpDate().plusDays(1);
-
-        LocalDate returnDate1 = dto.getReturnDate().plusDays(1);
-        LocalDate returnDate2 = dto.getReturnDate().minusDays(1);
-
-        List<Booking> allByPickupDateAndReturnDate = bookingRepo.findAllByPickUpDateAndReturnDate(pickUpDate1, returnDate1);
-        List<Booking> allByPickupDateAndReturnDate1 = bookingRepo.findAllByPickUpDateAndReturnDate(pickUpDate2, returnDate2);
-
-
-        //No Bookings For Any Vehicle
-        if (allByPickupDateAndReturnDate.isEmpty()) {
-            if (allByPickupDateAndReturnDate1.isEmpty()) {
-                return true;
-            }
-        } else {
-
-            //If not
-
-            for (Booking booking : allByPickupDateAndReturnDate) {
-
-                for (Booking booking1 : allByPickupDateAndReturnDate1) {
-
-                    for (BookingDetailsDTO tempBookingDetail : dto.getBookingDetailsList()) {
-                        if (bookingDetailsRepo.existsByAndBookingIdAndVehicleId(booking.getBookingId(), tempBookingDetail.getVehicleId())) {
-                            if (bookingDetailsRepo.existsByAndBookingIdAndVehicleId(booking1.getBookingId(), tempBookingDetail.getVehicleId())) {
-                                return false;
-                            }
-                        }
-
-                    }
-                }
-
-            }
-
-            return true;
-
-        }
-        return true;
-    }
 }
