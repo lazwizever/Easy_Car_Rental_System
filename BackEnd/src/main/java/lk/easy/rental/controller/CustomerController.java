@@ -40,6 +40,7 @@ public class CustomerController {
         return new ResponseUtil(201,"Customer Successfully Updated",null);
     }
 
+
     @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCustomer(@RequestParam String id){
         customerService.deleteCustomer(id);
