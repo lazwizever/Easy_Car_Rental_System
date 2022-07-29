@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 class GDSEButton extends Component {
     static propTypes = {
+
         onClick: PropTypes.func,
         children: PropTypes.node,
         variant: PropTypes.string,

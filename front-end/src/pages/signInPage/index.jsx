@@ -10,7 +10,8 @@ import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 import SignUpService from '../../service/signUpService'
 import {styleSheet} from "./style";
 import GDSESnackBar from "../../component/SnackBar";
-
+import GDSEButton from "../../component/Button/button";
+import DriverDashBoard from "../../component/DriverDashBoard";
 
 
 class SignInPage extends Component{
@@ -217,8 +218,6 @@ class SignInPage extends Component{
 
                        </Grid>
 
-
-
                        <Grid item lg={6} md={6} sm={6} xm={6}>
                            <TextField id="outlined-basic"  label="NIC"  variant="outlined"
 
@@ -232,6 +231,7 @@ class SignInPage extends Component{
 
                            />
                        </Grid>
+
 
                        <Grid item lg={6} md={6} sm={6} xm={6}>
                            <TextField id="outlined-basic"  label="Driving License No"  variant="outlined"
@@ -327,14 +327,14 @@ class SignInPage extends Component{
                        </Grid>
 
 
-
                    </Grid>
 
 
                    <Grid style={{paddingTop:'4vh',paddingLeft:'15vw'}}>
-                       <Button style={{backgroundColor:'black',color:'white',fontWeight:'semi',height:'6vh',width:'17vw',
-                           fontSize:'15px'}} type='submit'>Register</Button>
+                       <GDSEButton style={{backgroundColor:'black',color:'white',fontWeight:'semi',height:'6vh',width:'17vw',
+                           fontSize:'15px'}} type='submit'>Register</GDSEButton>
                    </Grid>
+
                    </ValidatorForm>
 
                </Grid>

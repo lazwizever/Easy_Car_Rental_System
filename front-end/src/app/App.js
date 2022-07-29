@@ -27,7 +27,7 @@ function App() {
 
       </Routes>*/
 
-      <AdminDashBoard/>
+      <CustomerDashBoard/>
 
   );
 }

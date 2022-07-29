@@ -7,6 +7,7 @@ export const styleSheet={
         flexWrap:'wrap',
         alignItems:'center',
         justifyContent:'center',
+        overflow:"hidden"
     },
 
     rightGrid:{
@@ -22,16 +23,18 @@ export const styleSheet={
     },
 
     profileIcon:{
+        marginTop:"-1vh",
         width:'30vw',
         height:'40vh',
         display:'flex',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+
     },
 
     proTxtFields:{
         width:'30vw',
-        height:'35vh',
+        height:'25vh',
         display:'flex',
         justifyContent:'center',
         alignItems:'center',
