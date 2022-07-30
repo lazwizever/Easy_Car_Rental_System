@@ -16,6 +16,11 @@ class Profile extends Component {
     constructor(props) {
         super(props);
 
+        /*this.state = {value: ''};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);*/
+
+
         this.state = {
             formData: {
                 id: '',
@@ -58,6 +63,13 @@ class Profile extends Component {
 
     }
 
+   /* handleChange(event) {    this.setState({value: event.target.value});  }
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
+    }*/
+
+
     loadData = async () => {
         let res = await CustomerService.fetchCustomer();
 
@@ -94,6 +106,10 @@ class Profile extends Component {
             }
     };
 
+
+    loadTxtFields(){}
+
+
     componentDidMount() {
         this.loadData();
     }
@@ -109,7 +125,7 @@ class Profile extends Component {
 
                 <ValidatorForm ref="form" className="pt-2" onSubmit={this.updateCustomerProfile}>
 
-                <Grid className={classes.rightGrid}>
+                <Grid className={classes.rightGrid} style={{marginLeft:"-34vw"}}>
 
                     <Grid className={classes.profileIcon}>
                         <AccountCircleIcon style={{ fontSize: '250px',color: '#040404'}}/>
@@ -145,7 +161,7 @@ class Profile extends Component {
 
 
 
-                <Grid className={classes.leftGrid} marginTop='6vh'>
+                <Grid className={classes.leftGrid} style={{marginTop:'-80vh',marginRight:'-34vw'}}>
 
                     <Grid style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly'}}>
 

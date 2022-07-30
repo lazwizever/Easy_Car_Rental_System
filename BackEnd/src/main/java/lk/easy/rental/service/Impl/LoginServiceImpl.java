@@ -21,13 +21,12 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     ModelMapper modelMapper;
 
-
     @Override
-    public UserDTO login(UserDTO userDTO) {
-        User user = userRepo.findByUserName(userDTO.getUserName());
+    public UserDTO login(String UserName,String Password) {
+        User user = userRepo.findByUserName(UserName);
 
         if (user!=null){
-            if (user.getPassWord().equals(userDTO.getPassWord())){
+            if (user.getPassWord().equals(Password)){
                 return modelMapper.map(user,UserDTO.class);
             }else {
                 throw new RuntimeException("Incorrect Password");

@@ -43,17 +43,17 @@ function ResponsiveDrawer(props) {
     };
 
     const listItemData = [
-        {label: "Profile", link: "/profile", icon: <AccountCircleIcon color={'primary'} /> },
-        {label: "Booking", link: "/booking", icon: <BookIcon color={'success'} />},
-        {label: "Manage Booking", link: "/manageBooking", icon: <CollectionsBookmarkIcon color={'warning'}/> },
-        {label: "Log out", link: "/logout", icon: <LogoutIcon style={{color:'#000000'}}/>},
+        {label: "Profile", link: "/profile", icon: <AccountCircleIcon style={{color:'#ffffff'}} /> },
+        {label: "Booking", link: "/booking", icon: <BookIcon style={{color:'#ffffff'}} />},
+        {label: "Manage Booking", link: "/manageBooking", icon: <CollectionsBookmarkIcon style={{color:'#ffffff'}}/> },
+        {label: "Log out", link: "/logout", icon: <LogoutIcon style={{color:'#ffffff'}}/>},
     ]
 
     const drawer = (
         <div>
             <Toolbar />
 
-            <List>
+            <List style={{backgroundColor:"#101010",height:"91vh"}}>
                 {listItemData.map((item, index) => (
                     <ListItem key={index} disablePadding
                               exact
@@ -66,8 +66,9 @@ function ResponsiveDrawer(props) {
                     >
                         <ListItemButton>
                             <ListItemIcon>{item.icon}</ListItemIcon>
-                            <ListItemText>{item.label}</ListItemText>
+                            <ListItemText style={{color:"white"}}>{item.label}</ListItemText>
                         </ListItemButton>
+
                     </ListItem>
                 ))}
             </List>
@@ -147,7 +148,7 @@ function ResponsiveDrawer(props) {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-                <Box >
+                <Box>
                     <Routes>
                         <Route exact path="/profile" element={<Profile/>}/>
                         <Route exact path="/booking" element={<Booking/>}/>

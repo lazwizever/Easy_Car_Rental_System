@@ -618,7 +618,6 @@ class ManageVehicle extends Component {
                                             <TableCell align="left">Registration No</TableCell>
                                             <TableCell align="left">Fuel Type</TableCell>
                                             <TableCell align="left">Vehicle Type</TableCell>
-                                            {/* <TableCell align="left">Driver Type</TableCell> */}
                                             <TableCell align="left">No Of Passengers</TableCell>
                                             <TableCell align="left">Brand</TableCell>
                                             <TableCell align="left">Price Per Extra Km</TableCell>
