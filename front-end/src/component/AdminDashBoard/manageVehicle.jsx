@@ -124,6 +124,7 @@ class ManageVehicle extends Component {
                     message: res.data.message,
                     severity: 'success'
                 });
+                this.clearFields();
                 await this.loadData();
 
             } else {
@@ -158,6 +159,44 @@ class ManageVehicle extends Component {
         }
 
     };
+
+    clearFields = () => {
+        this.setState({
+
+            formData: {
+                vehicleId: '',
+                registrationNo: '',
+                fuelType: '',
+                vehicleType: '',
+                noOfPassengers: '',
+                brand: '',
+                pricePerExtraKm: '',
+
+                vehiclePriceRate: {
+                    dailyRate: '',
+                    monthlyRate: '',
+                },
+
+                freeMileAge: {
+                    dailyMileage: '',
+                    monthlyMileage: '',
+
+                },
+
+                transmissionType: '',
+
+                vehicleAvailability: '',
+
+                damageFee: '',
+                color: '',
+                lastServiceKm: '',
+                mileage: '',
+
+            },
+
+        });
+    };
+
 
 
     updateVehicle = (data) => {

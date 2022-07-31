@@ -15,6 +15,7 @@ class CustomerService{
         return await promise;
     }
 
+
     putCustomer = async (data) => {
         const promise = new Promise((resolve, reject) => {
             axios.put('customer', data)
