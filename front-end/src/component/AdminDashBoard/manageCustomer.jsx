@@ -37,11 +37,7 @@ class ManageCustomer extends Component{
                 contactNo: '',
                 email: '',
 
-                user: {
-                    role: '',
-                    userName: '',
-                    passWord: '',
-                },
+
             },
 
             alert: false,
@@ -53,6 +49,7 @@ class ManageCustomer extends Component{
             btnColor: 'primary'
         }
     }
+
 
     loadData = async () => {
         let res = await customerServiceDashboard.fetchCustomerDashboard();
@@ -133,6 +130,7 @@ class ManageCustomer extends Component{
                 </TableContainer>
 
             </Grid>
+
 
                 </ValidatorForm>
 

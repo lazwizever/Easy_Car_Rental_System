@@ -15,9 +15,9 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @GetMapping(params = {"UserName","Password"})
-   public ResponseUtil logging(@RequestParam String UserName,@RequestParam String Password){
-        UserDTO userDto = loginService.login(UserName,Password);
+    @GetMapping(params = {"UserName","PassWord"})
+   public ResponseUtil logging(@RequestParam String UserName,@RequestParam String PassWord){
+        UserDTO userDto = loginService.login(UserName,PassWord);
        return new ResponseUtil(201,"OK",userDto);
    }
 

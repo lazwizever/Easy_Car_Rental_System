@@ -26,6 +26,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {NavLink, Route, Routes} from "react-router-dom";
 /*import Profile from "./profile";*/
 import DriverProfile from "./profile";
+import DriverSchedule from "./driverSchedule";
 /*import Booking from "./booking";
 import ManageBooking from "./manageBooking";*/
 
@@ -42,7 +43,7 @@ function ResponsiveDrawer(props) {
 
     const listItemData = [
         {label: "Profile", link: "/driverProfile", icon: <AccountBoxIcon color={'primary'} /> },
-        {label: "Profile", link: "/driverProfile", icon: <AccountBoxIcon color={'primary'} /> },
+        {label: "View Schedule", link: "/driverSchedule", icon: <AccountBoxIcon color={'primary'} /> },
         /*{label: "Booking", link: "/booking", icon: <BookIcon color={'success'} />},
         {label: "Manage Booking", link: "/manageBooking", icon: <CollectionsBookmarkIcon color={'warning'}/> },
         {label: "Log out", link: "/logout", icon: <LogoutIcon style={{color:'#000000'}}/>},*/
@@ -142,9 +143,8 @@ function ResponsiveDrawer(props) {
                 <Box >
                     <Routes>
                         <Route exact path="/driverProfile" element={<DriverProfile/>}/>
-                      {/*  <Route exact path="/booking" element={<Booking/>}/>
-                        <Route exact path="/manageBooking" element={<ManageBooking/>}/>*/}
-                        {/*   <Route exact path="/logout" element={<LogOut/>}/>*/}
+                        <Route exact path="/driverSchedule" element={<DriverSchedule/>}/>
+
                     </Routes>
                 </Box>
 

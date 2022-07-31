@@ -10,6 +10,8 @@ import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 import {DatePicker} from "@mui/x-date-pickers/DatePicker";
 import {TimePicker} from "@mui/x-date-pickers";
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
 
 
 
@@ -180,17 +182,29 @@ class ReservationPage extends Component{
                                     srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
                                     alt={item.title}
                                     loading="lazy"
+
                                 />
                                 <ImageListItemBar
                                     title={item.title}
                                     position="below"
+
+                                    actionIcon={
+                                        <IconButton href='/VehicleDetailsPage'
+                                            sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                                            // aria-label={`info about ${item.title}`}
+                                        >
+                                            <InfoIcon />
+
+                                        </IconButton>
+
+                                    }
+
                                 />
 
                             </ImageListItem>
                         ))}</ImageList>
 
                 </Grid>
-
 
 
                 <Grid style={{display:"flex",justifyContent:'center',alignItems:"center",width:"12vw",backgroundColor:"white"}}>

@@ -17,7 +17,7 @@ import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 import GDSESnackBar from "../../component/SnackBar";
 import CustomerDashBoard from "../customer";
 import DriverDashBoard from "../driver";
-
+import GDESButton from '../../component/Button/button'
 
 
 class SignUpPage extends Component {
@@ -29,7 +29,7 @@ class SignUpPage extends Component {
             formData: {
 
                 userName: '',
-                password: '',
+                passWord: '',
                 role: ''
 
             },
@@ -46,12 +46,13 @@ class SignUpPage extends Component {
 
     fetchUser = async () => {
         let formData = this.state.formData;
-        const  params = {UserName:formData.userName,Password:formData.passWord}
+        const  params = {UserName:formData.userName,PassWord:formData.passWord}
         console.log(formData)
 
         let res = await SignInService.fetchUser(params);
-        if (res.status === 201) {
+        if (res.status === 200) {
 
+            console.log(res.data.data.role);
             this.setState({
                 loginUserRole:res.data.data.role,
                 alert: true,
@@ -91,7 +92,7 @@ class SignUpPage extends Component {
                             <AccountCircleIcon style={{fontSize:'110px',paddingLeft:'7.5vw',color:'black',opacity:"90%"}}/>
                         </Grid>
 
-                        <ValidatorForm ref="form" className="pt-2" onSubmit={this.fetchUser()}>
+                        <ValidatorForm ref="form" className="pt-2" onSubmit={this.fetchUser}>
                             <Grid container className={classes.loginForm}>
 
                                 <Grid item lg={12} md={12} sm={6} xm={6}>
@@ -125,12 +126,9 @@ class SignUpPage extends Component {
 
 
                             <Grid className={classes.btn_container}  paddingLeft='2.5vw' paddingTop='4vh'>
-                                <Button style={{backgroundColor:'#040404',color:'white',fontWeight:'semi',height:'6vh',width:'17vw',
-                                    fontSize:'15px',opacity:'95%'}}>Login
+                                <GDESButton type='submit' label="Login" style={{backgroundColor:'#040404',color:'white',fontWeight:'semi',height:'6vh',width:'17vw',
+                                    fontSize:'15px',opacity:'95%'}}/>
 
-
-
-                                </Button>
                             </Grid>
                         </ValidatorForm>
 
