@@ -107,9 +107,6 @@ class Profile extends Component {
     };
 
 
-    loadTxtFields(){}
-
-
     componentDidMount() {
         this.loadData();
     }

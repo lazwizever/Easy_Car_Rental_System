@@ -14,6 +14,7 @@ import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Typography from "@mui/material/Typography";
 
 
 
@@ -81,12 +82,21 @@ class ManageCustomer extends Component{
         return(
             <>
 
+                <Grid style={{overflow:"hidden",width:"86vw",height:"88vh"}}>
+
+
                 <ValidatorForm ref="form" className="pt-2">
 
-            <Grid style={{width:"84vw",height:"85vh"}}>
+                    <Grid style={{marginTop:"6vh"}}>
+                        <Typography fontSize="30px">Manage Customer</Typography>
+                    </Grid>
+
+
+
+            <Grid style={{width:"84vw",height:"85vh",marginTop:"8vh",marginLeft:'0.5vw'}}>
 
                 <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table" style={{backgroundColor:"#eeeff1"}}>
                         <TableHead>
                             <TableRow>
                                 <TableCell>Customer Id</TableCell>
@@ -134,7 +144,7 @@ class ManageCustomer extends Component{
 
                 </ValidatorForm>
 
-
+                </Grid>
             </>
         )
     }

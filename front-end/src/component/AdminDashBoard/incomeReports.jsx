@@ -71,7 +71,7 @@ class IncomeReports extends Component{
                     <Tooltip />
                     <Legend />
                     <CartesianGrid strokeDasharray="3 3" />
-                    <Bar dataKey="Packges" fill="#8884d8" background={{ fill: "#eeeff1" }} />
+                    <Bar dataKey="Packages" fill="#8884d8" background={{ fill: "#eeeff1" }} />
                 </BarChart>
             </Grid>
 

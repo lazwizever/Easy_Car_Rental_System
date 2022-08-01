@@ -267,32 +267,6 @@ class ManageVehicle extends Component {
 
     render() {
 
-        /*const columns = [
-            { field: 'id', headerName: 'Reg No', width: 100 },
-            { field: 'Brand', headerName: 'Brand', width: 100 },
-            { field: 'fuelType', headerName: 'Fuel Type', width: 150 },
-            { field: 'transmissionType', headerName: 'Transmission Type', width: 150 },
-            { field: 'color', headerName: 'Color', width: 100 },
-            { field: 'vehicleType', headerName: 'Vehicle Type', width: 150 },
-            { field: 'noOfPassengers', headerName: 'No Of Passengers', width: 150 },
-            { field: 'vehicleTypes', headerName: 'Vehicle Type', width: 100 ,
-
-            },
-
-        ];
-
-        const rows = [
-            { id: 'Rg12345', Brand: 'BMW-i8', fuelType:"Diesel",transmissionType: 'Manual', color: 'black',vehicleType:'Luxury',noOfPassengers:'5',vehicleTypes:'Luxury' },
-            { id: 'Rg12345', Brand: 'BMW-i8', fuelType:"Diesel",transmissionType: 'Manual', color: 'black',vehicleType:'Luxury',noOfPassengers:'5',vehicleTypes:'Luxury' },
-            { id: 'Rg12345', Brand: 'BMW-i8', fuelType:"Diesel",transmissionType: 'Manual', color: 'black',vehicleType:'Luxury',noOfPassengers:'5',vehicleTypes:'Luxury' },
-            { id: 'Rg12345', Brand: 'BMW-i8', fuelType:"Diesel",transmissionType: 'Manual', color: 'black',vehicleType:'Luxury',noOfPassengers:'5',vehicleTypes:'Luxury' },
-            { id: 'Rg12345', Brand: 'BMW-i8', fuelType:"Diesel",transmissionType: 'Manual', color: 'black',vehicleType:'Luxury',noOfPassengers:'5',vehicleTypes:'Luxury' },
-            { id: 'Rg12345', Brand: 'BMW-i8', fuelType:"Diesel",transmissionType: 'Manual', color: 'black',vehicleType:'Luxury',noOfPassengers:'5',vehicleTypes:'Luxury' },
-            { id: 'Rg12345', Brand: 'BMW-i8', fuelType:"Diesel",transmissionType: 'Manual', color: 'black',vehicleType:'Luxury',noOfPassengers:'5',vehicleTypes:'Luxury' },
-
-        ];*/
-
-
         const {classes} = this.props;
         return (
 
@@ -312,28 +286,13 @@ class ManageVehicle extends Component {
                     }}>
 
 
-                        <Grid>
-                            <div style={{
-                                width: '15vw',
-                                height: '30vh',
-                                border: '1px solid black',
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}>
-                                <UploadButton/>
-                                <Typography>
-                                    Interior Image
-                                </Typography>
-                            </div>
-                        </Grid>
-
                     </Grid>
 
 
                     <ValidatorForm ref="form" className="pt-2" onSubmit={this.submitVehicle}>
 
-                        <Grid display={"flex"} height={'75vh'} marginTop={'8vh'}>
+                        <Grid display={"flex"} height={'50vh'} marginTop={'-56vh'}>
+
                             <Grid width={'60%'} display={"flex"} flexWrap={'wrap'}>
 
                                 <TextField
@@ -647,8 +606,8 @@ class ManageVehicle extends Component {
 
 
 
-                    <Grid width='95%'>
-                        <div style={{height: 400, width: '95%', marginTop: '10vh', marginLeft: '1vw'}}>
+                    <Grid width='100%'>
+                        <div style={{height: 400, width: '105%', marginTop: '10vh', marginLeft: '0vw'}}>
                             <TableContainer component={Paper} style={{ height: '45vh', width: '81vw', backgroundColor: '#eeeff1' }}>
                                 <Table aria-label="simple table">
                                     <TableHead>
