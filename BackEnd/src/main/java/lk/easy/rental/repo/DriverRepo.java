@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface DriverRepo extends JpaRepository<Driver,String> {
         Driver findFirstByDriverAvailability(AvailabilityType availabilityType);
 
+        int countByDriverAvailability(AvailabilityType availabilityType);
 
 
 }

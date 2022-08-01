@@ -1,6 +1,7 @@
 package lk.easy.rental.service;
 
 import lk.easy.rental.dto.AdminDTO;
+import lk.easy.rental.dto.AdminDashboardDTO;
 import lk.easy.rental.dto.PaymentDTO;
 
 import java.util.List;
@@ -16,5 +17,5 @@ public interface AdminService {
 
     void deleteAdmin(String id);
 
-    Object loadDashboard();
+    AdminDashboardDTO adminDashBoardInfo();
 }

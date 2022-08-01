@@ -53,4 +53,11 @@ public class AdminController {
     }*/
 
 
+    @GetMapping("adminDashboard")
+    public ResponseUtil adminDashboard(){
+        return new ResponseUtil(201,"OK", adminService.adminDashBoardInfo());
+
+    }
+
+    
 }

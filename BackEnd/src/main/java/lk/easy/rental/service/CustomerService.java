@@ -1,6 +1,7 @@
 package lk.easy.rental.service;
 
 import lk.easy.rental.dto.CustomerDTO;
+import lk.easy.rental.dto.UserDTO;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface CustomerService {
     void UpdateCustomer(CustomerDTO customerDTO);
 
     void deleteCustomer(String id);
+
+    CustomerDTO getCustomerByUser(String userName);
 }

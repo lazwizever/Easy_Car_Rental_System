@@ -197,8 +197,6 @@ class ManageVehicle extends Component {
         });
     };
 
-
-
     updateVehicle = (data) => {
         console.log(data)
 
@@ -477,8 +475,8 @@ class ManageVehicle extends Component {
                                 <Autocomplete
 
                                     onChange={(e, value, r) => {
-
                                         let formData = this.state.formData
+
                                         formData.vehicleType = value.type
                                         this.setState({ formData })
 

@@ -2,9 +2,9 @@ import axios from "../axios";
 
 class CustomerService{
 
-    fetchCustomer = async (data) => {
+    fetchCustomer = async (params) => {
         const promise = new Promise((resolve, reject) => {
-            axios.get('customer/cusId')
+            axios.get('customer',{params:params})
                 .then((res) => {
                     return resolve(res)
                 })

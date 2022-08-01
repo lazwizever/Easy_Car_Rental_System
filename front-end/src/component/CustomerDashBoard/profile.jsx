@@ -15,7 +15,7 @@ import CustomerService from "../../service/customerService";
 class Profile extends Component {
     constructor(props) {
         super(props);
-
+        console.log(this.props.user);
         /*this.state = {value: ''};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);*/
@@ -71,11 +71,35 @@ class Profile extends Component {
 
 
     loadData = async () => {
-        let res = await CustomerService.fetchCustomer();
+        let params ={userName: this.props.user.userName}
+        let res = await CustomerService.fetchCustomer(params);
 
         if (res.status === 200) {
+            let cusData = res.data.data;
+
+            console.log('customer data'+cusData);
+
             this.setState({
-                data: res.data.data
+
+                formData: {
+                    id: cusData.id,
+                    nic: cusData.nic,
+                    name: {
+                        firstName: cusData.name.firstName,
+                        lastName: cusData.name.lastName
+                    },
+
+                    user: {
+                        userId: '',
+                        role: '',
+                        userName: cusData.user.userName,
+                        passWord: cusData.user.passWord,
+                    },
+
+                    licenseNo: cusData.licenseNo,
+                    address: cusData.address,
+                    contactNo: cusData.contactNo,
+                },
             });
         }
         console.log('data tka'+this.state.data)

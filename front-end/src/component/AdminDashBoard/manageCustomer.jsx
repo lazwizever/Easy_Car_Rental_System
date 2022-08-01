@@ -15,6 +15,8 @@ import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Typography from "@mui/material/Typography";
+import UploadButton from "../UploadBtn";
+import {TextField} from "@mui/material";
 
 
 
@@ -52,6 +54,30 @@ class ManageCustomer extends Component{
     }
 
 
+    loadCustomerData = (row) => {
+        this.setState({
+            formData: {
+
+                id: row.id,
+                nic: row.nic,
+
+                name: {
+                    firstName: row.name.firstName,
+                    lastName: row.name.lastName,
+                },
+
+                licenseNo: row.licenseNo,
+                address: row.address,
+                contactNo: row.contactNo,
+                email: row.email,
+
+
+            },
+        });
+
+    }
+
+
     loadData = async () => {
         let res = await customerServiceDashboard.fetchCustomerDashboard();
 
@@ -82,7 +108,7 @@ class ManageCustomer extends Component{
         return(
             <>
 
-                <Grid style={{overflow:"hidden",width:"86vw",height:"88vh"}}>
+                <Grid style={{overflowX:"hidden",width:"86vw",height:"88vh"}}>
 
 
                 <ValidatorForm ref="form" className="pt-2">
@@ -91,6 +117,106 @@ class ManageCustomer extends Component{
                         <Typography fontSize="30px">Manage Customer</Typography>
                     </Grid>
 
+
+                    <Grid style={{display:'flex',flexDirection:'column',justifyContent:'space-evenly'}}>
+
+                        <Grid display='flex' justifyContent='space-evenly' margin='1vh'>
+                            <TextField id="outlined-basic" label="Customer Id" size='small' variant="outlined" style={{width: '20vw'}}
+
+                                       value={this.state.formData.name.firstName}
+                                       onChange={(e) => {
+                                           let formDataOb =this.state.formData
+                                           formDataOb.name.firstName = e.target.value
+                                           this.setState(formDataOb)
+                                       }}
+                                       validators={['required']}
+
+                            />
+                            <TextField id="outlined-basic" label="First name" variant="outlined" size='small' style={{width: '20vw'}}
+
+                                       value={this.state.formData.name.lastName}
+                                       onChange={(e) => {
+                                           let formDataOb =this.state.formData
+                                           formDataOb.name.lastName = e.target.value
+                                           this.setState(formDataOb)
+                                       }}
+                                       validators={['required']}
+
+                            />
+                        </Grid>
+
+                        <Grid display='flex' justifyContent='space-evenly' margin='1vh'>
+                            <TextField id="outlined-basic" label="Last Name" variant="outlined" size='small' style={{width: '20vw'}}
+
+                                       value={this.state.formData.address}
+                                       onChange={(e) => {
+                                           let formDataOb =this.state.formData
+                                           formDataOb.address = e.target.value
+                                           this.setState(formDataOb)
+                                       }}
+                                       validators={['required']}
+
+                            />
+                            <TextField id="outlined-basic" label="Address" size='small' variant="outlined" style={{width: '20vw'}}
+
+                                       value={this.state.formData.contactNo}
+                                       onChange={(e) => {
+                                           let formDataOb =this.state.formData
+                                           formDataOb.contactNo = e.target.value
+                                           this.setState(formDataOb)
+                                       }}
+                                       validators={['required']}
+                            />
+                        </Grid>
+
+                        <Grid display='flex' justifyContent='space-evenly' margin='1vh'>
+                            <TextField id="outlined-basic" label="Contact No" variant="outlined" size='small' style={{width: '20vw'}}
+
+                                       value={this.state.formData.nic}
+                                       onChange={(e) => {
+                                           let formDataOb =this.state.formData
+                                           formDataOb.nic = e.target.value
+                                           this.setState(formDataOb)
+                                       }}
+                                       validators={['required']}
+
+                            />
+                            <TextField id="outlined-basic" label="E-mail" size='small' variant="outlined" style={{width: '20vw'}}
+
+                                       value={this.state.formData.licenseNo}
+                                       onChange={(e) => {
+                                           let formDataOb =this.state.formData
+                                           formDataOb.licenseNo = e.target.value
+                                           this.setState(formDataOb)
+                                       }}
+                                       validators={['required']}
+
+                            />
+                        </Grid>
+
+
+                    </Grid>
+
+                    <Grid style={{display:'flex',justifyContent:'space-evenly',alignItems:'center',marginTop:'5vh'}}>
+                        <Grid >
+                            <div style={{width:'20vw',height:'20vh',border:'1px solid black',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                                <UploadButton/>
+                                <Typography>
+                                    NIC Image
+                                </Typography>
+                            </div>
+
+                        </Grid>
+
+                        <Grid>
+                            <div style={{width:'20vw',height:'20vh',border:'1px solid black',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                                <UploadButton/>
+                                <Typography>
+                                    Driving License Image
+                                </Typography>
+                            </div>
+                        </Grid>
+                    </Grid>
 
 
             <Grid style={{width:"84vw",height:"85vh",marginTop:"8vh",marginLeft:'0.5vw'}}>
@@ -123,7 +249,11 @@ class ManageCustomer extends Component{
                                     <TableCell align="left">{row.email}</TableCell>
                                     <TableCell align="left">
                                         <Tooltip title="Edit">
-                                            <IconButton>
+                                            <IconButton onClick={()=>{
+                                            this.loadCustomerData(row);
+
+
+                                            }}>
                                                 <EditIcon color="primary" />
                                             </IconButton>
                                         </Tooltip>
@@ -148,6 +278,7 @@ class ManageCustomer extends Component{
             </>
         )
     }
+
 
 
 }

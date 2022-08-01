@@ -17,7 +17,7 @@ import DriverDashBoard from "../component/DriverDashBoard";
 function App() {
   return (
 
-     /* <Routes>
+      /*<Routes>
         <Route exact path='/' element={<HomePage/>}/>
         <Route path='ReservationPage' element={<ReservationPage/>}/>
         <Route path='vehicleDetailsPage' element={<VehiclePage/>}/>

@@ -11,4 +11,6 @@ public interface BookingRepo extends JpaRepository<Booking,String> {
     List<Booking> findAllByPickUpDateAndReturnDate(LocalDate pickUpDate, LocalDate returnDate);
 
     List<Booking> findAllByReturnDateIsAfterAndPickUpDateIsBefore(LocalDate pickUpDate, LocalDate returnDate);
+
+    int countByPickUpDate(LocalDate date);
 }

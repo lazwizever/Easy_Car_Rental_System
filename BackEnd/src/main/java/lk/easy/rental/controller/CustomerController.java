@@ -2,6 +2,7 @@ package lk.easy.rental.controller;
 
 
 import lk.easy.rental.dto.CustomerDTO;
+import lk.easy.rental.dto.UserDTO;
 import lk.easy.rental.service.CustomerService;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,12 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return new ResponseUtil(201,"OK",null);
     }
+
+
+    @GetMapping(params = {"userName"} ,produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCustomerByUser(@RequestParam String userName){
+        return new ResponseUtil(201,"OK",customerService.getCustomerByUser(userName));
+    }
+
 
 }

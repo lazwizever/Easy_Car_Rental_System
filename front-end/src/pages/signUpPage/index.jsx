@@ -37,7 +37,7 @@ class SignUpPage extends Component {
             message: '',
             severity: '',
 
-            data: [],
+            loginUser: {},
             btnLabel: 'Login',
             btnColor: 'primary'
 
@@ -54,6 +54,7 @@ class SignUpPage extends Component {
 
             console.log(res.data.data.role);
             this.setState({
+                loginUser:res.data.data,
                 loginUserRole:res.data.data.role,
                 alert: true,
                 message: res.data.message,
@@ -153,7 +154,7 @@ class SignUpPage extends Component {
 
 
             </>: (this.state.loginUserRole == "DRIVER")?<DriverDashBoard/>:
-                    <CustomerDashBoard/>
+                    <CustomerDashBoard user={this.state.loginUser}/>
 
 
      )

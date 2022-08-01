@@ -2,7 +2,9 @@ package lk.easy.rental.service.Impl;
 
 import lk.easy.rental.Exception.DuplicateEntryException;
 import lk.easy.rental.dto.CustomerDTO;
+import lk.easy.rental.dto.UserDTO;
 import lk.easy.rental.entity.Customer;
+import lk.easy.rental.entity.User;
 import lk.easy.rental.repo.CustomerRepo;
 import lk.easy.rental.repo.UserRepo;
 import lk.easy.rental.service.CustomerService;
@@ -83,6 +85,15 @@ public class CustomerServiceImpl implements CustomerService {
         }else {
             throw new RuntimeException("No customer for "+id+"..!");
         }
+    }
+
+    @Override
+    public CustomerDTO getCustomerByUser(String userName) {
+        User byUserName = userRepo.findByUserName(userName);
+        Customer customer = customerRepo.findByUser(modelMapper.map(byUserName, User.class));
+        System.out.println(byUserName);
+        System.out.println(customer);
+        return modelMapper.map(customer,CustomerDTO.class);
     }
 
 

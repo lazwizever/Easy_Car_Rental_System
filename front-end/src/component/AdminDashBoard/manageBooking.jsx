@@ -15,12 +15,28 @@ import EditIcon from '@mui/icons-material/Edit';
 import Typography from "@mui/material/Typography";
 import {Button, TextField} from "@mui/material";
 import * as React from "react";
-
+import VehicleService from "../../service/vehicleService";
 
 
 
 class ManageBooking extends Component{
+
+    loadData = async () => {
+        let res = await VehicleService.fetchVehicle();
+
+        if (res.status === 200) {
+            this.setState({
+                data: res.data.data
+            });
+        }
+        console.log(this.state.data)    // print customers array
+
+    };
+
+
+
     render() {
+
 
         function createData(id, customerId, fullName, nic, licenNo, contact, address) {
             return { id, customerId, fullName, nic, licenNo, contact,address};
