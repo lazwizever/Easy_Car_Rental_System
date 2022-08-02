@@ -1,6 +1,16 @@
 import {Component} from "react";
 import Grid from "@mui/material/Grid";
-import {Autocomplete, Button, ImageList, ImageListItem, ImageListItemBar, Tab, Tabs, TextField} from "@mui/material";
+import {
+    Autocomplete,
+    Button, CardActions, CardContent,
+    CardMedia,
+    ImageList,
+    ImageListItem,
+    ImageListItemBar,
+    Tab,
+    Tabs,
+    TextField
+} from "@mui/material";
 import * as React from "react";
 import {styleSheet} from ".//style";
 import {withStyles} from "@mui/styles";
@@ -8,10 +18,14 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import logo from "../../assets/img/logo.png";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
-import {DatePicker} from "@mui/x-date-pickers/DatePicker";
-import {TimePicker} from "@mui/x-date-pickers";
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
+import {Card} from "@material-ui/core";
+import Typography from "@mui/material/Typography";
+import BMW from "../../assets/img/bmw.jpg"
+import VehicleService from "../../service/vehicleService";
+import DatePicker from "../../component/DatePicker";
+import TimePicker from "../../component/TimePicker";
 
 
 
@@ -67,6 +81,43 @@ const vehicleType = [
 
 
 class ReservationPage extends Component{
+    constructor(props) {
+        super(props);
+
+        this.state = {
+
+            formData:{
+                pickUpDate:'',
+                pickUpTime:'',
+                returnDate:'',
+            },
+
+
+        vehicleList : []
+        }
+
+
+    }
+
+
+
+    loadAllVehicles = async () => {
+        let res = await VehicleService.fetchAvailableVehicle();
+
+        if (res.status === 200) {
+            this.setState({
+                vehicleList: res.data.data
+            });
+        }
+        console.log(this.state.vehicleList)    // print customers array
+
+    };
+
+
+    componentDidMount() {
+        this.loadAllVehicles();
+    }
+
 
     render() {
         const {classes} = this.props;
@@ -104,50 +155,58 @@ class ReservationPage extends Component{
                 <Grid style={{display:'flex',width:'100vw',justifyContent:'center',paddingTop:'6vh'}}>
                     <Grid  className={classes.dateTimeContainer}>
 
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                                label="Pick-Up-Date"
-                                //value={value}
-                                onChange={(newValue) => {
-                                    //setValue(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
+                        {/*<DatePicker label ="Pick-Up-Date"/>
 
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <TimePicker
-                                label="Pick-Up-Time"
-                                //value={value}
-                                onChange={(newValue) => {
-                                    //setValue(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
+                        <TimePicker label ="Pick-Up-Time"/>
+
+                        <DatePicker label ="Drop-Off-Date"/>
+
+                        <TimePicker label ="Drop-Off-Time"/>*/}
 
 
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                                label="Drop-Off-Date"
-                                //value={value}
-                                onChange={(newValue) => {
-                                    //setValue(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Pick Up Date"
+                            sx={{ m: 1, width: '22.7ch' }}
+                            value={this.state.formData.pickUpDate}
+                            onChange={(e) => {
+                                let formDataOb =this.state.formData
+                                formDataOb.pickUpDate = e.target.value
+                                this.setState(formDataOb)
+                            }}
+                            validators={['required']}
+                        />
 
-                        <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <TimePicker
-                                label="Drop-Off-Time"
-                                //value={value}
-                                onChange={(newValue) => {
-                                    //setValue(newValue);
-                                }}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="Pick Up Time"
+                            sx={{ m: 1, width: '22.7ch' }}
+                            value={this.state.formData.pickUpTime}
+                            onChange={(e) => {
+                                let formDataOb =this.state.formData
+                                formDataOb.pickUpTime = e.target.value
+                                this.setState(formDataOb)
+                            }}
+                            validators={['required']}
+                        />
+
+
+                        <TextField
+                            required
+                            id="outlined-required"
+                            label="drop Off Date"
+                            sx={{ m: 1, width: '22.7ch' }}
+                            value={this.state.formData.returnDate}
+                            onChange={(e) => {
+                                let formDataOb =this.state.formData
+                                formDataOb.returnDate = e.target.value
+                                this.setState(formDataOb)
+                            }}
+                            validators={['required']}
+                        />
+
 
 
                         <Autocomplete
@@ -168,53 +227,45 @@ class ReservationPage extends Component{
                         >Find My Car</Button>
                     </Grid>
                 </Grid>
+                {/*---------------------------------------------------*/}
 
 
+                <Grid style={{width:'100vw',display:'flex',justifyContent:'space-between',flexDirection:"row",flexWrap:'wrap',marginTop:'10vh'}}>
+                    {
+                        this.state.vehicleList.map((vehicle) => (
 
-                {/*-----------------------Vehicle List-------------------------*/}
-                <Grid style={{display:'flex',justifyContent:'center',paddingTop:'4vh'}}>
-
-                    <ImageList sx={{ width: 900, height: 500, color: 'rgba(255, 255, 255, 0.54)',backgroundColor:'#121212'}} cols={3} gap ={12} >
-                        {itemData.map((item) => (
-                            <ImageListItem key={item.img}>
-                                <img
-                                    src={`${item.img}?w=248&fit=crop&auto=format`}
-                                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                    alt={item.title}
-                                    loading="lazy"
-
-                                />
-                                <ImageListItemBar
-                                    title={item.title}
-                                    position="below"
-
-                                    actionIcon={
-                                        <IconButton href='/VehicleDetailsPage'
-                                            sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                                            // aria-label={`info about ${item.title}`}
-                                        >
-                                            <InfoIcon />
-
-                                        </IconButton>
-
-                                    }
+                            <Card style={{width:'20vw',marginTop:'1vh'} }>
+                                <CardMedia
+                                    component="img"
+                                    alt="img"
+                                    height="230"
+                                    image={BMW}
 
                                 />
+                                <CardContent>
+                                    <Typography  variant="h6" textAlign={'center'}>
+                                        {vehicle.brand}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions style={{display:'flex',justifyContent:'center'}}>
 
-                            </ImageListItem>
-                        ))}</ImageList>
-
+                                    <Button size="small"  style={{backgroundColor:'green',color:'white'}}>Book Now</Button>
+                                </CardActions>
+                            </Card>
+                        ))
+                    }
                 </Grid>
 
 
-                <Grid style={{display:"flex",justifyContent:'center',alignItems:"center",width:"12vw",backgroundColor:"white"}}>
+               {/* <Grid style={{display:"flex",justifyContent:'space-evenly',alignItems:"center",width:"12vw",backgroundColor:"white",
+                    marginLeft:'70vw',flexDirection:'column',marginTop:'-55vh',flexWrap:'wrap',height:'40vh'}}>
                     <Autocomplete
                         style={{width:'12vw'}}
                         disablePortal
                         id="combo-box-demo"
                         options={vehicleType}
                         sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                        renderInput={(params) => <TextField {...params} label="No of passengers" />}
                     />
 
                     <Autocomplete
@@ -223,7 +274,7 @@ class ReservationPage extends Component{
                         id="combo-box-demo"
                         options={vehicleType}
                         sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                        renderInput={(params) => <TextField {...params} label="Transmission type" />}
                     />
                     <Autocomplete
                         style={{width:'12vw'}}
@@ -231,7 +282,7 @@ class ReservationPage extends Component{
                         id="combo-box-demo"
                         options={vehicleType}
                         sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                        renderInput={(params) => <TextField {...params} label="Type" />}
                     />
 
                     <Autocomplete
@@ -240,10 +291,28 @@ class ReservationPage extends Component{
                         id="combo-box-demo"
                         options={vehicleType}
                         sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Vehicle Category" />}
+                        renderInput={(params) => <TextField {...params} label="Brand " />}
                     />
 
-                </Grid>
+                    <Autocomplete
+                        style={{width:'12vw'}}
+                        disablePortal
+                        id="combo-box-demo"
+                        options={vehicleType}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Price" />}
+                    />
+
+                    <Autocomplete
+                        style={{width:'12vw'}}
+                        disablePortal
+                        id="combo-box-demo"
+                        options={vehicleType}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Fuel type" />}
+                    />
+
+                </Grid>*/}
 
 
 

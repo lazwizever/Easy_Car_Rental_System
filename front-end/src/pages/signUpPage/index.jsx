@@ -129,7 +129,6 @@ class SignUpPage extends Component {
                             <Grid className={classes.btn_container}  paddingLeft='2.5vw' paddingTop='4vh'>
                                 <GDESButton type='submit' label="Login" style={{backgroundColor:'#040404',color:'white',fontWeight:'semi',height:'6vh',width:'17vw',
                                     fontSize:'15px',opacity:'95%'}}/>
-
                             </Grid>
                         </ValidatorForm>
 

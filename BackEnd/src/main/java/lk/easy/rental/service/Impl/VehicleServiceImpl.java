@@ -5,6 +5,7 @@ import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.dto.VehicleDTO;
 import lk.easy.rental.entity.Customer;
 import lk.easy.rental.entity.Vehicle;
+import lk.easy.rental.enums.AvailabilityType;
 import lk.easy.rental.repo.CustomerRepo;
 import lk.easy.rental.repo.VehicleRepo;
 import lk.easy.rental.service.VehicleService;
@@ -70,5 +71,11 @@ public class VehicleServiceImpl implements VehicleService {
         }else {
             throw new RuntimeException("No vehicle for "+id+"..!");
         }
+    }
+
+    @Override
+    public List<VehicleDTO> getAllAvailableVehicles() {
+        List<Vehicle> allByVehicleAvailability = vehicleRepo.findAllByVehicleAvailability(AvailabilityType.AVAILABLE);
+        return modelMapper.map(allByVehicleAvailability, new TypeToken<List<VehicleDTO>>(){}.getType());
     }
 }

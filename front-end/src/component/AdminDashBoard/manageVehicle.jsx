@@ -32,6 +32,17 @@ class ManageVehicle extends Component {
         super(props);
 
         this.state = {
+
+            frontImage: null,
+            backImage: null,
+            sideImage: null,
+            interiorImage: null,
+
+            frontView: null,
+            backView: null,
+            sideView: null,
+            interiorView: null,
+
             formData: {
                 vehicleId: '',
                 registrationNo: '',
@@ -96,6 +107,28 @@ class ManageVehicle extends Component {
 
     }
 
+    addCarImage=async (vehicleId) =>{
+
+        var bodyFormData = new FormData();
+        bodyFormData.append('param', this.state.frontImage);
+        bodyFormData.append('param', this.state.backImage);
+        bodyFormData.append('param', this.state.sideImage);
+        bodyFormData.append('param', this.state.interiorImage);
+
+        let res = await VehicleService.addCarImage(bodyFormData,vehicleId);
+        if (res.data.code===200){alert(res.data.message)}else {
+            alert(res.data.message);
+        }
+    }
+
+
+    updateCarImage=async (data,vehicleId,view) =>{
+        let response =await VehicleService.updateCarImage(data,vehicleId,view);
+        if (response.status!==200){
+            alert("Car Image Update Fail")
+        }
+    }
+
     loadData = async () => {
         let res = await VehicleService.fetchVehicle();
 
@@ -117,6 +150,7 @@ class ManageVehicle extends Component {
         if (this.state.btnLabel === "save") {
             let res = await VehicleService.postVehicle(formData);
 
+            this.addCarImage(formData.vehicleId)
 
             if (res.status === 201) {
                 this.setState({
@@ -140,6 +174,22 @@ class ManageVehicle extends Component {
         if (this.state.btnLabel === "Update") {
             let res = await VehicleService.putVehicle(formData);
             if (res.status === 200) {
+
+                let front=this.state.frontImage;
+                let back=this.state.backImage;
+                let side=this.state.sideImage;
+                let interior=this.state.interiorImage;
+                let list=[front,back,side,interior]
+                let viewList=["Front","Back","Side","Interior"]
+
+                for (var i=0; i<list.length; i++){
+                    if (list[i] != null){
+                        let formData = new FormData();
+                        formData.append('carImage',list[i]);
+                        await this.updateCarImage(formData, formData.vehicleId, viewList[i]);
+                    }
+                }
+
                 this.setState({
                     alert: true,
                     message: res.data.message,
@@ -485,6 +535,9 @@ class ManageVehicle extends Component {
                                         (option) => option.type
                                     }
                                     id="controllable-states"
+
+                                    value={this.state.formData.freeMileAge.dailyMileage}
+
                                     options={this.state.vehicleTypes}
                                     sx={{m: 1, width: '35ch' }}
                                     renderInput={(params) => <TextField {...params} label="Vehicle Type" />}
@@ -556,7 +609,10 @@ class ManageVehicle extends Component {
 
                             <Grid width={'36%'}>
 
-                                <Grid height={'80%'} display={'flex'} flexWrap={'wrap'} justifyContent={'space-evenly'}>
+
+                                {/*<Grid height={'80%'} display={'flex'} flexWrap={'wrap'} justifyContent={'space-evenly'}>
+
+
                                     <Grid width={'48%'} height={'48%'} border={'1px solid black'} display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
                                         <img src="" alt=""/>
                                         <UploadButton/>
@@ -580,7 +636,179 @@ class ManageVehicle extends Component {
                                         <UploadButton/>
                                         <Typography>Interior</Typography>
                                     </Grid>
+
+
+                                </Grid>*/}
+
+                                <Grid item style={{
+                                    marginTop: '10px',
+                                    height : '30%',
+                                    width : '97%',
+                                    display : 'flex',
+                                    flexDirection : 'row',
+                                    alignItems : 'center',
+                                    justifyContent : 'space-around',
+
+
+                                }}>
+
+                                    <div  style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        height: '140px',
+                                        border: '1px solid blue',
+                                        backgroundImage:"url(" +this.state.frontView+ ")",
+                                        backgroundSize: 'cover',
+                                        width : '23%',
+                                        backgroundColor : 'white',
+                                        borderRadius: "20px",
+                                    }}/>
+
+
+                                    <div  style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        height: '140px',
+                                        border: '1px solid blue',
+                                        backgroundImage:"url(" +this.state.backView+ ")",
+                                        backgroundSize: 'cover',
+                                        width : '23%',
+                                        backgroundColor : 'white',
+                                        borderRadius: "20px",
+                                    }}/>
+
+
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        height: '140px',
+                                        border: '1px solid blue',
+                                        backgroundImage:"url(" +this.state.sideView+ ")",
+                                        backgroundSize: 'cover',
+                                        width : '23%',
+                                        backgroundColor : 'white',
+                                        borderRadius: "20px",
+                                    }}/>
+
+
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        height: '140px',
+                                        border: '1px solid blue',
+                                        backgroundImage:"url(" +this.state.interiorView+ ")",
+                                        backgroundSize: 'cover',
+                                        width : '23%',
+                                        backgroundColor : 'white',
+                                        borderRadius: "20px",
+                                    }}/>
+
+
                                 </Grid>
+
+                                <Grid item style={{display:'flex',
+                                    flexDirection:'row',
+                                    alignItems:'center',
+                                    justifyContent:'space-around',
+                                    width:'100%'}}>
+
+                                    <div><input
+
+                                        style={{display: 'none'}}
+                                        accept="image/*"
+                                        className={classes.input}
+                                        id="contained-button-file01"
+                                        multiple
+                                        type="file"
+                                        onChange={(e) => {
+                                            this.setState({
+                                                frontImage: e.target.files[0],
+                                                frontView : URL.createObjectURL(e.target.files[0])
+                                            })
+                                        }}
+                                    />
+                                        <label htmlFor="contained-button-file01">
+                                            <Button variant="outlined" color="primary" size="medium" component="span">
+                                                Front
+                                            </Button>
+                                        </label>
+
+                                    </div>
+                                    <div><input
+                                        style={{display: 'none'}}
+                                        accept="image/*"
+                                        className={classes.input}
+                                        id="contained-button-file02"
+                                        multiple
+                                        type="file"
+                                        onChange={(e) => {
+                                            this.setState({
+                                                backImage: e.target.files[0],
+                                                backView : URL.createObjectURL(e.target.files[0])
+                                            })
+                                        }}
+                                    />
+                                        <label htmlFor="contained-button-file02">
+                                            <Button variant="outlined" color="primary" size="medium" component="span">
+                                                Back
+                                            </Button>
+                                        </label>
+
+                                    </div>
+                                    <div><input
+
+                                        style={{display: 'none'}}
+                                        accept="image/*"
+                                        className={classes.input}
+                                        id="contained-button-file03"
+                                        multiple
+                                        type="file"
+                                        onChange={(e) => {
+                                            this.setState({
+                                                sideImage: e.target.files[0],
+                                                sideView : URL.createObjectURL(e.target.files[0])
+                                            })
+                                        }}
+                                    />
+                                        <label htmlFor="contained-button-file03">
+                                            <Button variant="outlined" color="primary" size="medium" component="span">
+                                                Side
+                                            </Button>
+                                        </label>
+
+                                    </div>
+                                    <div><input
+
+                                        style={{display: 'none'}}
+                                        accept="image/*"
+                                        className={classes.input}
+                                        id="contained-button-file04"
+                                        multiple
+                                        type="file"
+                                        onChange={(e) => {
+                                            this.setState({
+                                                interiorImage: e.target.files[0],
+                                                interiorView : URL.createObjectURL(e.target.files[0])
+                                            })
+                                        }}
+                                    />
+                                        <label htmlFor="contained-button-file04">
+                                            <Button variant="outlined" color="primary" size="medium" component="span">
+                                                Interior
+                                            </Button>
+                                        </label>
+
+                                    </div>
+
+                                </Grid>
+
+
+
+
 
                                 <Grid height={'10%'} display={'flex'} justifyContent={'flex-end'}>
 

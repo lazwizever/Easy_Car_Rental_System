@@ -23,6 +23,8 @@ import Booking from "./booking";
 import ManageBooking from "./manageBooking";
 import Grid from "@mui/material/Grid";
 import logo from "../../assets/img/logo.png";
+import { Link, Outlet } from "react-router-dom";
+
 
 
 const drawerWidth = 240;
@@ -37,10 +39,10 @@ function ResponsiveDrawer(props) {
     };
 
     const listItemData = [
-        {label: "Profile", link: "/profile", icon: <AccountCircleIcon style={{color: '#ffffff'}}/>},
-        {label: "Booking", link: "/booking", icon: <BookIcon style={{color: '#ffffff'}}/>},
-        {label: "Manage Booking", link: "/manageBooking", icon: <CollectionsBookmarkIcon style={{color: '#ffffff'}}/>},
-        {label: "Log out", link: "/logout", icon: <LogoutIcon style={{color: '#ffffff'}}/>},
+        {label: "Profile", to: "profile", icon: <AccountCircleIcon style={{color: '#ffffff'}}/>},
+        {label: "Booking", to: "booking", icon: <BookIcon style={{color: '#ffffff'}}/>},
+        {label: "Manage Booking", to: "manageBooking", icon: <CollectionsBookmarkIcon style={{color: '#ffffff'}}/>},
+        {label: "Log out", to: "logout", icon: <LogoutIcon style={{color: '#ffffff'}}/>},
     ]
 
     const drawer = (
@@ -51,8 +53,8 @@ function ResponsiveDrawer(props) {
                 {listItemData.map((item, index) => (
                     <ListItem key={index} disablePadding
                               exact
-                              component={NavLink}
-                              to={item.link}
+                              component={Link}
+                              to={item.to}
 
                         //className={classes.navLinks}
                         //activeClassName={classes.activeNavLinks}
@@ -164,13 +166,13 @@ function ResponsiveDrawer(props) {
             >
                 <Toolbar/>
                 <Box>
-                    <Routes>
-                        {/*<Route exact path="/profile" element={<Profile user ={props.user}/>}/>*/}
+                    {/*<Routes>
+                        <Route exact path="/profile" element={<Profile user ={props.user}/>}/>
                         <Route exact path="/profile" element={<Profile user={user}/>}/>
                         <Route path="/booking" element={<Booking/>}/>
                         <Route path="/manageBooking" element={<ManageBooking/>}/>
-                        {/*   <Route exact path="/logout" element={<LogOut/>}/>*/}
-                    </Routes>
+                           <Route exact path="/logout" element={<LogOut/>}/>
+                    </Routes>*/}
                 </Box>
 
             </Box>

@@ -27,4 +27,7 @@ public interface VehicleRepo extends JpaRepository<Vehicle,String> {
 
     int countByVehicleAvailability(AvailabilityType availabilityType);
 
+    List<Vehicle> findAllByVehicleAvailability(AvailabilityType availabilityType);
+
+
 }

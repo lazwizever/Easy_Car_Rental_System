@@ -163,19 +163,19 @@ class HomePage extends Component {
 
                     <Grid  className={classes.dateTimeContainer}>
                         <Grid>
-                            <DatePicker/>
+                            <DatePicker label ="Pick-Up-Date"/>
                         </Grid>
 
                         <Grid>
-                            <TimePicker/>
+                            <TimePicker label ="Pick-Up-Time"/>
                         </Grid>
 
                         <Grid>
-                            <DatePicker/>
+                            <DatePicker label ="Drop-Off-Date"/>
                         </Grid>
 
                         <Grid>
-                            <TimePicker/>
+                            <TimePicker label ="Drop-Off-Time"/>
                         </Grid>
 
                         <Autocomplete
