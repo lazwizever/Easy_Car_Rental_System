@@ -4,7 +4,7 @@ import HomePage from "../pages/homePage";
 import ReservationPage from "../pages/reservationPage";
 import {Route, Routes,} from "react-router-dom";
 import VehiclePage from "../pages/vehicleDetailPage";
-import BookingPage from "../pages/bookingPage";
+import BookingPage from "../component/CustomerDashBoard/bookingPayment";
 import SignUpPage from "../pages/signUpPage";
 import SignInPage from "../pages/signInPage";
 //import AdminPage from "../pages/adminPage";
@@ -17,7 +17,7 @@ import DriverDashBoard from "../component/DriverDashBoard";
 function App() {
   return (
 
-      /*<Routes>
+     /* <Routes>
         <Route exact path='/' element={<HomePage/>}/>
         <Route path='ReservationPage' element={<ReservationPage/>}/>
         <Route path='vehicleDetailsPage' element={<VehiclePage/>}/>
@@ -26,8 +26,8 @@ function App() {
         <Route path='signInPage' element={<SignInPage/>}/>
 
       </Routes>*/
-
-     <AdminDashBoard/>
+      //<CustomerDashBoard/>
+      <BookingPage/>
 
   );
 }

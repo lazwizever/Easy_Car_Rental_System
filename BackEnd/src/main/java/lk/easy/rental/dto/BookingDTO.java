@@ -26,16 +26,19 @@ public class BookingDTO {
     private LocalTime pickUpTime;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate returnDate;
+    @JsonFormat(pattern = "HH:mm:ss")
+    private LocalTime returnTime;
     private RequestType driverRequestType;
     private CustomerDTO customer;
     private List<DriverScheduleDTO> driverScheduleDTOList;
     private List<BookingDetailsDTO> bookingDetailsList;
 
-    public BookingDTO(String bookingId, LocalDate pickUpDate, LocalTime pickUpTime, LocalDate returnDate, RequestType driverRequestType, CustomerDTO customer, List<DriverScheduleDTO> driverScheduleDTOList) {
+    public BookingDTO(String bookingId, LocalDate pickUpDate, LocalTime pickUpTime, LocalDate returnDate, LocalTime returnTime, RequestType driverRequestType, CustomerDTO customer, List<DriverScheduleDTO> driverScheduleDTOList) {
         this.bookingId = bookingId;
         this.pickUpDate = pickUpDate;
         this.pickUpTime = pickUpTime;
         this.returnDate = returnDate;
+        this.returnTime = returnTime;
         this.driverRequestType = driverRequestType;
         this.customer = customer;
         this.driverScheduleDTOList = driverScheduleDTOList;

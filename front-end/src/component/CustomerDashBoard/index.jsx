@@ -39,10 +39,10 @@ function ResponsiveDrawer(props) {
     };
 
     const listItemData = [
-        {label: "Profile", to: "profile", icon: <AccountCircleIcon style={{color: '#ffffff'}}/>},
-        {label: "Booking", to: "booking", icon: <BookIcon style={{color: '#ffffff'}}/>},
-        {label: "Manage Booking", to: "manageBooking", icon: <CollectionsBookmarkIcon style={{color: '#ffffff'}}/>},
-        {label: "Log out", to: "logout", icon: <LogoutIcon style={{color: '#ffffff'}}/>},
+        {label: "Profile", path: "profile", icon: <AccountCircleIcon style={{color: '#ffffff'}}/>},
+        {label: "Booking", path: "booking", icon: <BookIcon style={{color: '#ffffff'}}/>},
+        {label: "Manage Booking", path: "manageBooking", icon: <CollectionsBookmarkIcon style={{color: '#ffffff'}}/>},
+        {label: "Log out", path: "logout", icon: <LogoutIcon style={{color: '#ffffff'}}/>},
     ]
 
     const drawer = (
@@ -53,8 +53,8 @@ function ResponsiveDrawer(props) {
                 {listItemData.map((item, index) => (
                     <ListItem key={index} disablePadding
                               exact
-                              component={Link}
-                              to={item.to}
+                              component={NavLink}
+                              to={item.path}
 
                         //className={classes.navLinks}
                         //activeClassName={classes.activeNavLinks}
@@ -166,13 +166,13 @@ function ResponsiveDrawer(props) {
             >
                 <Toolbar/>
                 <Box>
-                    {/*<Routes>
+                    <Routes>
                         <Route exact path="/profile" element={<Profile user ={props.user}/>}/>
                         <Route exact path="/profile" element={<Profile user={user}/>}/>
                         <Route path="/booking" element={<Booking/>}/>
                         <Route path="/manageBooking" element={<ManageBooking/>}/>
-                           <Route exact path="/logout" element={<LogOut/>}/>
-                    </Routes>*/}
+                           {/*<Route exact path="/logout" element={<LogOut/>}/>*/}
+                    </Routes>
                 </Box>
 
             </Box>

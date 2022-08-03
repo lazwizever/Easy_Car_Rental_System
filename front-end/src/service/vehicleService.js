@@ -30,21 +30,6 @@ class VehicleService{
     }
 
 
-    fetchAvailableVehicle = async () => {
-        const promise = new Promise((resolve, reject) => {
-            axios.get('vehicle/availableVehicles')
-                .then((res) => {
-                    return resolve(res)
-                })
-                .catch((err) => {
-                    return resolve(err)
-                })
-        })
-        return await promise;
-    }
-
-
-
     putVehicle = async (data) => {
         const promise = new Promise((resolve, reject) => {
             axios.put('vehicle', data)

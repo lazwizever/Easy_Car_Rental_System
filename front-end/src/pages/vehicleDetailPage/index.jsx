@@ -13,6 +13,52 @@ import {Link} from "@mui/icons-material";
 
 class VehiclePage extends Component{
 
+    constructor(props) {
+        super(props);
+
+
+        this.state={
+
+            // vehicle:{this.props.vehicle}
+
+
+            vehicle: {
+                vehicleId: 'V00789',
+                registrationNo: 'R1236544',
+                fuelType: 'PETROL',
+                vehicleType: 'LUXURY',
+                noOfPassengers: '6',
+                brand: 'Ferrai',
+                pricePerExtraKm: '500',
+
+                vehiclePriceRate: {
+                    dailyRate: '60000',
+                    monthlyRate: '800000',
+                },
+
+                freeMileAge: {
+                    dailyMileage: '4500',
+                    monthlyMileage: '1000',
+
+                },
+
+                transmissionType: 'MANUAL',
+
+                vehicleAvailability: 'AVAILABLE',
+
+                damageFee: '800000',
+                color: 'black',
+                lastServiceKm: '5000',
+                mileage: '100',
+
+            },
+        }
+    }
+
+
+
+
+
     render() {
 
         const {classes} = this.props;
@@ -70,23 +116,23 @@ class VehiclePage extends Component{
                                    <Grid style={{display:'flex',justifyContent:'space-between',paddingTop:'6vh',width:'38vw'}}>
 
                                        <Grid>
-                                           Color - Black<br/><br/>
-                                           Type - Luxury<br/><br/>
-                                           No of passengers - 5<br/><br/>
-                                           Transmission type - Manual<br/><br/>
-                                           Fuel Type - Diesel<br/><br/>
-                                           Registration number - 4506584798463
+                                           Color - {this.state.vehicle.color}<br/><br/>
+                                           Type - {this.state.vehicle.vehicleType}<br/><br/>
+                                           No of passengers - {this.state.vehicle.noOfPassengers}<br/><br/>
+                                           Transmission type - {this.state.vehicle.transmissionType}<br/><br/>
+                                           Fuel Type - {this.state.vehicle.fuelType}<br/><br/>
+                                           Registration number - {this.state.vehicle.registrationNo}
 
                                        </Grid>
 
                                        <Grid>
                                            Prices for the rent durations.<br/>
-                                             - Daily rate (Rs) - 18,000<br/>
-                                             - Monthly rate (Rs) - 300,000.00<br/><br/>
+                                             - Daily rate (Rs) - {this.state.vehicle.vehiclePriceRate.dailyRate}<br/>
+                                             - Monthly rate (Rs) - {this.state.vehicle.vehiclePriceRate.monthlyRate}<br/><br/>
                                            Free mileage for the price and duration<br/>
-                                             - Free Km for a Day - 100<br/>
-                                             - Free Km for a month - 2400<br/><br/>
-                                           Price for extra km (Rs)-  100.00
+                                             - Free Km for a Day - {this.state.vehicle.freeMileAge.dailyMileage}<br/>
+                                             - Free Km for a month - {this.state.vehicle.freeMileAge.monthlyMileage}<br/><br/>
+                                           Price for extra km (Rs)-  {this.state.vehicle.pricePerExtraKm}
 
                                        </Grid>
 

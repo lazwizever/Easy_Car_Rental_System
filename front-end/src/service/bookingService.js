@@ -43,9 +43,9 @@ class BookingService{
          return await promise;
      };*/
 
-    /* postVehicleImage = async (data) => {
+    postBooking = async (data) => {
          const promise = new Promise((resolve, reject) => {
-             axios.post('upload', data)    // 20s
+             axios.post('booking', data)    // 20s
                  .then((res) => {
                      return resolve(res)
                  })
@@ -55,7 +55,7 @@ class BookingService{
          });
 
          return await promise;
-     }*/
+     }
 
 }
-export default new CustomerService();
+export default new BookingService();

@@ -24,54 +24,14 @@ import {Card} from "@material-ui/core";
 import Typography from "@mui/material/Typography";
 import BMW from "../../assets/img/bmw.jpg"
 import VehicleService from "../../service/vehicleService";
+import BrowserService from "../../service/browserService";
 import DatePicker from "../../component/DatePicker";
 import TimePicker from "../../component/TimePicker";
+import VehiclePage from "../vehicleDetailPage";
+import {Route} from "react-router-dom";
 
 
 
-const itemData = [
-    {
-        img: 'https://di-uploads-pod7.dealerinspire.com/mercedesbenztorontoregionalgroup/uploads/2019/04/CLAcoupeSmallPlate.jpg',
-        title: 'Mercedes-Benz',
-    },
-    {
-        img: 'https://pictures.topspeed.com/IMG/crop_webp/201709/bmw-i8-driven-79_1920x1080.webp',
-        title: 'BMW-i8',
-    },
-    {
-        img: 'https://senda.us/autocraft/avisnew/images/veh_images/1595305281_image47793.jpg',
-        title: 'Toyota Allion NZT',
-    },
-    {
-        img: 'https://blog.japanesecartrade.com/wp-content/uploads/2020/01/Toyota-Premio.jpg',
-        title: 'Toyota-Premio',
-    },
-    {
-        img: 'https://media.ed.edmunds-media.com/toyota/prius/2019/oem/2019_toyota_prius_4dr-hatchback_xle-awd-e_fq_oem_2_1600.jpg',
-        title: 'Toyota Prius',
-    },
-    {
-        img: 'https://img.philkotse.com/2021/12/03/WFFKkBCT/celerio-retro-1-332c_wm.jpg',
-        title: 'Suzuki Celerio',
-    },
-
-    {
-        img: 'https://www.mobikeycarmarket.co.ke/fotos/12/produtos/imagens/13761/img_3084_3763475086095b6ec709c6.jpg',
-        title: 'Toyota Corolla Axio',
-    },
-
-
-    {
-        img: 'https://www.deshicar.com/images/users/2986/2012-Axio.jpg',
-        title: 'Toyota Axio NKR 165',
-    },
-
-
-    {
-        img: 'https://toyota-cms-media.s3.amazonaws.com/wp-content/uploads/2015/10/2016_Prius_c_005_759FED2E688D101C7A41EB5084DCD7654D3E387B-1500x900.jpg',
-        title: 'Toyota Prius',
-    },
-];
 
 const vehicleType = [
     { label: 'General'},
@@ -86,12 +46,10 @@ class ReservationPage extends Component{
 
         this.state = {
 
-            formData:{
-                pickUpDate:'',
-                pickUpTime:'',
-                returnDate:'',
-            },
-
+            pickUpDate:'2022-07-06',
+            pickUpTime:'',
+            returnDate:'2022-07-10',
+            returnTime:'',
 
         vehicleList : []
         }
@@ -100,9 +58,23 @@ class ReservationPage extends Component{
     }
 
 
+    loadAvailableVehicles = async () => {
+        let params = {pickupDate:this.state.pickUpDate,returnDate:this.state.returnDate}
+        let res = await BrowserService.fetchAvailableVehicle(params);
+
+        if (res.status === 200) {
+            this.setState({
+                vehicleList: res.data.data
+            });
+        }
+        console.log(this.state.vehicleList)    // print customers array
+
+    };
+
+
 
     loadAllVehicles = async () => {
-        let res = await VehicleService.fetchAvailableVehicle();
+        let res = await BrowserService.fetchVehicle();
 
         if (res.status === 200) {
             this.setState({
@@ -155,58 +127,16 @@ class ReservationPage extends Component{
                 <Grid style={{display:'flex',width:'100vw',justifyContent:'center',paddingTop:'6vh'}}>
                     <Grid  className={classes.dateTimeContainer}>
 
-                        {/*<DatePicker label ="Pick-Up-Date"/>
+                        <DatePicker label ="Pick-Up-Date"
+                                    /*expect(screen.getByDisplayValue('01/01/2022')).toBeInTheDocument();*/
+
+                        />
 
                         <TimePicker label ="Pick-Up-Time"/>
 
                         <DatePicker label ="Drop-Off-Date"/>
 
-                        <TimePicker label ="Drop-Off-Time"/>*/}
-
-
-                        <TextField
-                            required
-                            id="outlined-required"
-                            label="Pick Up Date"
-                            sx={{ m: 1, width: '22.7ch' }}
-                            value={this.state.formData.pickUpDate}
-                            onChange={(e) => {
-                                let formDataOb =this.state.formData
-                                formDataOb.pickUpDate = e.target.value
-                                this.setState(formDataOb)
-                            }}
-                            validators={['required']}
-                        />
-
-                        <TextField
-                            required
-                            id="outlined-required"
-                            label="Pick Up Time"
-                            sx={{ m: 1, width: '22.7ch' }}
-                            value={this.state.formData.pickUpTime}
-                            onChange={(e) => {
-                                let formDataOb =this.state.formData
-                                formDataOb.pickUpTime = e.target.value
-                                this.setState(formDataOb)
-                            }}
-                            validators={['required']}
-                        />
-
-
-                        <TextField
-                            required
-                            id="outlined-required"
-                            label="drop Off Date"
-                            sx={{ m: 1, width: '22.7ch' }}
-                            value={this.state.formData.returnDate}
-                            onChange={(e) => {
-                                let formDataOb =this.state.formData
-                                formDataOb.returnDate = e.target.value
-                                this.setState(formDataOb)
-                            }}
-                            validators={['required']}
-                        />
-
+                        <TimePicker label ="Drop-Off-Time"/>
 
 
                         <Autocomplete
@@ -222,8 +152,14 @@ class ReservationPage extends Component{
                     </Grid>
 
                     <Grid paddingLeft='1vw'>
-                        <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'9vh',width:'8vw',
+                        <Button type='submit' style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'9vh',width:'8vw',
                             fontSize:'15px',opacity:'95%'}}
+
+                                onClick={
+                                    this.loadAvailableVehicles
+                                }
+
+
                         >Find My Car</Button>
                     </Grid>
                 </Grid>
@@ -249,7 +185,9 @@ class ReservationPage extends Component{
                                 </CardContent>
                                 <CardActions style={{display:'flex',justifyContent:'center'}}>
 
-                                    <Button size="small"  style={{backgroundColor:'green',color:'white'}}>Book Now</Button>
+                                    <Button size="small"  style={{backgroundColor:'green',color:'white'}}
+                                            href='/vehicleDetailsPage'
+                                    >View More</Button>
                                 </CardActions>
                             </Card>
                         ))
