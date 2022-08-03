@@ -47,7 +47,7 @@ public class AdminController {
         return new ResponseUtil(201,"OK",null);
     }
 
-   /* @GetMapping( "/{dashBoard}" , produces = MediaType.APPLICATION_JSON_VALUE)
+    /*@GetMapping( "/{dashBoard}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil loadAdminDashboard(){
         return new ResponseUtil(201,"OK",adminService.loadDashboard());
     }*/
@@ -58,6 +58,27 @@ public class AdminController {
         return new ResponseUtil(201,"OK", adminService.adminDashBoardInfo());
 
     }
+
+    @PostMapping ("acceptCustomer")
+    public ResponseUtil acceptCustomer(CustomerDTO customerDTO){
+        adminService.acceptCustomer(customerDTO);
+        return new ResponseUtil(201,"OK", null);
+    }
+
+    @DeleteMapping ("denyCustomerId")
+    public ResponseUtil denyCustomer(@RequestParam String denyCustomerId){
+        adminService.denyCustomer(denyCustomerId);
+        return new ResponseUtil(201,"OK", null);
+    }
+
+    @GetMapping()
+    public ResponseUtil loadUserRequest(){
+        adminService.loaUserRequest();
+        return new ResponseUtil(201,"OK", adminService.adminDashBoardInfo());
+
+    }
+
+
 
     
 }

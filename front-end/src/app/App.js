@@ -1,20 +1,22 @@
 import logo from '../logo.svg';
 import '../App.css';
 import HomePage from "../pages/homePage";
-import ReservationPage from "../pages/reservationPage";
 import {Route, Routes,} from "react-router-dom";
-import VehiclePage from "../pages/vehicleDetailPage";
-import BookingPage from "../component/CustomerDashBoard/bookingPayment";
 import SignUpPage from "../pages/signUpPage";
 import SignInPage from "../pages/signInPage";
-//import AdminPage from "../pages/adminPage";
-import AdminDashBoard from "../component/AdminDashBoard";
-import DriverDashBoard from "../component/DriverDashBoard";
-import MiniDrawer from "../component/CustomerDashBoardNew/drawer/customerDashboard";
+import DriverDashBoard from "../component/DriverDashBoard/drawer/driverDashboard";
 import CustomerDashBoard from "../component/CustomerDashBoardNew/drawer/customerDashboard";
 import Profile from "../component/CustomerDashBoardNew/profile/profile";
 import Booking from "../component/CustomerDashBoardNew/placeBooking/booking";
 import ManageBooking from "../component/CustomerDashBoardNew/manageBooking/manageBooking";
+import DriverProfile from "../component/DriverDashBoard/profile/profile";
+import DriverSchedule from "../component/DriverDashBoard/driverSchedule/driverSchedule";
+import AdminDashBoard from "../component/AdminDashBoard/drawer/adminDashboard";
+import AdminProfile from "../component/AdminDashBoard/profile/profile";
+import ManageCustomer from "../component/AdminDashBoard/manageCustomer/manageCustomer";
+import IncomeReports from "../component/AdminDashBoard/incomeReports/incomeReports";
+import ManageVehicle from "../component/AdminDashBoard/manageVehicle/manageVehicle";
+import DashBoard from "../component/AdminDashBoard/dashBoard/adminDashboardIndex";
 
 
 
@@ -38,6 +40,23 @@ function App() {
           <Route path="booking" element={<Booking />} />
           <Route path="manageBooking" element={<ManageBooking />} />
         </Route>
+
+          <Route path="/driverDashBoard" element={<DriverDashBoard />}>
+              <Route index element={<DriverProfile/>} />
+              <Route path="driverSchedule" element={<DriverSchedule />} />
+          </Route>
+
+
+          <Route path="/adminDashBoard" element={<AdminDashBoard />}>
+              <Route index element={<DashBoard/>} />
+              <Route path="manageCustomer" element={<ManageCustomer />} />
+              <Route path="manageBooking" element={<ManageBooking />} />
+              <Route path="incomeReports" element={<IncomeReports />} />
+              <Route path="manageDriver" element={<DriverSchedule />} />
+              <Route path="manageVehicle" element={<ManageVehicle />} />
+          </Route>
+
+
 
           <Route exact path='/' element={<HomePage/>}/>
           <Route path='sighUpPage' element={<SignUpPage/>}/>

@@ -25,8 +25,8 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {NavLink, Route, Routes} from "react-router-dom";
 /*import Profile from "./profile";*/
-import DriverProfile from "./profile";
-import DriverSchedule from "./driverSchedule";
+import DriverProfile from "./profile/profile";
+import DriverSchedule from "./driverSchedule/driverSchedule";
 /*import Booking from "./booking";
 import ManageBooking from "./manageBooking";*/
 

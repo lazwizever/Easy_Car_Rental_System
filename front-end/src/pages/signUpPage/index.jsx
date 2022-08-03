@@ -52,7 +52,8 @@ class SignUpPage extends Component {
 
         let res = await SignInService.fetchUser(params);
         if (res.status === 200) {
-            console.log("Role"+res.data.data.role)
+
+            localStorage.setItem("userName",res.data.data.userName);
 
             if (res.data.data.role == 'CUSTOMER'){
                 this.setState({
@@ -60,17 +61,17 @@ class SignUpPage extends Component {
                 });
 
             }
-            /*if (res.data.data.role == 'DRIVER'){
+            if (res.data.data.role == 'DRIVER'){
                 this.setState({
                     link:'/driverDashBoard'
                 });
-            }*/
+            }
 
-            /*if (res.data.data.role == 'ADMIN'){
+            if (res.data.data.role == 'ADMIN'){
                 this.setState({
                     link:'/adminDashBoard'
                 });
-            }*/
+            }
 
 
         } else {
@@ -81,7 +82,6 @@ class SignUpPage extends Component {
 
             });
         }
-
     };
 
     render() {

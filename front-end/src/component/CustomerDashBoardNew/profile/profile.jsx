@@ -71,7 +71,8 @@ class Profile extends Component {
 
 
     loadData = async () => {
-        let params ={userName: this.props.user.userName}
+        let params ={userName: localStorage.getItem("userName")}
+
         let res = await CustomerService.fetchCustomer(params);
 
         if (res.status === 200) {

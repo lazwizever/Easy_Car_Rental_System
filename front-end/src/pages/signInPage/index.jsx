@@ -11,7 +11,7 @@ import SignUpService from '../../service/signUpService'
 import {styleSheet} from "./style";
 import GDSESnackBar from "../../component/SnackBar";
 import GDSEButton from "../../component/Button/button";
-import DriverDashBoard from "../../component/DriverDashBoard";
+
 
 
 class SignInPage extends Component{
@@ -28,7 +28,7 @@ class SignInPage extends Component{
                 },
 
                 user: {
-                    userId: '',
+
                     role: '',
                     userName: '',
                     passWord: '',
@@ -44,8 +44,9 @@ class SignInPage extends Component{
                     type: 'DRIVER'
                 },
                 {
-                    type: 'REGISTERED_USER'
-                }
+                    type: 'CUSTOMER'
+                },
+
             ],
 
 
@@ -53,17 +54,19 @@ class SignInPage extends Component{
             message: '',
             severity: '',
 
-            data: [],
-            btnLabel: 'Register',
-            btnColor: 'primary'
+
         }
 
     }
 
 
     submitUser = async () => {
+
         let formData = this.state.formData;
-        if(formData.user.role === 'CUSTOMER'){
+        console.log(formData)
+        console.log(formData.user.role)
+        if(formData.user.role == 'CUSTOMER'){
+            console.log("hrii")
             let formData = this.state.formData;
             let res = await SignUpService.postUserCustomer(formData);
 
@@ -202,7 +205,6 @@ class SignInPage extends Component{
                                    let formData = this.state.formData
                                    formData.user.role = value.type
                                    this.setState({ formData })
-
                                }}
                                getOptionLabel={
                                    (option) => option.type
@@ -330,9 +332,9 @@ class SignInPage extends Component{
                    </Grid>
 
 
+
                    <Grid style={{paddingTop:'4vh',paddingLeft:'15vw'}}>
-                       <GDSEButton style={{backgroundColor:'black',color:'white',fontWeight:'semi',height:'6vh',width:'17vw',
-                           fontSize:'15px'}} type='submit'>Register</GDSEButton>
+                       <GDSEButton   color={'primary'}  label={"Register"} variant={'contained'} type={"submit"}/>
                    </Grid>
 
                    </ValidatorForm>

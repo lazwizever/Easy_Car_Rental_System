@@ -5,10 +5,8 @@ import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.dto.DriverDTO;
 import lk.easy.rental.entity.Customer;
 import lk.easy.rental.entity.Driver;
-import lk.easy.rental.repo.AdminRepo;
-import lk.easy.rental.repo.CustomerRepo;
-import lk.easy.rental.repo.DriverRepo;
-import lk.easy.rental.repo.UserRepo;
+import lk.easy.rental.entity.UserRequest;
+import lk.easy.rental.repo.*;
 import lk.easy.rental.service.SignUpService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,9 @@ public class SignUpServiceImpl implements SignUpService {
 
     @Autowired
     DriverRepo driverRepo;
+
+    @Autowired
+    UserRequestRepo userRequestRepo;
 
     @Autowired
     UserRepo userRepo;
@@ -50,7 +51,18 @@ public class SignUpServiceImpl implements SignUpService {
     public void saveCustomer(CustomerDTO customerDTO) {
         if (!customerRepo.existsById(customerDTO.getId())){
             if (!userRepo.existsByUserName(customerDTO.getUser().getUserName())){
-                customerRepo.save(modelMapper.map(customerDTO, Customer.class));
+
+
+
+
+
+                System.out.println(modelMapper.map(customerDTO, UserRequest.class));
+
+
+                UserRequest map = modelMapper.map(customerDTO, UserRequest.class);
+
+
+                userRequestRepo.save(modelMapper.map(customerDTO, UserRequest.class));
             }else {
                 throw new DuplicateEntryException("User already exist");
             }

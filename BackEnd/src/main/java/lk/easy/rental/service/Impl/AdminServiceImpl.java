@@ -4,9 +4,7 @@ import lk.easy.rental.Exception.DuplicateEntryException;
 import lk.easy.rental.dto.AdminDTO;
 import lk.easy.rental.dto.AdminDashboardDTO;
 import lk.easy.rental.dto.CustomerDTO;
-import lk.easy.rental.entity.Admin;
-import lk.easy.rental.entity.Booking;
-import lk.easy.rental.entity.Customer;
+import lk.easy.rental.entity.*;
 import lk.easy.rental.enums.AvailabilityType;
 import lk.easy.rental.enums.Role;
 import lk.easy.rental.repo.*;
@@ -19,6 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -35,6 +34,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     BookingRepo bookingRepo;
+
+    @Autowired
+    UserRequestRepo userRequestRepo;
 
     @Autowired
     VehicleRepo vehicleRepo;
@@ -117,4 +119,26 @@ public class AdminServiceImpl implements AdminService {
 
         return adminDashboardDTO;
     }
+
+    @Override
+    public void acceptCustomer(CustomerDTO customerDTO) {
+        UserRequest userRequest = userRequestRepo.findById(customerDTO.getId()).get();
+        User mapUser = modelMapper.map(userRequest.getUser(), User.class);
+        Customer customer = modelMapper.map(customerDTO, Customer.class);
+        customer.setUser(mapUser);
+        customerRepo.save(customer);
+        userRequestRepo.deleteById(customerDTO.getId());
+    }
+
+    @Override
+    public void denyCustomer(String id) {
+        userRequestRepo.deleteById(id);
+    }
+
+    @Override
+    public List<CustomerDTO> loaUserRequest() {
+        return modelMapper.map(userRequestRepo.findAll(),new TypeToken<List<CustomerDTO>>(){}.getType());
+    }
+
+
 }

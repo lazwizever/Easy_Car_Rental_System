@@ -2,6 +2,7 @@ package lk.easy.rental.service;
 
 import lk.easy.rental.dto.AdminDTO;
 import lk.easy.rental.dto.AdminDashboardDTO;
+import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.dto.PaymentDTO;
 
 import java.util.List;
@@ -18,4 +19,11 @@ public interface AdminService {
     void deleteAdmin(String id);
 
     AdminDashboardDTO adminDashBoardInfo();
+
+    void acceptCustomer(CustomerDTO customerDTO);
+
+
+    void denyCustomer(String id);
+
+    List<CustomerDTO> loaUserRequest();
 }

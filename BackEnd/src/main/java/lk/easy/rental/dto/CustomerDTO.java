@@ -26,4 +26,13 @@ public class CustomerDTO {
     private UserDTO user;
 
 
+    public CustomerDTO(String id, String nic, Name name, String licenseNo, String address, String contactNo, String email) {
+        this.id = id;
+        this.nic = nic;
+        this.name = name;
+        this.licenseNo = licenseNo;
+        this.address = address;
+        this.contactNo = contactNo;
+        this.email = email;
+    }
 }

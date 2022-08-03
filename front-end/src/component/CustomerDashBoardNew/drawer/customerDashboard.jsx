@@ -124,8 +124,6 @@ export default function CustomerDashBoard() {
             icon: <CategoryIcon />,
             to: 'manageBooking',
         },
-
-
     ]
 
     const settings = [

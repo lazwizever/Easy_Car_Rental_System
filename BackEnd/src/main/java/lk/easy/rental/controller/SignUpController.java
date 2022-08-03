@@ -34,7 +34,7 @@ public class SignUpController {
     private FileUploadUtil fileUploadUtil;
 
 
-    @PostMapping("/customer")
+    @PostMapping(path = "/customer")
     public ResponseUtil saveCustomer(@RequestBody CustomerDTO customerDTO){
         signUpService.saveCustomer(customerDTO);
         return new ResponseUtil(201,"Customer successfully added",null);
