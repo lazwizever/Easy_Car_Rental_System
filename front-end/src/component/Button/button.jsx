@@ -15,7 +15,8 @@ class GDSEButton extends Component {
         color: PropTypes.string,
         type: PropTypes.string,
         endIcon: PropTypes.string,
-        startIcon: PropTypes.string
+        startIcon: PropTypes.string,
+        href:PropTypes.string,
     }
 
     static defautlProps = {
@@ -54,6 +55,7 @@ class GDSEButton extends Component {
             startIcon,
             endIcon,
             style,
+            href,
         } = this.props;
 
         return(
@@ -67,6 +69,7 @@ class GDSEButton extends Component {
                 type={type}
                 onClick={this.handleButtonClick}
                 style={style}
+                href={href}
             >
                 {this.renderChildren(label, children)}
             </Button>

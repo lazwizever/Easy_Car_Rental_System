@@ -39,10 +39,10 @@ function ResponsiveDrawer(props) {
     };
 
     const listItemData = [
-        {label: "Profile", path: "profile", icon: <AccountCircleIcon style={{color: '#ffffff'}}/>},
-        {label: "Booking", path: "booking", icon: <BookIcon style={{color: '#ffffff'}}/>},
-        {label: "Manage Booking", path: "manageBooking", icon: <CollectionsBookmarkIcon style={{color: '#ffffff'}}/>},
-        {label: "Log out", path: "logout", icon: <LogoutIcon style={{color: '#ffffff'}}/>},
+        {label: "Profile", to: "/", icon: <AccountCircleIcon style={{color: '#ffffff'}}/>},
+        {label: "Booking", to: "/booking", icon: <BookIcon style={{color: '#ffffff'}}/>},
+        {label: "Manage Booking", to: "/manageBooking", icon: <CollectionsBookmarkIcon style={{color: '#ffffff'}}/>},
+        {label: "Log out", to: "/logout", icon: <LogoutIcon style={{color: '#ffffff'}}/>},
     ]
 
     const drawer = (

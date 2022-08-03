@@ -25,7 +25,6 @@ class SignUpPage extends Component {
         super(props);
 
         this.state = {
-            loginUserRole : '',
             formData: {
 
                 userName: '',
@@ -33,11 +32,13 @@ class SignUpPage extends Component {
                 role: ''
 
             },
+
+            link:'',
+
             alert: false,
             message: '',
             severity: '',
 
-            loginUser: {},
             btnLabel: 'Login',
             btnColor: 'primary'
 
@@ -47,22 +48,30 @@ class SignUpPage extends Component {
     fetchUser = async () => {
         let formData = this.state.formData;
         const  params = {UserName:formData.userName,PassWord:formData.passWord}
-        console.log(formData)
+
 
         let res = await SignInService.fetchUser(params);
         if (res.status === 200) {
+            console.log("Role"+res.data.data.role)
 
-            console.log(res.data.data.role);
-            this.setState({
-                loginUser:res.data.data,
-                loginUserRole:res.data.data.role,
-                alert: true,
-                message: res.data.message,
-                severity: 'success'
-            });
+            if (res.data.data.role == 'CUSTOMER'){
+                this.setState({
+                    link:'/customerDashBoard',
+                });
 
+            }
+            /*if (res.data.data.role == 'DRIVER'){
+                this.setState({
+                    link:'/driverDashBoard'
+                });
+            }*/
 
-            //this.clearFields();
+            /*if (res.data.data.role == 'ADMIN'){
+                this.setState({
+                    link:'/adminDashBoard'
+                });
+            }*/
+
 
         } else {
             this.setState({
@@ -78,7 +87,7 @@ class SignUpPage extends Component {
     render() {
         const {classes} = this.props;
      return(
-            (this.state.loginUserRole == "")?<>
+           <>
 
                 <Grid className={classes.container}  style={{
                     backgroundImage: `url(${loginBg1})`,
@@ -127,7 +136,7 @@ class SignUpPage extends Component {
 
 
                             <Grid className={classes.btn_container}  paddingLeft='2.5vw' paddingTop='4vh'>
-                                <GDESButton type='submit' label="Login" style={{backgroundColor:'#040404',color:'white',fontWeight:'semi',height:'6vh',width:'17vw',
+                                <GDESButton href={this.state.link} type='submit' label="Login" style={{backgroundColor:'#040404',color:'white',fontWeight:'semi',height:'6vh',width:'17vw',
                                     fontSize:'15px',opacity:'95%'}}/>
                             </Grid>
                         </ValidatorForm>
@@ -152,8 +161,7 @@ class SignUpPage extends Component {
                 />
 
 
-            </>: (this.state.loginUserRole == "DRIVER")?<DriverDashBoard/>:
-                    <CustomerDashBoard user={this.state.loginUser}/>
+            </>
 
 
      )

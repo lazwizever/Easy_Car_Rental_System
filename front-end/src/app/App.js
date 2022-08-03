@@ -8,9 +8,13 @@ import BookingPage from "../component/CustomerDashBoard/bookingPayment";
 import SignUpPage from "../pages/signUpPage";
 import SignInPage from "../pages/signInPage";
 //import AdminPage from "../pages/adminPage";
-import CustomerDashBoard from "../pages/customer";
 import AdminDashBoard from "../component/AdminDashBoard";
 import DriverDashBoard from "../component/DriverDashBoard";
+import MiniDrawer from "../component/CustomerDashBoardNew/drawer/customerDashboard";
+import CustomerDashBoard from "../component/CustomerDashBoardNew/drawer/customerDashboard";
+import Profile from "../component/CustomerDashBoardNew/profile/profile";
+import Booking from "../component/CustomerDashBoardNew/placeBooking/booking";
+import ManageBooking from "../component/CustomerDashBoardNew/manageBooking/manageBooking";
 
 
 
@@ -26,8 +30,22 @@ function App() {
         <Route path='signInPage' element={<SignInPage/>}/>
 
       </Routes>*/
-      //<CustomerDashBoard/>
-      <BookingPage/>
+
+
+      <Routes>
+        <Route path="/customerDashBoard" element={<CustomerDashBoard />}>
+          <Route index element={<Profile/>} />
+          <Route path="booking" element={<Booking />} />
+          <Route path="manageBooking" element={<ManageBooking />} />
+        </Route>
+
+          <Route exact path='/' element={<HomePage/>}/>
+          <Route path='sighUpPage' element={<SignUpPage/>}/>
+          <Route path='signInPage' element={<SignInPage/>}/>
+      </Routes>
+
+
+      //<BookingPage/>
 
   );
 }
