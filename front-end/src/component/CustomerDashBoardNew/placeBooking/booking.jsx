@@ -24,11 +24,11 @@ class Booking extends Component{
         const {classes} = this.props;
 
         return(
-            <Grid  width="81vw">
+            <Grid  width="96vw" >
 
-
-               <BrowsePage/>
-
+                <Grid style={{marginLeft:'-3vw'}}>
+                    <BrowsePage/>
+                </Grid>
 
 
             </Grid>

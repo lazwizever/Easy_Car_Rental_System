@@ -1,9 +1,6 @@
 package lk.easy.rental.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lk.easy.rental.entity.BookingDetails;
-import lk.easy.rental.entity.Customer;
-import lk.easy.rental.entity.DriverSchedule;
 import lk.easy.rental.enums.RequestType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,14 +30,28 @@ public class BookingDTO {
     private List<DriverScheduleDTO> driverScheduleDTOList;
     private List<BookingDetailsDTO> bookingDetailsList;
 
-    public BookingDTO(String bookingId, LocalDate pickUpDate, LocalTime pickUpTime, LocalDate returnDate, LocalTime returnTime, RequestType driverRequestType, CustomerDTO customer, List<DriverScheduleDTO> driverScheduleDTOList) {
-        this.bookingId = bookingId;
-        this.pickUpDate = pickUpDate;
-        this.pickUpTime = pickUpTime;
+    /*public BookingDTO(String booking_Id, LocalDate pickupDate, LocalTime pickupTime, LocalDate returnDate, LocalTime returnTime, RequestType needDriver, CustomerDTO customer, List<DriverScheduleDTO> driverScheduleList) {
+        this.bookingId = booking_Id;
+        this.pickUpDate = pickupDate;
+        this.pickUpTime = pickupTime;
         this.returnDate = returnDate;
         this.returnTime = returnTime;
-        this.driverRequestType = driverRequestType;
+        this.driverRequestType = needDriver;
         this.customer = customer;
-        this.driverScheduleDTOList = driverScheduleDTOList;
+        this.driverScheduleDTOList = driverScheduleList;
+    }*/
+
+
+    public BookingDTO(String bookingId,  LocalDate pickupDate, LocalTime pickupTime, LocalDate returnDate, LocalTime returnTime, RequestType needDriver, CustomerDTO customer, List<BookingDetailsDTO> bookedVehicleList) {
+        this.bookingId = bookingId;
+        this.pickUpDate = pickupDate;
+        this.pickUpTime = pickupTime;
+        this.returnDate = returnDate;
+        this.returnTime = returnTime;
+        this.driverRequestType = needDriver;
+        this.customer = customer;
+        this.bookingDetailsList = bookedVehicleList;
     }
+
+
 }

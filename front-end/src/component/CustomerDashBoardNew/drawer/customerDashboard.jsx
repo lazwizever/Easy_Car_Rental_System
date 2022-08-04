@@ -19,14 +19,19 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';
 import CategoryIcon from '@mui/icons-material/Category';
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import BookIcon from '@mui/icons-material/Book';
+import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
+
 
 
 import { Outlet, Link } from "react-router-dom";
+import logo from "../../../assets/img/logo.png";
+import Grid from "@mui/material/Grid";
 
 const drawerWidth = 240;
 
@@ -111,17 +116,17 @@ export default function CustomerDashBoard() {
     const pages = [
         {
             text: 'Profile',
-            icon: <HomeIcon />,
+            icon: <AccountCircleIcon />,
             to: ''
         },
         {
             text: 'Place Booking',
-            icon: <PeopleIcon />,
+            icon: <BookIcon />,
             to: 'booking',
         },
         {
             text: 'Manage Booking',
-            icon: <CategoryIcon />,
+            icon: <CollectionsBookmarkIcon />,
             to: 'manageBooking',
         },
     ]
@@ -144,8 +149,8 @@ export default function CustomerDashBoard() {
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open}>
-                <Toolbar>
+            <AppBar position="fixed"  open={open}>
+                <Toolbar style={{backgroundColor:'black'}}>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <IconButton
                             color="inherit"
@@ -159,14 +164,37 @@ export default function CustomerDashBoard() {
                         >
                             <MenuIcon />
                         </IconButton>
+
                         <Typography variant="h6" noWrap component="div">
-                            Mini variant drawer
+                            Customer Dashboard
                         </Typography>
+
+                       {/* ----------------------Logo-----------------------
+                        <Grid style={{position: 'absolute', paddingLeft: '4vw', marginTop: '-2vh'}}>
+                            <img src={logo} style={{position: 'absolute', height: '5vh', width: '5vw'}}/>
+
+                            <h3 style={{
+                                margin: 'auto',
+                                color: '#B5B5B5',
+                                paddingLeft: '1.5vw',
+                                paddingTop: '3.5vh',
+                                fontWeight: 'unset'
+                            }}>Easy Car</h3>
+                            <h1 style={{
+                                color: '#B5B5B5',
+                                fontSize: '11px',
+                                margin: 'auto',
+                                paddingLeft: '2.2vw',
+                                fontWeight: 'unset'
+                            }}>rental pvt</h1>
+                        </Grid>*/}
+
+
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/71526158?v=4" />
+                                <AccountCircleIcon  style={{color:'white',fontSize:'35px'}}/>
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -196,14 +224,14 @@ export default function CustomerDashBoard() {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <Drawer variant="permanent" open={open}>
+            <Drawer variant="permanent" open={open} >
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List>
+                <List >
                     {pages.map((page, index) => (
                         <ListItem component={Link} to={page.to} key={page.text} disablePadding sx={{ display: 'block' }}>
                             <ListItemButton

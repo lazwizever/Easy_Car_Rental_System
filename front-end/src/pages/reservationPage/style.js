@@ -1,7 +1,7 @@
 export const styleSheet = {
 
     reservationContainer: {
-        backgroundColor:'#040404',
+        //backgroundColor:'#040404',
         width: '100vw',
 
     },
@@ -18,8 +18,8 @@ export const styleSheet = {
 
     dateTimeContainer:{
         backgroundColor:'white',
-        width:'82vw',
-        height:'9vh',
+        width:'70vw',
+        height:'7vh',
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',

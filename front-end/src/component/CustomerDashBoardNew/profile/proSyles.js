@@ -11,10 +11,11 @@ export const styleSheet={
     },
 
     rightGrid:{
+        backgroundColor:'#eeeff1',
       width :'30vw',
       height:'84vh',
       display:'flex',
-      flexDirection:'column !important'
+      flexDirection:'column !important',
     },
 
     leftGrid:{

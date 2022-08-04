@@ -86,7 +86,7 @@ class ReservationPage extends Component {
             <Grid className={classes.reservationContainer}>
 
                     {/*-------------------------Logo--------------------------------*/}
-                    <Grid style={{position: 'absolute', paddingLeft: '4vw', paddingTop: '1vh'}}>
+                    {/*<Grid style={{position: 'absolute', paddingLeft: '4vw', paddingTop: '1vh'}}>
                         <img src={logo} style={{position: 'absolute', height: '7vh', width: '7vw'}}/>
 
                         <h3 style={{
@@ -103,22 +103,22 @@ class ReservationPage extends Component {
                             paddingLeft: '2.2vw',
                             fontWeight: 'unset'
                         }}>rental pvt</h1>
-                    </Grid>
+                    </Grid>*/}
 
 
                     {/*------------------------Nav Tabs-----------------------------*/}
                     <Grid className={classes.navTabs}>
                         <Tabs centered>
-                            <Tab label="Home" href="/" style={{color: '#B5B5B5'}}/>
-                            <Tab label="Reservation" href="Reservation" style={{color: '#B5B5B5'}}/>
-                            <Tab label="About Us" style={{color: '#B5B5B5'}}/>
-                            <Tab label="Contact Us" style={{color: '#B5B5B5'}}/>
-                            <Tab label="Sign In" style={{color: '#B5B5B5'}}/>
-                            <Tab label="Sign Up" style={{color: '#B5B5B5'}}/>
+                            <Tab label="Home" href="/" style={{color: '#000000'}}/>
+                            <Tab label="Reservation" href="Reservation" style={{color: '#000000'}}/>
+                            <Tab label="About Us" style={{color: '#000000'}}/>
+                            <Tab label="Contact Us" style={{color: '#000000'}}/>
+                            <Tab label="Sign In" style={{color: '#000000'}}/>
+                            <Tab label="Sign Up" style={{color: '#000000'}}/>
                         </Tabs>
 
                         <AccountCircleIcon
-                            style={{fontSize: '25px', paddingTop: '10px', color: '#B5B5B5', fontFamily: 'Quicksand'}}/>
+                            style={{fontSize: '25px', paddingTop: '10px', color: '#000000', fontFamily: 'Quicksand'}}/>
 
                     </Grid>
 
@@ -157,7 +157,8 @@ class ReservationPage extends Component {
                                 backgroundColor: '#FF9900',
                                 color: 'black',
                                 fontWeight: 'semi',
-                                height: '9vh',
+                                marginTop:'0.6vh',
+                                height: '6vh',
                                 width: '8vw',
                                 fontSize: '15px',
                                 opacity: '95%'
@@ -180,7 +181,8 @@ class ReservationPage extends Component {
                         justifyContent: 'space-evenly',
                         flexDirection: "row",
                         flexWrap: 'wrap',
-                        marginTop: '10vh'
+                        marginTop: '10vh',
+                        marginLeft:'1.5vw'
                     }}>
                         {
                             this.state.vehicleList.map((vehicle) => (

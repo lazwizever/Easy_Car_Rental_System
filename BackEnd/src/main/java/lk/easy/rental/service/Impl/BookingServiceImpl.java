@@ -6,6 +6,7 @@ import lk.easy.rental.dto.BookingDetailsDTO;
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.entity.Booking;
 import lk.easy.rental.entity.Customer;
+import lk.easy.rental.enums.RequestType;
 import lk.easy.rental.repo.BookingDetailsRepo;
 import lk.easy.rental.repo.BookingRepo;
 import lk.easy.rental.repo.CustomerRepo;
@@ -47,10 +48,11 @@ public class BookingServiceImpl implements BookingService {
 
                     //----------------if driver is request---------------------
 
-                    if (bookingDTO.getDriverRequestType().equals("YES")){
+                    if (bookingDTO.getDriverRequestType().equals(RequestType.YES)){
                         if (!bookingDTO.getDriverScheduleDTOList().isEmpty()){
                             bookingRepo.save(modelMapper.map(bookingDTO, Booking.class));
                         }
+
                         //-----------------------------------------------------
 
 
