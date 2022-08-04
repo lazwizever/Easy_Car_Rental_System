@@ -185,6 +185,7 @@ class ReservationPage extends Component {
                         {
                             this.state.vehicleList.map((vehicle) => (
 
+
                                 <Card style={{width: '31vw', marginTop: '1vh',height:"60vh"}}>
                                     <CardMedia
                                         component="img"
@@ -207,7 +208,15 @@ class ReservationPage extends Component {
                                     <CardActions style={{display: 'flex', justifyContent: 'center'}}>
 
 
-                                        <Link to="payment" style={{ textDecoration: 'none', color: 'black' }}>
+
+
+                                        <Link to="payment"
+
+                                              onClick={ ()=>{
+                                                  localStorage.setItem("vehicle",vehicle.vehicleId)
+                                              }}
+
+                                              style={{ textDecoration: 'none', color: 'black' }}>
                                             <Typography textAlign="center">Book Now</Typography>
                                         </Link>
 

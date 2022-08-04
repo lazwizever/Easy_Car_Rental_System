@@ -48,8 +48,8 @@ public class VehicleController {
         return new ResponseUtil(201,"Vehicle successfully added",null);
     }
 
-    @GetMapping(path = "/{vehicleId}",produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchVehicle(@PathVariable String vehicleId){
+    @GetMapping(params = {"vehicleId"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchVehicle(@RequestParam String vehicleId){
         return new ResponseUtil(201,"OK",vehicleService.searchVehicle(vehicleId));
     }
 
