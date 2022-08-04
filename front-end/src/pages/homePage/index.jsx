@@ -95,6 +95,19 @@ const vehicleType = [
 class HomePage extends Component {
     constructor(props) {
         super(props);
+
+        this.state={
+
+            pickUpDate:'',
+            pickUpTime:'',
+            returnDate:'',
+            returnTime:'',
+
+        }
+
+
+
+
     }
 
     render() {
@@ -152,6 +165,7 @@ class HomePage extends Component {
                         <Button style={{backgroundColor:'#FF9900',color:'black',fontWeight:'semi',height:'9vh',width:'8vw',
                             fontSize:'15px',opacity:'95%'}}
 
+                                href="/ReservationPage"
                     /*onClick={() =>setOpenPopup(true)}*/
 
                         >Find My Car</Button>
@@ -163,7 +177,9 @@ class HomePage extends Component {
 
                     <Grid  className={classes.dateTimeContainer}>
                         <Grid>
-                            <DatePicker label ="Pick-Up-Date"/>
+                            <DatePicker label ="Pick-Up-Date"
+
+                            />
                         </Grid>
 
                         <Grid>

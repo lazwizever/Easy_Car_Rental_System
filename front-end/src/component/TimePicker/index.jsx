@@ -13,6 +13,7 @@ export default function BasicTimePicker(props) {
                 label={props.label}
                 value={value}
                 onChange={(newValue) => {
+                    (props.label ==="Pick-Up-Time")?localStorage.setItem("pickUpTime",newValue):localStorage.setItem("returnTime",newValue)
                     setValue(newValue);
                 }}
                 renderInput={(params) => <TextField {...params} />}

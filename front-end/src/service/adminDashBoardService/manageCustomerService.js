@@ -5,6 +5,7 @@ class ManageCustomerService {
 
     acceptCustomer = async (data) => {
         const promise = new Promise((resolve, reject) => {
+            console.log(data.id)
             axios.post('admin/acceptCustomer',data)
                 .then((res) => {
                     return resolve(res)
@@ -16,10 +17,9 @@ class ManageCustomerService {
         return await promise;
     }
 
-
     fetchUserRequest = async () => {
         const promise = new Promise((resolve, reject) => {
-            axios.get('admin')
+            axios.get('admin/loadUserRequest')
                 .then((res) => {
                     return resolve(res)
                 })

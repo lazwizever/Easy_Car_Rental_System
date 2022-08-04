@@ -12,11 +12,12 @@ import ManageBooking from "../component/CustomerDashBoardNew/manageBooking/manag
 import DriverProfile from "../component/DriverDashBoard/profile/profile";
 import DriverSchedule from "../component/DriverDashBoard/driverSchedule/driverSchedule";
 import AdminDashBoard from "../component/AdminDashBoard/drawer/adminDashboard";
-import AdminProfile from "../component/AdminDashBoard/profile/profile";
 import ManageCustomer from "../component/AdminDashBoard/manageCustomer/manageCustomer";
 import IncomeReports from "../component/AdminDashBoard/incomeReports/incomeReports";
 import ManageVehicle from "../component/AdminDashBoard/manageVehicle/manageVehicle";
 import DashBoard from "../component/AdminDashBoard/dashBoard/adminDashboardIndex";
+import ReservationPage from "../pages/reservationPage";
+import PaymentPage from "../component/CustomerDashBoardNew/bookingPayment/bookingPayment";
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/customerDashBoard" element={<CustomerDashBoard />}>
           <Route index element={<Profile/>} />
           <Route path="booking" element={<Booking />} />
+          <Route path="payment" element={<PaymentPage />} />
           <Route path="manageBooking" element={<ManageBooking />} />
         </Route>
 
@@ -61,6 +63,7 @@ function App() {
           <Route exact path='/' element={<HomePage/>}/>
           <Route path='sighUpPage' element={<SignUpPage/>}/>
           <Route path='signInPage' element={<SignInPage/>}/>
+          <Route path='ReservationPage' element={<ReservationPage/>}/>
       </Routes>
 
 

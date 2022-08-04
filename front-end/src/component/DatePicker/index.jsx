@@ -10,7 +10,6 @@ import Grid from '@mui/material/Grid';
 export default function BasicDatePicker(props) {
     const [value, setValue] = React.useState(null);
 
-
     return (
         <Grid style={{width: '13vw', backgroundColor: 'white', borderRadius: '5px', margin: '2px'}}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -18,8 +17,10 @@ export default function BasicDatePicker(props) {
                     label={props.label}
                     value={value}
                     onChange={(newValue) => {
+                        (props.label ==="Pick-Up-Date")?localStorage.setItem("pickUpDate",newValue):localStorage.setItem("returnDate",newValue)
                         setValue(newValue);
                     }}
+
                     renderInput={(params) => <TextField {...params} />}
                 />
             </LocalizationProvider>

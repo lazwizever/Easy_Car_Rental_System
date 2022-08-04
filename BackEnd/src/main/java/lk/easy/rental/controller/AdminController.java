@@ -60,21 +60,23 @@ public class AdminController {
     }
 
     @PostMapping ("acceptCustomer")
-    public ResponseUtil acceptCustomer(CustomerDTO customerDTO){
+    public ResponseUtil acceptCustomer(@RequestBody CustomerDTO customerDTO){
+        System.out.println("Cus Id"+customerDTO.getId());
+        System.out.println("Cus address"+customerDTO.getAddress());
         adminService.acceptCustomer(customerDTO);
         return new ResponseUtil(201,"OK", null);
     }
 
-    @DeleteMapping ("denyCustomerId")
+    @DeleteMapping (params = {"denyCustomerId"})
     public ResponseUtil denyCustomer(@RequestParam String denyCustomerId){
         adminService.denyCustomer(denyCustomerId);
         return new ResponseUtil(201,"OK", null);
     }
 
-    @GetMapping()
+    @GetMapping("loadUserRequest")
     public ResponseUtil loadUserRequest(){
         adminService.loaUserRequest();
-        return new ResponseUtil(201,"OK", adminService.adminDashBoardInfo());
+        return new ResponseUtil(201,"OK", adminService.loaUserRequest());
 
     }
 

@@ -9,18 +9,11 @@ import {Card} from "@material-ui/core";
 import Typography from "@mui/material/Typography";
 import BMW from "../../assets/img/bmw.jpg"
 import BrowserService from "../../service/browserService";
-import DatePicker from "../../component/DatePicker";
-import TimePicker from "../../component/TimePicker";
-import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import DatePickerBrwoser from "../../component/DatePickerBrwoser";
+import TimePickerBrowser from "../../component/TimePickerBrowser";
 import {styleSheet} from "./style";
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import PropTypes from 'prop-types';
-import Dialog from '@mui/material/Dialog';
-import { styled } from '@mui/material/styles';
-
+import {format} from "date-fns";
+import {Link} from "react-router-dom";
 
 
 
@@ -31,58 +24,12 @@ const vehicleType = [
 ]
 
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-    '& .MuiDialogContent-root': {
-        padding: theme.spacing(2),
-    },
-    '& .MuiDialogActions-root': {
-        padding: theme.spacing(1),
-    },
-}));
-
-const BootstrapDialogTitle = (props) => {
-    const { children, onClose, ...other } = props;
-
-    return (
-        <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-            {children}
-            {onClose ? (
-                <IconButton
-                    aria-label="close"
-                    onClick={onClose}
-                    sx={{
-                        position: 'absolute',
-                        right: 8,
-                        top: 8,
-                        color: (theme) => theme.palette.grey[500],
-                    }}
-                >
-                    <CloseIcon />
-                </IconButton>
-            ) : null}
-        </DialogTitle>
-    );
-};
-
-BootstrapDialogTitle.propTypes = {
-    children: PropTypes.node,
-    onClose: PropTypes.func.isRequired,
-};
-
-
-
 
 class ReservationPage extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-
-            open:false,
-            pickUpDate: '2022-07-06',
-            pickUpTime: '',
-            returnDate: '2022-07-10',
-            returnTime: '',
 
             vehicleList: []
         }
@@ -91,11 +38,15 @@ class ReservationPage extends Component {
     }
 
 
-    handleClickOpen = () => { this.setState({open:true}) };
-    handleClose = () => { this.setState({open:false}) };
-
     loadAvailableVehicles = async () => {
-        let params = {pickupDate: this.state.pickUpDate, returnDate: this.state.returnDate}
+
+        let params = {
+            pickupDate: format(new Date(localStorage.getItem("pickUpDate")),'yyyy-MM-dd') ,
+            returnDate: format(new Date(localStorage.getItem("returnDate")),'yyyy-MM-dd')
+        }
+
+
+
         let res = await BrowserService.fetchAvailableVehicle(params);
 
         if (res.status === 200) {
@@ -122,7 +73,7 @@ class ReservationPage extends Component {
 
 
     componentDidMount() {
-        this.loadAllVehicles();
+        this.loadAvailableVehicles();
     }
 
 
@@ -131,9 +82,8 @@ class ReservationPage extends Component {
     render() {
         const {classes} = this.props;
         return (
-            <>
 
-                <Grid className={classes.reservationContainer}>
+            <Grid className={classes.reservationContainer}>
 
                     {/*-------------------------Logo--------------------------------*/}
                     <Grid style={{position: 'absolute', paddingLeft: '4vw', paddingTop: '1vh'}}>
@@ -178,16 +128,16 @@ class ReservationPage extends Component {
                     <Grid style={{display: 'flex', width: '100vw', justifyContent: 'center', paddingTop: '6vh'}}>
                         <Grid className={classes.dateTimeContainer}>
 
-                            <DatePicker label="Pick-Up-Date"
+                            <DatePickerBrwoser label="Pick-Up-Date"
                                 /*expect(screen.getByDisplayValue('01/01/2022')).toBeInTheDocument();*/
 
                             />
 
-                            <TimePicker label="Pick-Up-Time"/>
+                            <TimePickerBrowser label="Pick-Up-Time"/>
 
-                            <DatePicker label="Drop-Off-Date"/>
+                            <DatePickerBrwoser label="Drop-Off-Date"/>
 
-                            <TimePicker label="Drop-Off-Time"/>
+                            <TimePickerBrowser label="Drop-Off-Time"/>
 
 
                             <Autocomplete
@@ -225,9 +175,9 @@ class ReservationPage extends Component {
 
 
                     <Grid style={{
-                        width: '100vw',
+                        width: '96vw',
                         display: 'flex',
-                        justifyContent: 'space-between',
+                        justifyContent: 'space-evenly',
                         flexDirection: "row",
                         flexWrap: 'wrap',
                         marginTop: '10vh'
@@ -235,29 +185,36 @@ class ReservationPage extends Component {
                         {
                             this.state.vehicleList.map((vehicle) => (
 
-                                <Card style={{width: '20vw', marginTop: '1vh'}}>
+                                <Card style={{width: '31vw', marginTop: '1vh',height:"60vh"}}>
                                     <CardMedia
                                         component="img"
                                         alt="img"
-                                        height="230"
+                                        height="320"
                                         image={BMW}
 
                                     />
                                     <CardContent>
-                                        <Typography variant="h6" textAlign={'center'}>
-                                            {vehicle.brand}
+                                        <Typography variant="h10" textAlign={'center'}>
+                                            {"Brand - "+vehicle.brand}<br/>
+                                            {"Registration No - "+vehicle.registrationNo}<br/>
+                                            {"Color - "+vehicle.color}<br/>
+                                            {"Vehicle Type - "+vehicle.vehicleType}<br/>
+                                            {"Transmission  Type - "+vehicle.transmissionType}<br/>
+                                            {"Fuel Type - "+vehicle.fuelType}<br/>
+                                            {/*{"Daily Price Rate(Rs) - "+vehicle.transmissionTyp}<br/>*/}
                                         </Typography>
                                     </CardContent>
                                     <CardActions style={{display: 'flex', justifyContent: 'center'}}>
 
-                                        <Button size="small" style={{backgroundColor: 'green', color: 'white'}}
+
+                                        <Link to="payment" style={{ textDecoration: 'none', color: 'black' }}>
+                                            <Typography textAlign="center">Book Now</Typography>
+                                        </Link>
+
+                                        {/*<Button size="small" style={{backgroundColor: 'green', color: 'white'}}
                                                 href='/vehicleDetailsPage'
 
-                                                onClick={
-                                                    this.handleClickOpen()
-                                                }
-
-                                        >View More</Button>
+                                        >View More</Button>*/}
                                     </CardActions>
                                 </Card>
                             ))
@@ -324,22 +281,6 @@ class ReservationPage extends Component {
 
 
                 </Grid>
-
-
-                <div><Button variant="outlined" onClick={this.handleClickOpen}> Open dialog </Button> <BootstrapDialog
-                    onClose={this.handleClose()} aria-labelledby="customized-dialog-title" open={this.state.open}> <BootstrapDialogTitle
-                    id="customized-dialog-title" onClose={this.handleClose}> Modal title </BootstrapDialogTitle>
-                    <DialogContent dividers> <Typography gutterBottom> Cras mattis consectetur purus sit amet fermentum.
-                        Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                        consectetur ac, vestibulum at eros. </Typography> <Typography gutterBottom> Praesent commodo
-                        cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet
-                        rutrum faucibus dolor auctor. </Typography> <Typography gutterBottom> Aenean lacinia bibendum
-                        nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec
-                        sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. </Typography> </DialogContent>
-                    <DialogActions>  <Button autoFocus onClick={this.handleClose}> Save changes </Button> </DialogActions>
-                </BootstrapDialog></div>
-
-            </>
 
         )
     }

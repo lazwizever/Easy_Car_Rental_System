@@ -20,6 +20,7 @@ import {TextField} from "@mui/material";
 import manageCustomerService from "../../../service/adminDashBoardService/manageCustomerService";
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
+import Button from "@mui/material/Button";
 
 
 class ManageCustomer extends Component{
@@ -40,8 +41,6 @@ class ManageCustomer extends Component{
                 licenseNo: '',
                 address: '',
                 contactNo: '',
-                email: '',
-
 
             },
 
@@ -71,8 +70,6 @@ class ManageCustomer extends Component{
                 licenseNo: row.licenseNo,
                 address: row.address,
                 contactNo: row.contactNo,
-                email: row.email,
-
 
             },
         });
@@ -94,16 +91,20 @@ class ManageCustomer extends Component{
 
 
     acceptCustomer = async () => {
-        let customer = this.state.customer;
-        let res = await manageCustomerService.acceptCustomer(customer);
+        let customerData = this.state.customer;
+        console.log(customerData)
+        let res = await manageCustomerService.acceptCustomer(customerData);
 
 
-        if (res.status === 200) {
+        if (res.status == 200) {
+            console.log("gff"+customerData)
             this.setState({
                 alert: true,
                 message: res.data.message,
                 severity: 'success',
             });
+
+            await this.loadUserRequests();
         }
 
 
@@ -122,7 +123,7 @@ class ManageCustomer extends Component{
             });
         }
 
-
+        await this.loadUserRequests();
 
     };
 
@@ -161,10 +162,10 @@ class ManageCustomer extends Component{
                         <Grid display='flex' justifyContent='space-evenly' margin='1vh'>
                             <TextField id="outlined-basic" label="Customer Id" size='small' variant="outlined" style={{width: '20vw'}}
 
-                                       value={this.state.customer.name.firstName}
+                                       value={this.state.customer.id}
                                        onChange={(e) => {
                                            let formDataOb =this.state.customer
-                                           formDataOb.name.firstName = e.target.value
+                                           formDataOb.id = e.target.value
                                            this.setState(formDataOb)
                                        }}
                                        validators={['required']}
@@ -172,10 +173,10 @@ class ManageCustomer extends Component{
                             />
                             <TextField id="outlined-basic" label="First name" variant="outlined" size='small' style={{width: '20vw'}}
 
-                                       value={this.state.customer.name.lastName}
+                                       value={this.state.customer.name.firstName}
                                        onChange={(e) => {
                                            let formDataOb =this.state.customer
-                                           formDataOb.name.lastName = e.target.value
+                                           formDataOb.name.firstName = e.target.value
                                            this.setState(formDataOb)
                                        }}
                                        validators={['required']}
@@ -186,10 +187,10 @@ class ManageCustomer extends Component{
                         <Grid display='flex' justifyContent='space-evenly' margin='1vh'>
                             <TextField id="outlined-basic" label="Last Name" variant="outlined" size='small' style={{width: '20vw'}}
 
-                                       value={this.state.customer.address}
+                                       value={this.state.customer.name.lastName}
                                        onChange={(e) => {
                                            let formDataOb =this.state.customer
-                                           formDataOb.address = e.target.value
+                                           formDataOb.name.lastName = e.target.value
                                            this.setState(formDataOb)
                                        }}
                                        validators={['required']}
@@ -197,10 +198,10 @@ class ManageCustomer extends Component{
                             />
                             <TextField id="outlined-basic" label="Address" size='small' variant="outlined" style={{width: '20vw'}}
 
-                                       value={this.state.customer.contactNo}
+                                       value={this.state.customer.address}
                                        onChange={(e) => {
                                            let formDataOb =this.state.customer
-                                           formDataOb.contactNo = e.target.value
+                                           formDataOb.address = e.target.value
                                            this.setState(formDataOb)
                                        }}
                                        validators={['required']}
@@ -210,10 +211,10 @@ class ManageCustomer extends Component{
                         <Grid display='flex' justifyContent='space-evenly' margin='1vh'>
                             <TextField id="outlined-basic" label="Contact No" variant="outlined" size='small' style={{width: '20vw'}}
 
-                                       value={this.state.customer.nic}
+                                       value={this.state.customer.contactNo}
                                        onChange={(e) => {
                                            let formDataOb =this.state.customer
-                                           formDataOb.nic = e.target.value
+                                           formDataOb.contactNo = e.target.value
                                            this.setState(formDataOb)
                                        }}
                                        validators={['required']}
@@ -221,10 +222,10 @@ class ManageCustomer extends Component{
                             />
                             <TextField id="outlined-basic" label="E-mail" size='small' variant="outlined" style={{width: '20vw'}}
 
-                                       value={this.state.customer.licenseNo}
+                                       value={this.state.customer.email}
                                        onChange={(e) => {
                                            let formDataOb =this.state.customer
-                                           formDataOb.licenseNo = e.target.value
+                                           formDataOb.email = e.target.value
                                            this.setState(formDataOb)
                                        }}
                                        validators={['required']}
@@ -256,6 +257,14 @@ class ManageCustomer extends Component{
                         </Grid>
                     </Grid>
 
+                    <Grid display={'flex'} justifyContent={'center'} marginTop={'2vh'}>
+                        <Button variant="contained" color="error" style={{margin: "1vh"}} onClick={this.denyCustomer}>
+                            Deny
+                        </Button>
+                        <Button variant="contained" color="success" style={{margin: "1vh"}} onClick={this.acceptCustomer}>
+                            Accept
+                        </Button>
+                    </Grid>
 
             <Grid style={{width:"84vw",height:"85vh",marginTop:"8vh",marginLeft:'0.5vw'}}>
 
@@ -270,8 +279,6 @@ class ManageCustomer extends Component{
                                 <TableCell>License No</TableCell>
                                 <TableCell>Address</TableCell>
                                 <TableCell>Contact No</TableCell>
-                                <TableCell>E-mail</TableCell>
-                                <TableCell>Action</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -287,29 +294,6 @@ class ManageCustomer extends Component{
                                         <TableCell align="left">{row.licenseNo}</TableCell>
                                         <TableCell align="left">{row.address}</TableCell>
                                         <TableCell align="left">{row.contactNo}</TableCell>
-                                        <TableCell align="left">{row.email}</TableCell>
-                                        <TableCell align="left">
-                                            <Tooltip title="Accept">
-                                                <IconButton
-                                                    onClick={
-
-                                                        this.acceptCustomer
-
-                                                    }
-                                                >
-                                                    <CheckIcon color="success"/>
-                                                </IconButton>
-                                            </Tooltip>
-                                            <Tooltip title="Deny">
-                                                <IconButton
-                                                    onClick={
-                                                        this.denyCustomer
-                                                    }
-                                                >
-                                                    <ClearIcon color="error"/>
-                                                </IconButton>
-                                            </Tooltip>
-                                        </TableCell>
                                     </TableRow>
                                 ))
                             }

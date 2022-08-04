@@ -56,6 +56,8 @@ class SignUpPage extends Component {
             localStorage.setItem("userName",res.data.data.userName);
 
             if (res.data.data.role == 'CUSTOMER'){
+                localStorage.setItem("pickUpDate",null);
+                localStorage.setItem("returnDate",null);
                 this.setState({
                     link:'/customerDashBoard',
                 });
@@ -73,7 +75,7 @@ class SignUpPage extends Component {
                 });
             }
 
-
+            
         } else {
             this.setState({
                 alert: true,
