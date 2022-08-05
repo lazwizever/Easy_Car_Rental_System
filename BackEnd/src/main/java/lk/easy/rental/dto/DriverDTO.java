@@ -23,7 +23,6 @@ public class DriverDTO {
     private String licenseNo;
     private String nic;
     private Name name;
-    private AvailabilityType driverAvailability;
     private String address;
     private String contactNo;
     private UserDTO user;

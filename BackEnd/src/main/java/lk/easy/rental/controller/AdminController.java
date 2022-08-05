@@ -4,6 +4,7 @@ import lk.easy.rental.dto.AdminDTO;
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.service.AdminService;
 import lk.easy.rental.service.CustomerService;
+import lk.easy.rental.service.VehicleService;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,6 +17,9 @@ public class AdminController {
 
     @Autowired
     AdminService adminService;
+
+    @Autowired
+    VehicleService vehicleService;
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveAdmin(@RequestBody AdminDTO adminDTO){
@@ -80,7 +84,45 @@ public class AdminController {
 
     }
 
+    @PutMapping (params = {"bookingId"})
+    public ResponseUtil acceptBookingRequest(@RequestParam String bookingId){
+        adminService.acceptBooking(bookingId);
+        return new ResponseUtil(201,"OK", null);
+    }
+
+    @PutMapping (params = {"id,reason"})
+    public ResponseUtil denyBookingRequest(@RequestParam String id,@RequestParam String reason){
+        adminService.denyBooking(id,reason);
+        return new ResponseUtil(201,"OK", null);
+    }
 
 
-    
+    /*@GetMapping
+    public ResponseUtil calculatePayment(){
+
+    }*/
+
+
+    @PutMapping(params = {"vehicleId"})
+    public ResponseUtil makeVehicleUnavailable(@RequestParam String vehicleId){
+        vehicleService.makeVehicleUnavailable(vehicleId);
+        return new ResponseUtil(201,"OK", null);
+    }
+
+    @PutMapping(params = {"vId"})
+    public ResponseUtil makeVehicleAvailable(@RequestParam String vId){
+        vehicleService.makeVehicleAvailable(vId);
+        return new ResponseUtil(201,"OK", null);
+    }
+
+
+    @PutMapping("notifyMaintenance")
+    public ResponseUtil notifyMaintenance(){
+        adminService.notifyMaintenance();
+        return new ResponseUtil(201,"OK", null);
+
+    }
+
+
+
 }

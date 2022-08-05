@@ -1,6 +1,7 @@
 package lk.easy.rental.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lk.easy.rental.enums.BookingStatus;
 import lk.easy.rental.enums.RequestType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,8 @@ public class BookingDTO {
     private LocalDate returnDate;
     @JsonFormat(pattern = "HH:mm:ss")
     private LocalTime returnTime;
+    private BookingStatus bookingStatus;
+    private String deniedReason;
     private RequestType driverRequestType;
     private CustomerDTO customer;
     private List<DriverScheduleDTO> driverScheduleDTOList;
@@ -39,7 +42,7 @@ public class BookingDTO {
         this.driverRequestType = needDriver;
         this.customer = customer;
         this.driverScheduleDTOList = driverScheduleList;
-    }*/
+    }
 
 
     public BookingDTO(String bookingId,  LocalDate pickupDate, LocalTime pickupTime, LocalDate returnDate, LocalTime returnTime, RequestType needDriver, CustomerDTO customer, List<BookingDetailsDTO> bookedVehicleList) {
@@ -51,7 +54,32 @@ public class BookingDTO {
         this.driverRequestType = needDriver;
         this.customer = customer;
         this.bookingDetailsList = bookedVehicleList;
+    }*/
+
+    /*public BookingDTO(String bookingId, LocalDate pickUpDate, LocalTime pickUpTime, LocalDate returnDate, LocalTime returnTime, RequestType driverRequestType, CustomerDTO customer, List<DriverScheduleDTO> driverScheduleDTOList) {
+        this.bookingId = bookingId;
+        this.pickUpDate = pickUpDate;
+        this.pickUpTime = pickUpTime;
+        this.returnDate = returnDate;
+        this.returnTime = returnTime;
+        this.driverRequestType = driverRequestType;
+        this.customer = customer;
+        this.driverScheduleDTOList = driverScheduleDTOList;
+    }*/
+
+
+    public BookingDTO(String bookingId, LocalDate pickUpDate, LocalTime pickUpTime, LocalDate returnDate, LocalTime returnTime, RequestType driverRequestType, CustomerDTO customer, List<BookingDetailsDTO> bookingDetailsList) {
+        this.bookingId = bookingId;
+        this.pickUpDate = pickUpDate;
+        this.pickUpTime = pickUpTime;
+        this.returnDate = returnDate;
+        this.returnTime = returnTime;
+        this.driverRequestType = driverRequestType;
+        this.customer = customer;
+        this.bookingDetailsList = bookingDetailsList;
     }
+
+
 
 
 }

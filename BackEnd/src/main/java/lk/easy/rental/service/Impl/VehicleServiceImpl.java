@@ -78,4 +78,19 @@ public class VehicleServiceImpl implements VehicleService {
         List<Vehicle> allByVehicleAvailability = vehicleRepo.findAllByVehicleAvailability(AvailabilityType.AVAILABLE);
         return modelMapper.map(allByVehicleAvailability, new TypeToken<List<VehicleDTO>>(){}.getType());
     }
+
+
+    @Override
+    public void makeVehicleUnavailable(String vehicleId) {
+        Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
+        vehicle.setVehicleAvailability(AvailabilityType.NOT_AVAILABLE);
+        vehicleRepo.save(vehicle);
+    }
+
+    @Override
+    public void makeVehicleAvailable(String vehicleId) {
+        Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
+        vehicle.setVehicleAvailability(AvailabilityType.AVAILABLE);
+        vehicleRepo.save(vehicle);
+    }
 }

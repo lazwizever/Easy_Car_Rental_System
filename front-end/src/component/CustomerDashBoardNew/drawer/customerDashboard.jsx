@@ -169,27 +169,6 @@ export default function CustomerDashBoard() {
                             Customer Dashboard
                         </Typography>
 
-                       {/* ----------------------Logo-----------------------
-                        <Grid style={{position: 'absolute', paddingLeft: '4vw', marginTop: '-2vh'}}>
-                            <img src={logo} style={{position: 'absolute', height: '5vh', width: '5vw'}}/>
-
-                            <h3 style={{
-                                margin: 'auto',
-                                color: '#B5B5B5',
-                                paddingLeft: '1.5vw',
-                                paddingTop: '3.5vh',
-                                fontWeight: 'unset'
-                            }}>Easy Car</h3>
-                            <h1 style={{
-                                color: '#B5B5B5',
-                                fontSize: '11px',
-                                margin: 'auto',
-                                paddingLeft: '2.2vw',
-                                fontWeight: 'unset'
-                            }}>rental pvt</h1>
-                        </Grid>*/}
-
-
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">

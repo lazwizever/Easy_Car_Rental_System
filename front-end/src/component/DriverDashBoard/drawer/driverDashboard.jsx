@@ -27,6 +27,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 
 import { Outlet, Link } from "react-router-dom";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const drawerWidth = 240;
 
@@ -141,7 +142,7 @@ export default function DriverDashBoard() {
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar position="fixed" open={open}>
-                <Toolbar>
+                <Toolbar style={{backgroundColor:'black'}}>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <IconButton
                             color="inherit"
@@ -162,7 +163,7 @@ export default function DriverDashBoard() {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/71526158?v=4" />
+                                <AccountCircleIcon  style={{color:'white',fontSize:'35px'}}/>
                             </IconButton>
                         </Tooltip>
                         <Menu

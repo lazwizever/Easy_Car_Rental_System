@@ -3,9 +3,12 @@ package lk.easy.rental.service.Impl;
 import lk.easy.rental.Exception.DuplicateEntryException;
 import lk.easy.rental.dto.AdminDTO;
 import lk.easy.rental.dto.AdminDashboardDTO;
+import lk.easy.rental.dto.BookingDTO;
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.entity.*;
 import lk.easy.rental.enums.AvailabilityType;
+import lk.easy.rental.enums.BookingStatus;
+import lk.easy.rental.enums.RequestType;
 import lk.easy.rental.enums.Role;
 import lk.easy.rental.repo.*;
 import lk.easy.rental.service.AdminService;
@@ -107,8 +110,8 @@ public class AdminServiceImpl implements AdminService {
         int noOfAvailableVehicles = vehicleRepo.countByVehicleAvailability(AvailabilityType.AVAILABLE);
         int noOfReservedVehicles = vehicleRepo.countByVehicleAvailability(AvailabilityType.NOT_AVAILABLE);
         int activeBookings = bookingRepo.countByPickUpDate(LocalDate.now());
-        int availableDrivers = driverRepo.countByDriverAvailability(AvailabilityType.AVAILABLE);
-        int occupiedDrivers = driverRepo.countByDriverAvailability(AvailabilityType.NOT_AVAILABLE);
+        int availableDrivers = 0;
+        int occupiedDrivers = 0;
         int toBeRepairedCars = 0;
         int underMaintenanceCars = 0;
 
@@ -135,9 +138,49 @@ public class AdminServiceImpl implements AdminService {
         userRequestRepo.deleteById(id);
     }
 
+
+
+    @Override
+    public void acceptBooking(String id) {
+        Booking booking = bookingRepo.findById(id).get();
+        booking.setBookingStatus(BookingStatus.ACCEPTED);
+        bookingRepo.save(booking);
+    }
+
+    @Override
+    public void denyBooking(String bookingId,String reason) {
+        Booking booking = bookingRepo.findById(bookingId).get();
+        booking.setBookingStatus(BookingStatus.DENIED);
+        booking.setDeniedReason(reason);
+        bookingRepo.save(booking);
+
+    }
+
+
     @Override
     public List<CustomerDTO> loaUserRequest() {
         return modelMapper.map(userRequestRepo.findAll(),new TypeToken<List<CustomerDTO>>(){}.getType());
+    }
+
+
+
+    @Override
+    public void notifyMaintenance() {
+        List<Vehicle> allVehicles = vehicleRepo.findAll();
+
+        for (Vehicle temp : allVehicles) {
+            int lastServiceKm = temp.getLastServiceKm();
+            int mileage = temp.getMileage();
+
+            if (mileage>=lastServiceKm+5000){
+                temp.setNeedMaintenance(RequestType.YES);
+            }else {
+                temp.setNeedMaintenance(RequestType.NO);
+            }
+
+            vehicleRepo.save(temp);
+
+        }
     }
 
 

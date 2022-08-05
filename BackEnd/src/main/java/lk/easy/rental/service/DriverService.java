@@ -1,7 +1,9 @@
 package lk.easy.rental.service;
 
 import lk.easy.rental.dto.DriverDTO;
+import lk.easy.rental.dto.DriverScheduleDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface DriverService {
@@ -15,5 +17,10 @@ public interface DriverService {
 
     void deleteDriver(String id);
 
-    DriverDTO getAvailableDriver();
+//    DriverDTO getAvailableDriver();
+
+    DriverDTO getAvailableDriverByDate(LocalDate pickupDate, LocalDate dropOffDate);
+
+
+    List<DriverScheduleDTO> loadDriverScheduleForDriver(String id);
 }

@@ -1,6 +1,7 @@
 package lk.easy.rental.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lk.easy.rental.enums.BookingStatus;
 import lk.easy.rental.enums.RequestType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,9 @@ public class Booking {
     private LocalTime pickUpTime;
     private LocalDate returnDate;
     private LocalTime returnTime;
+    @Enumerated(EnumType.STRING)
+    private BookingStatus bookingStatus;
+    private String deniedReason;
     @Enumerated(EnumType.STRING)
     private RequestType driverRequestType;
 

@@ -142,7 +142,7 @@ class DriverProfile extends Component {
                         <Grid className={classes.rightGrid} style={{marginLeft:"-34vw"}}>
 
                             <Grid className={classes.profileIcon}>
-                                <AccountCircleIcon style={{ fontSize: '250px',color: '#040404'}}/>
+                                <AccountCircleIcon style={{ fontSize: '250px',color: '#718093'}}/>
                             </Grid>
 
                             <Grid className={classes.proTxtFields}>

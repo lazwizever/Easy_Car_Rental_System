@@ -8,9 +8,10 @@ import Autocomplete from '@mui/material/Autocomplete';
 import UploadButton from "../../component/UploadBtn";
 import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 import SignUpService from '../../service/signUpService'
-import {styleSheet} from "./style";
+import {styleSheet} from "../signInPage/style";
 import GDSESnackBar from "../../component/SnackBar";
 import GDSEButton from "../../component/Button/button";
+import logo from "../../assets/img/logo.png";
 
 
 
@@ -143,7 +144,7 @@ class SignInPage extends Component{
 
                <Grid className={classes.signUpForm} >
 
-                   <Grid>
+                   <Grid marginTop='3vh'>
                        <h2 style={{color:"black",fontSize:'40px',fontWeight:'unset',paddingLeft:'6vw'}}>Create Account</h2>
                    </Grid>
 
@@ -167,7 +168,7 @@ class SignInPage extends Component{
                        </Grid>
 
 
-                       <Grid item lg={6} md={6} sm={6} xm={6} style={{marginLeft:"7.5vw"}}>
+                       <Grid item lg={6} md={6} sm={6} xm={6} style={{marginLeft:"10.3vw"}}>
                            <TextField id="outlined-basic" label="First Name"  variant="outlined"
 
                                       value={this.state.formData.name.firstName}
@@ -333,8 +334,8 @@ class SignInPage extends Component{
 
 
 
-                   <Grid style={{paddingTop:'4vh',paddingLeft:'15vw'}}>
-                       <GDSEButton   color={'primary'}  label={"Register"} variant={'contained'} type={"submit"}/>
+                   <Grid style={{paddingTop:'4vh',paddingLeft:'15vw',marginLeft:"7vw"}}>
+                       <GDSEButton color={"primary"} label={"Register"}  variant={'contained'} type={"submit"}/>
                    </Grid>
 
                    </ValidatorForm>
@@ -346,7 +347,26 @@ class SignInPage extends Component{
                 backgroundImage: `url(${signInBg})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover'
-            }}></Grid>
+            }}>
+
+                <Typography color='white' style={{marginTop:"3vh",fontSize:"22px",marginLeft:'22vw'}}>
+                    Welcome To
+                </Typography>
+
+                <Typography color='white' style={{marginTop:"1vh",fontSize:"38px",marginLeft:'14vw'}}>
+                   Easy Car Private Limited
+                </Typography>
+
+                <Grid style={{position:'absolute',paddingLeft:'21vw',paddingTop:'65vh'}}>
+                    <img src={logo} style={{position:'absolute',height:'9vh',width:'9vw'}}/>
+
+                    <h3 style={{margin:'auto',color:'white',paddingLeft:'3vw',paddingTop:'4vh',fontSize:'21px',fontWeight:'unset'}}>Easy Car</h3>
+                    <h1 style={{color:'white',fontSize:'11px',margin:'auto',paddingLeft:'3.5vw'}}>rental pvt</h1>
+                </Grid>
+
+
+
+            </Grid>
 
            </Grid>
                 <GDSESnackBar

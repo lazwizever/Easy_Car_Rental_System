@@ -12,90 +12,119 @@ class IncomeReports extends Component{
     render() {
 
         const data = [
-            {name:'General',Packages:'20'},
-            {name:'Premium',Packages:'10'},
-            {name:'Luxury',Packages:'15'},
+            {name:'General',Daily_Rented_Vehicles:'100000'},
+            {name:'Premium',Daily_Rented_Vehicles:'200000'},
+            {name:'Luxury',Daily_Rented_Vehicles:'300000'},
 
         ];
 
-       /* const columns = [
-            { field: 'vehicleType', headerName: 'vehicle Type', width: 100 },
-            { field: 'income', headerName: 'Income (Rs)', width: 100 ,
-            },
-        ];
 
-        const rows = [
-            { vehicleType: 'General', bookingId: '250000' },
-            { vehicleType: 'Premium', bookingId: '150000' },
-            { vehicleType: 'Luxury', bookingId: '550000' },
-        ];*/
-
-
-       /* const columns = [
-            { field: 'id', headerName: 'Vehicle Type', width: 200 },
-            { field: 'amount', headerName: 'Amount (Rs)', width: 200 ,
-
-            },
+        const data1 = [
+            {name:'General',Monthly_Rented_Vehicles:'1500000'},
+            {name:'Premium',Monthly_Rented_Vehicles:'2500000'},
+            {name:'Luxury',Monthly_Rented_Vehicles:'3500000'},
 
         ];
 
-        const rows = [
-            { id: 'General', amount: '250000'},
-            { id: 'Premium', amount: '350000'},
-            { id: 'Luxury', amount: '550000'},
 
-        ];*/
+        const data2 = [
+            {name:'General',Yearly_Rented_Vehicles:'180000000'},
+            {name:'Premium',Yearly_Rented_Vehicles:'280000000'},
+            {name:'Luxury',Yearly_Rented_Vehicles:'380000000'},
+
+        ];
+
 
         return(
 
-            <Grid>
-                <BarChart
-                    width={500}
-                    height={300}
-                    data={data}
-                    margin={{
-                        top: 5,
-                        right: 100,
-                        left: 80,
-                        bottom: 5,
-                    }}
-                    barSize={20}
-                >
-                    <XAxis
-                        dataKey="name"
-                        scale="point"
-                        padding={{ left: 10, right: 10 }}
-                    />
+            <Grid style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
 
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <Bar dataKey="Packages" fill="#8884d8" background={{ fill: "#eeeff1" }} />
-                </BarChart>
+                <Grid style={{marginTop:'15vh'}}>
+                    <BarChart
+                        width={500}
+                        height={500}
+                        data={data}
+                        margin={{
+                            top: 20,
+                            right: 100,
+                            left: 80,
+                            bottom: 5,
+                        }}
+                        barSize={20}
+                    >
+                        <XAxis
+                            dataKey="name"
+                            scale="point"
+                            padding={{ left: 10, right: 10 }}
+                        />
+
+                        <YAxis/>
+                        <Tooltip />
+                        <Legend />
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <Bar dataKey="Daily_Rented_Vehicles" fill="#8884d8" background={{ fill: "#eeeff1" }} />
+                    </BarChart>
+                </Grid>
+
+                <Grid style={{marginTop:'15vh'}}>
+                    <BarChart
+                        width={500}
+                        height={500}
+                        data={data1}
+                        margin={{
+                            top: 20,
+                            right: 100,
+                            left: 80,
+                            bottom: 5,
+                        }}
+                        barSize={20}
+                    >
+                        <XAxis
+                            dataKey="name"
+                            scale="point"
+                            padding={{ left: 10, right: 10 }}
+                        />
+
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <Bar dataKey="Monthly_Rented_Vehicles" fill="#8884d8" background={{ fill: "#eeeff1" }} />
+                    </BarChart>
+                </Grid>
+
+                <Grid style={{marginTop:'15vh'}}>
+                    <BarChart
+                        width={500}
+                        height={500}
+                        data={data2}
+                        margin={{
+                            top: 20,
+                            right: 100,
+                            left: 80,
+                            bottom: 5,
+                        }}
+                        barSize={20}
+                    >
+                        <XAxis
+                            dataKey="name"
+                            scale="point"
+                            padding={{ left: 10, right: 10 }}
+                        />
+
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <Bar dataKey="Yearly_Rented_Vehicles" fill="#8884d8" background={{ fill: "#eeeff1" }} />
+                    </BarChart>
+                </Grid>
+
             </Grid>
 
-           /* <Grid>
-
-                <Grid >
-                    <DatePicker/>
-                </Grid>
 
 
-                <Grid >
-                    <div style={{ height: 300, width: '37%' ,marginTop:'10vh',backgroundColor:'#eeeff1'}}>
-                        <DataGrid
-                            rows={rows}
-                            columns={columns}
-                            pageSize={5}
-                            rowsPerPageOptions={[5]}
-                            checkboxSelection
-                        />
-                    </div>
-                </Grid>
 
-
-            </Grid>*/
 
         )
     }

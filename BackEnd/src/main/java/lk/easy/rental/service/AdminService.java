@@ -1,9 +1,6 @@
 package lk.easy.rental.service;
 
-import lk.easy.rental.dto.AdminDTO;
-import lk.easy.rental.dto.AdminDashboardDTO;
-import lk.easy.rental.dto.CustomerDTO;
-import lk.easy.rental.dto.PaymentDTO;
+import lk.easy.rental.dto.*;
 
 import java.util.List;
 
@@ -25,5 +22,14 @@ public interface AdminService {
 
     void denyCustomer(String id);
 
+    void acceptBooking(String id);
+
+    void denyBooking(String bookingId,String reason);
+
     List<CustomerDTO> loaUserRequest();
+
+
+
+    void notifyMaintenance();
+
 }

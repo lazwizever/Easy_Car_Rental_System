@@ -28,6 +28,10 @@ export const styleSheet = {
         width: '50vw',
         height:'76vh',
         paddingLeft:'6vw',
+    },
+
+    registerBtn:{
+        backgroundColor: 'black',
     }
 
 }

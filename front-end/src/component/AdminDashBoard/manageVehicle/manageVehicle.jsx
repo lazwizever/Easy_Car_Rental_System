@@ -339,9 +339,9 @@ class ManageVehicle extends Component {
 
                     <ValidatorForm ref="form" className="pt-2" onSubmit={this.submitVehicle}>
 
-                        <Grid display={"flex"} height={'50vh'} marginTop={'-56vh'}>
+                        <Grid display={"flex"} height={'50vh'} marginTop={'-18vh'}>
 
-                            <Grid width={'60%'} display={"flex"} flexWrap={'wrap'}>
+                            <Grid width={'60%'} display={"flex"} flexWrap={'wrap'} justifyContent={"space-evenly"} flexDirection={'row'}>
 
                                 <TextField
                                     required
@@ -610,36 +610,6 @@ class ManageVehicle extends Component {
                             <Grid width={'36%'}>
 
 
-                                {/*<Grid height={'80%'} display={'flex'} flexWrap={'wrap'} justifyContent={'space-evenly'}>
-
-
-                                    <Grid width={'48%'} height={'48%'} border={'1px solid black'} display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
-                                        <img src="" alt=""/>
-                                        <UploadButton/>
-                                        <Typography>Front View</Typography>
-                                    </Grid>
-
-                                    <Grid width={'48%'} height={'48%'} border={'1px solid black'} display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
-                                        <img src="" alt=""/>
-                                        <UploadButton/>
-                                        <Typography>Back View</Typography>
-                                    </Grid>
-
-                                    <Grid width={'48%'} height={'48%'} border={'1px solid black'} display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
-                                        <img src="" alt=""/>
-                                        <UploadButton/>
-                                        <Typography>Side View</Typography>
-                                    </Grid>
-
-                                    <Grid width={'48%'} height={'48%'} border={'1px solid black'} display={'flex'} justifyContent={'center'} alignItems={'center'} flexDirection={'column'}>
-                                        <img src="" alt=""/>
-                                        <UploadButton/>
-                                        <Typography>Interior</Typography>
-                                    </Grid>
-
-
-                                </Grid>*/}
-
                                 <Grid item style={{
                                     marginTop: '10px',
                                     height : '30%',
@@ -657,7 +627,7 @@ class ManageVehicle extends Component {
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         height: '140px',
-                                        border: '1px solid blue',
+                                        border: '1px solid black',
                                         backgroundImage:"url(" +this.state.frontView+ ")",
                                         backgroundSize: 'cover',
                                         width : '23%',
@@ -671,7 +641,7 @@ class ManageVehicle extends Component {
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         height: '140px',
-                                        border: '1px solid blue',
+                                        border: '1px solid black',
                                         backgroundImage:"url(" +this.state.backView+ ")",
                                         backgroundSize: 'cover',
                                         width : '23%',
@@ -685,7 +655,7 @@ class ManageVehicle extends Component {
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         height: '140px',
-                                        border: '1px solid blue',
+                                        border: '1px solid black',
                                         backgroundImage:"url(" +this.state.sideView+ ")",
                                         backgroundSize: 'cover',
                                         width : '23%',
@@ -699,7 +669,7 @@ class ManageVehicle extends Component {
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         height: '140px',
-                                        border: '1px solid blue',
+                                        border: '1px solid black',
                                         backgroundImage:"url(" +this.state.interiorView+ ")",
                                         backgroundSize: 'cover',
                                         width : '23%',
@@ -810,18 +780,19 @@ class ManageVehicle extends Component {
 
 
 
-                                <Grid height={'10%'} display={'flex'} justifyContent={'flex-end'}>
+                                <Grid height={'10%'} display={'flex'} justifyContent={'space-between'} flexDirection={'row'} style={{width:"11vw",marginTop:"32vh",marginLeft:'20vw'}}>
 
-                                    <Button variant="contained" sx={{m:0.5,mt:4,width:'12ch',height:'5ch'}}
-                                            style={{color: "white", backgroundColor: '#c4c4c4'}} type={'submit'}>
+                                    <GDSEButton  sx={{m:0.5,mt:4}}
+                                                 style={{color: "white",width:'5vw',height:'4vh'}} variant="contained"
+                                                 label={this.state.btnLabel}
+                                                 type="submit" size="small"
+                                                 color={this.state.btnColor}/>
+
+
+                                    <GDSEButton color='error' variant="contained" sx={{m:0.5,mt:4}}
+                                            style={{color: "white",width:'5vw',height:'4vh'}} type={'submit'}>
                                         Cancel
-                                    </Button>
-
-                                    <GDSEButton  sx={{m:0.5,mt:4,width:'12ch',height:'5ch'}}
-                                             style={{color: "white"}} variant="contained"
-                                             label={this.state.btnLabel}
-                                             type="submit" size="small"
-                                             color={this.state.btnColor}/>
+                                    </GDSEButton>
 
                                 </Grid>
                             </Grid>
@@ -830,10 +801,8 @@ class ManageVehicle extends Component {
                     </ValidatorForm>
 
 
-
-
                     <Grid width='100%'>
-                        <div style={{height: 400, width: '105%', marginTop: '10vh', marginLeft: '0vw'}}>
+                        <div style={{height: 400, width: '105%', marginTop: '90vh', marginLeft: '-79vw'}}>
                             <TableContainer component={Paper} style={{ height: '45vh', width: '81vw', backgroundColor: '#eeeff1' }}>
                                 <Table aria-label="simple table">
                                     <TableHead>

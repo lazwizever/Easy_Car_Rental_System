@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 @RestController
 @RequestMapping("driver")
 @CrossOrigin
@@ -23,9 +26,12 @@ public class DriverController {
         return new ResponseUtil(201,"Driver successfully added",null);
     }
 
-    @GetMapping("getAvailableDriver")
-    public ResponseUtil getAvailableDriver(){
-        driverService.getAvailableDriver();
+    @GetMapping(params = {"pickUpDate","returnDate"})
+    public ResponseUtil getAvailableDriver(@RequestParam String pickUpDate, @RequestParam String returnDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate pickUp = LocalDate.parse(pickUpDate,formatter);
+        LocalDate dropOff = LocalDate.parse(returnDate, formatter);
+        driverService.getAvailableDriverByDate(pickUp,dropOff);
         return new ResponseUtil(201,"OK",null);
     }
 
@@ -52,6 +58,13 @@ public class DriverController {
         driverService.deleteDriver(id);
         return new ResponseUtil(201,"OK",null);
     }
+
+    @GetMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil loadDriverScheduleForDriver(@RequestParam String id){
+        return new ResponseUtil(201,"OK",driverService.loadDriverScheduleForDriver(id));
+    }
+
+
 
 
 }

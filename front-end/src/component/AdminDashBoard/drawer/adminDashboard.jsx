@@ -19,14 +19,22 @@ import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';
 import CategoryIcon from '@mui/icons-material/Category';
-
+import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-
-
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import BookIcon from '@mui/icons-material/Book';
 import { Outlet, Link } from "react-router-dom";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ManIcon from '@mui/icons-material/Man';
+import NoCrashIcon from '@mui/icons-material/NoCrash';
+
+
+
+
+
 
 const drawerWidth = 240;
 
@@ -121,32 +129,32 @@ export default function AdminDashBoard() {
         },
         {
             text: 'Manage Customer',
-            icon: <CategoryIcon />,
+            icon: <ManIcon />,
             to: 'manageCustomer',
         },
 
         {
             text: 'Manage Booking',
-            icon: <CategoryIcon />,
+            icon: <BookIcon />,
             to: 'manageBooking',
         },
 
         {
             text: 'Income Reports',
-            icon: <CategoryIcon />,
+            icon: <AssessmentIcon />,
             to: 'incomeReports',
         },
 
         {
             text: 'View Driver Schedule',
-            icon: <CategoryIcon />,
+            icon: <DirectionsBikeIcon />,
             to: 'manageDriver',
         },
 
 
         {
             text: 'Manage Vehicle',
-            icon: <CategoryIcon />,
+            icon: <NoCrashIcon />,
             to: 'manageVehicle',
         },
 
@@ -174,7 +182,7 @@ export default function AdminDashBoard() {
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar position="fixed" open={open}>
-                <Toolbar>
+                <Toolbar style={{backgroundColor:'green'}}>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         <IconButton
                             color="inherit"
@@ -189,13 +197,13 @@ export default function AdminDashBoard() {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" noWrap component="div">
-                            Mini variant drawer
+                           Admin Dashboard
                         </Typography>
                     </Box>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="https://avatars.githubusercontent.com/u/71526158?v=4" />
+                                <AccountCircleIcon  style={{color:'white',fontSize:'35px'}}/>
                             </IconButton>
                         </Tooltip>
                         <Menu

@@ -1,21 +1,23 @@
 export const styleSheet = {
     container:{
-        width:'100vw',
-        height:'100vh',
+        width:'94vw',
+        height:'88vh',
+
     },
 
     navTabs: {
-        width: '100vw',
+        width: '20vw',
         height: '8vh',
         display:'flex',
         justifyContent:'right',
-        paddingRight:'2vw'
+        paddingRight:'2vw',
+        marginLeft:'60vw'
+
     },
 
     dateTimeContainer:{
-        backgroundColor:'#B5B5B5',
-        width:'90vw',
-        height:'9vh',
+        width:'43vw',
+        height:'6vh',
         display:'flex',
         justifyContent:'space-between',
         alignItems:'center',

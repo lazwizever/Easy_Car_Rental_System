@@ -3,6 +3,7 @@ export const styleSheet = {
     reservationContainer: {
         //backgroundColor:'#040404',
         width: '100vw',
+        overflowX:'hidden'
 
     },
 
@@ -13,12 +14,12 @@ export const styleSheet = {
         height: '8vh',
         display:'flex',
         justifyContent:'right',
-        paddingRight:'2vw'
+        paddingRight:'6vw'
     },
 
     dateTimeContainer:{
         backgroundColor:'white',
-        width:'70vw',
+        width:'65vw',
         height:'7vh',
         display:'flex',
         justifyContent:'space-between',
